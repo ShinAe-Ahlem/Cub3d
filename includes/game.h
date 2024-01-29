@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/27 18:06:43 by shikwon           #+#    #+#             */
-/*   Updated: 2024/01/29 16:48:22 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/01/29 17:43:01 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 # define GAME_H
 
 #include "../minilibx-linux/mlx.h"
-#include "../GNL/get_next_line.h"
 #include <stdio.h>
 
 

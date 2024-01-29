@@ -6,7 +6,7 @@
 #    By: anouri <anouri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:36:35 by anouri            #+#    #+#              #
-#    Updated: 2023/12/03 17:39:29 by anouri           ###   ########.fr        #
+#    Updated: 2024/01/29 17:39:31 by anouri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,7 @@ SRCS = ft_isalnum.c ft_isalpha.c \
     ft_strncpy_sa.c ft_isspace.c \
     ft_perror.c \
     save_str_as_file.c \
-    # gnl/get_next_line.c gnl/get_next_line_utils.c \
+    gnl/get_next_line.c gnl/get_next_line_utils.c \
 
 INC_DIR= ./
 
