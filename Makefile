@@ -34,9 +34,11 @@ ${NAME}: $(OBJS)
 	$(CC) -Wall -Wextra -Werror -MP -I/usr/include -Iminilibx-linux/ -c $< -o $@
 
 clean:
+	@$(MAKE) clean --silent -C $(LIB_DIR)
 	${RM} ${OBJS} ${OBJS_BONUS}
 
 fclean: clean
+	@$(MAKE) fclean --silent -C $(LIB_DIR)
 	${RM} ${NAME}
 
 re: fclean all

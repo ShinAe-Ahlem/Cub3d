@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:44:26 by anouri            #+#    #+#             */
-/*   Updated: 2023/12/03 17:20:03 by anouri           ###   ########.fr       */
+/*   Updated: 2024/01/29 17:43:22 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,10 @@ int					ft_isspace(char c);
 char				*ft_strdup_quote(char *s);
 int					save_str_as_file(char *s, char *file);
 char				*get_first_line(char *file);
+
+/*GNL*/
+char	*get_next_line(int fd);
+char	*ft_strjoin_GNL(char *str1, char *str2);
+size_t	ft_strlen_GNL(char *s);
 
 #endif

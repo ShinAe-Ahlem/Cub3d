@@ -6,7 +6,7 @@
 #include <../minilibx-linux/mlx.h>
 #include "../includes/game.h"
 #include "../libft/libft.h"
-
+#include <errno.h>
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 300
 
@@ -72,15 +72,44 @@ int	ft_create_window(t_game *game)
 void    ft_error(char *code_error)
 {
     write (2, code_error,ft_strlen(code_error));
+    write(2, "\n", 1);
 }
 
 void    check_nb_arg(int ac)
 {
-    if (ac != 3)
+    if (ac != 2)
     {
         ft_error (ERROR1);
         exit (EXIT_FAILURE);
     }
+}
+
+void ft_read_map(char *filename)
+{
+    int fd;
+    char *map_lines[100];/*soit on fixe une taille maxe soit allocation dynamique*/
+    char *line;
+    // size_t len;
+    int i;
+    fd = open(filename, O_RDONLY);
+    if (fd == -1)
+    {
+        perror("open");
+        exit(EXIT_FAILURE);
+    }
+    i = 0;
+    ft_putstr_fd("\n*****************reading map*********************\n", 1);
+
+    while((line = get_next_line(fd)) != NULL)
+    {
+        ft_putstr_fd(line, 1);
+        map_lines[i]= ft_strdup(line);
+        free(line);
+        i++;
+    }
+    ft_putstr_fd(line, 1);
+    ft_putstr_fd("\nchecking if endofline\n", 1);
+    close(fd);
 }
 
 int	main(int ac, char **av, char **env)
@@ -97,7 +126,7 @@ int	main(int ac, char **av, char **env)
 
 
     ft_create_window(&game);
-
+    ft_read_map(av[1]);
 
     /* we will exit the loop if there's no window left, and execute this code */
     mlx_destroy_display(game.mlx_ptr);
