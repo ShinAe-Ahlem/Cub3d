@@ -1,6 +1,5 @@
 
-NAME= tuto
-
+NAME= cub3D
 SRC_DIR = ./srcs
 SRCS= $(wildcard $(SRC_DIR)/*.c)
 
