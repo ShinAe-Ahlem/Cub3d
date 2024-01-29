@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:44:26 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/29 17:43:22 by anouri           ###   ########.fr       */
+/*   Updated: 2024/01/29 19:19:01 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,9 @@ int					ft_isspace(char c);
 char				*ft_strdup_quote(char *s);
 int					save_str_as_file(char *s, char *file);
 char				*get_first_line(char *file);
+int					ft_strnstr_tf(const char *big, const char *little, size_t len);
 
 /*GNL*/
 char	*get_next_line(int fd);
-char	*ft_strjoin_GNL(char *str1, char *str2);
-size_t	ft_strlen_GNL(char *s);
 
 #endif
