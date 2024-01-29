@@ -4,6 +4,8 @@
 #include <X11/X.h>
 #include <X11/keysym.h>
 #include <../minilibx-linux/mlx.h>
+#include "../includes/game.h"
+#include "../libft/libft.h"
 
 #define WINDOW_WIDTH 600
 #define WINDOW_HEIGHT 300
@@ -11,6 +13,8 @@
 #define MLX_ERROR 1
 
 #define RED_PIXEL 0xFF0000
+
+#define ERROR1 "INVALID ARGS"
 
 typedef struct s_data
 {
@@ -37,28 +41,65 @@ int	render(t_data *data)
     return (0);
 }
 
-int	main(void)
+void	window_size_setting(t_game *game)
 {
-    t_data	data;
+	mlx_get_screen_size(game->mlx_ptr, &game->screen_x, &game->screen_y);
+	printf("\nScreen size : %d x %d\n", game->screen_x, game->screen_y);
+    game->window_x = game->screen_x * 0.9;
+    game->window_y = game->screen_y * 0.9;
+}
 
-    data.mlx_ptr = mlx_init();
-    if (data.mlx_ptr == NULL)
-        return (MLX_ERROR);
-    data.win_ptr = mlx_new_window(data.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT,
-                                "my window");
-    if (data.win_ptr == NULL)
+int	ft_create_window(t_game *game)
+{
+	game->mlx_ptr = mlx_init();
+	if (game->mlx_ptr == NULL)
+		return (MLX_ERROR);
+    window_size_setting(game);
+	game->win_ptr = mlx_new_window(game->mlx_ptr,
+			(game->window_x), (game->window_y),
+			game->game_name);
+	if (game->win_ptr == NULL)
+	{
+		mlx_destroy_display(game->mlx_ptr);
+        free(game->win_ptr);
+		return (MLX_ERROR);
+	}
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
+	mlx_loop(game->mlx_ptr);
+	return (1);
+}
+
+void    ft_error(char *code_error)
+{
+    write (2, code_error,ft_strlen(code_error));
+}
+
+void    check_nb_arg(int ac)
+{
+    if (ac != 3)
     {
-        free(data.win_ptr);
-        return (MLX_ERROR);
+        ft_error (ERROR1);
+        exit (EXIT_FAILURE);
     }
+}
 
-    /* Setup hooks */ 
-    mlx_loop_hook(data.mlx_ptr, &render, &data);
-    mlx_hook(data.win_ptr, KeyPress, KeyPressMask, &handle_keypress, &data);
+int	main(int ac, char **av, char **env)
+{
+    t_game	game;
 
-    mlx_loop(data.mlx_ptr);
+    // 1) init
+    // 2) parsing (argument check, lecture cartte, map validity check)
+    // 3) free / destroy
+
+    check_nb_arg(ac);
+    (void)env;
+    (void)av;
+
+
+    ft_create_window(&game);
+
 
     /* we will exit the loop if there's no window left, and execute this code */
-    mlx_destroy_display(data.mlx_ptr);
-    free(data.mlx_ptr);
+    mlx_destroy_display(game.mlx_ptr);
+    free(game.mlx_ptr);
 }

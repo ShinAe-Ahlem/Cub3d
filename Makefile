@@ -5,7 +5,11 @@ SRCS= $(wildcard $(SRC_DIR)/*.c)
 
 # SRCS_BONUS=
 
-INC_DIR= -I./incs
+INC_DIR= -I./includes
+
+LIB_DIR		= ./libft/
+LIB_INC		= -I$(LIB_DIR)includes/
+LIB_NAME	= $(LIB_DIR)libft.a
 
 OBJS= ${SRCS:.c=.o}
 
@@ -19,7 +23,8 @@ all: $(NAME)
 
 ${NAME}: $(OBJS)
 	cd minilibx-linux;make;cd ..
-	$(CC) $(FLAGS) $(OBJS) -Lminilibx-linux -L/usr/lib -Iminilibx-linux/ -o $(NAME) -lXext -lX11 -lm -lmlx_Linux
+	@make --silent -C $(LIB_DIR)
+	$(CC) $(FLAGS) $(OBJS) -Lminilibx-linux -L/usr/lib -Iminilibx-linux/ -o $(NAME) -lXext -lX11 -lm -lmlx_Linux $(LIB_NAME) -L$(LIB_DIR) $(LIB_INC)
 	
 # bonus: $(OBJS_BONUS)
 # 	cd minilibx-linux;make;cd ..
