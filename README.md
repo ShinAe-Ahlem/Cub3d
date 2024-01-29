@@ -80,7 +80,7 @@ nous avons deux chois
                     
                         mur       mur         ciel
 
-                        ---------------------------------ciel----------+
+                        ---------------------------------ciel----------+ c'est plus simple selon Adriano
                             mur mur                 mur    mur
                                 mur mur mur mur mur sol
                                         sol
