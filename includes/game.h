@@ -1,23 +1,23 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   game.h                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/27 18:06:43 by shikwon           #+#    #+#             */
-/*   Updated: 2024/01/29 17:43:01 by anouri           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
 
-#include "../minilibx-linux/mlx.h"
+typedef struct s_game t_game;
+
+#include <stdlib.h>
 #include <stdio.h>
+#include <X11/X.h>
+#include <X11/keysym.h>
+#include <../minilibx-linux/mlx.h>
+#include "../includes/game.h"
+#include "../libft/libft.h"
+#include "../includes/function.h"
+#include "../includes/error.h"
+#include "../includes/color.h"
+#include <errno.h>
 
 
-typedef struct s_grp // grqphique
+typedef struct s_grp // graphique
 {
     void    *north;
     void    *south;
