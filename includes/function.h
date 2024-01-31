@@ -14,6 +14,7 @@ void    check_arg(int ac, char **av);
 void	check_env(char **env);
 
 
+
 //***** GAME LOADING *****
 
 int	ft_create_window(t_game *game);
@@ -30,5 +31,9 @@ void    ft_error(char *code_error);
 //***** CHECK MAP *****
 
 char	**ft_read_map(char *filename);
+void    checkMapElement(t_game *game);
+void    checkExportTextures(t_game *game);
+void    checkTextures(t_game *game, int *i, int *count);
+bool    checkDirection(char *line);
 
 #endif
