@@ -27,4 +27,8 @@ int	handle_keypress(int keysym, t_game *game);
 
 void    ft_error(char *code_error);
 
+//***** CHECK MAP *****
+
+char	**ft_read_map(char *filename);
+
 #endif

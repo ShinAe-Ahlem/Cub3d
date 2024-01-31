@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:44:26 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/29 19:19:01 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/01/31 10:27:53 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
+#include "gnl/get_next_line.h"
 
 typedef struct s_list
 {
@@ -82,6 +83,9 @@ char				*get_first_line(char *file);
 int					ft_strnstr_tf(const char *big, const char *little, size_t len);
 
 /*GNL*/
-char	*get_next_line(int fd);
+
+
+void	free_table(char **tab);
+void	print_char_table(char **tab);
 
 #endif
