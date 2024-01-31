@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/31 10:04:33 by anouri            #+#    #+#             */
+/*   Updated: 2024/01/31 10:29:51 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 #define WINDOW_WIDTH 600
@@ -18,36 +30,9 @@ int	render(t_data *data)
     return (0);
 }
 
-void ft_read_map(char *filename)
-{
-    int fd;
-    char *map_lines[100];/*soit on fixe une taille maxe soit allocation dynamique*/
-    char *line;
-    // size_t len;
-    int i;
-    fd = open(filename, O_RDONLY);
-    if (fd == -1)
-    {
-        perror("open");
-        exit(EXIT_FAILURE);
-    }
-    i = 0;
-    ft_putstr_fd("\n*****************reading map*********************\n", 1);
-    while((line = get_next_line(fd)) != NULL)
-    {
-        ft_putstr_fd(line, 1);
-        map_lines[i]= ft_strdup(line);
-        free(line);
-        i++;
-    }
-    ft_putstr_fd(line, 1);
-    ft_putstr_fd("\nchecking if endofline\n", 1);
-    close(fd);
-}
-
 int	main(int ac, char **av, char **env)
 {
-    t_game	game;
+    // t_game	game;
 
     // 1) init
     // 2) parsing (argument check, lecture cartte, map validity check)
@@ -56,10 +41,12 @@ int	main(int ac, char **av, char **env)
     check_arg(ac, av);
     check_env(env);
 
-    ft_create_window(&game);
-    ft_read_map(av[1]);
+    // ft_create_window(&game);
+    char **map_lines = ft_read_map(av[1]);
+    if (map_lines)
+        print_char_table(map_lines);
 
     /* we will exit the loop if there's no window left, and execute this code */
-    mlx_destroy_display(game.mlx_ptr);
-    free(game.mlx_ptr);
+    // mlx_destroy_display(game.mlx_ptr);
+    // free(game.mlx_ptr);
 }

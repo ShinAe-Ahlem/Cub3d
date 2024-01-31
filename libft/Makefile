@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+         #
+#    By: anouri <anouri@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/18 17:36:35 by anouri            #+#    #+#              #
-#    Updated: 2024/01/29 19:19:29 by shikwon          ###   ########.fr        #
+#    Updated: 2024/01/31 10:21:56 by anouri           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,10 @@ SRCS = ft_isalnum.c ft_isalpha.c \
     ft_perror.c \
     save_str_as_file.c \
     gnl/get_next_line.c \
+    gnl/get_next_line_utils.c\
     ft_strnstr2.c \
+    print_char_table.c\
+    free_char_table.c\
 
 INC_DIR= ./
 
