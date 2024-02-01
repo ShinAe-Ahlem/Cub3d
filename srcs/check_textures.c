@@ -133,10 +133,7 @@ void check_game_textures(t_game *game, int *i)
 
 void    checkExportTextures(t_game *game)
 {
-    int i;
-
-    i = 0;
-    while (game->mapfile[i][0] == '\n')
-        i++;
-    check_game_textures(game, &i);
+    while (game->mapfile[game->pos][0] == '\n')
+        game->pos++;
+    check_game_textures(game);
 }
