@@ -20,10 +20,13 @@ void export_texture(t_game *game)
             game->texture.WE = ft_strdup(game->mapfile[i]);
         i++;
     }
+    // Test print
+    printf("\nTEST PRINT : succesfully created [game->texture.(directions)]\n");
     printf("%s",game->texture.NO);
     printf("%s",game->texture.SO);
     printf("%s",game->texture.EA);
     printf("%s",game->texture.WE);
+    printf("\n");
 
 }
 
@@ -34,8 +37,7 @@ void texture_file_exist(char *texture)
     struct stat file_stat;
     int i;
 
-    i = 3;
-    
+    i = 3;    
     while (texture[i] == ' ')
         i++;
     filename = ft_substr(texture, i, ft_strlen(texture) - (i + 1));
@@ -43,19 +45,16 @@ void texture_file_exist(char *texture)
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
-        // ft_error("invalid file : impossible to open a texture/");
-        perror("open");
+        ft_perror(ERROR_OPEN);
         /*free_game*/
         exit(EXIT_FAILURE);
     }
     if (fstat(fd, &file_stat) == -1)
-    {
-        ft_perror ("Error getting file status");
-    }
+        ft_perror (ERROR_FILE_STATUS);
     if (S_ISDIR(file_stat.st_mode))
     {
         printf("filename : %s\n", filename);
-        ft_error("Error : texture isdirectory");
+        ft_error(ERROR_XPM_DIR);
         /*free game*/
         free(filename);
         close(fd);
@@ -73,7 +72,7 @@ void    checkTextures(t_game *game, int *count)
         // printf("line = %s \n", game->mapfile[game->pos]);
         if (game->mapfile[game->pos][0] == '\n')
         {
-            ft_error("Enter found\n");
+            printf("Enter found (end of lecture : texture setting part\n");
             break ;
         }
         if (checkDirection(game->mapfile[game->pos]))
@@ -113,13 +112,19 @@ void check_game_textures(t_game *game)
                 !check_extension(game->texture.WE))
         {
             // free 
-            ft_error("Extension error\n");
+            ft_error(ERROR_FILE_EXT);
             exit(EXIT_FAILURE);
         }
         texture_file_exist(game->texture.NO);
         texture_file_exist(game->texture.SO);
         texture_file_exist(game->texture.EA);
         texture_file_exist(game->texture.WE);
+    }
+    else
+    {
+        ft_perror(ERROR_LOAD_DIR);
+        //free whatever you need to
+        exit(EXIT_FAILURE);
     }
 }
 

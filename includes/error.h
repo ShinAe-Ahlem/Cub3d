@@ -11,6 +11,7 @@
 # define ERROR_FILE_STATUS "Error has occured while getting file status."
 # define ERROR_OPEN "Error has occured while opening a file"
 # define ERROR_XPM_DIR "Error : loaded texture may be a directory"
+# define ERROR_NO_MAP "Loaded file does not seem to contain a map"
 
 # define ERROR_MLX 1
 
