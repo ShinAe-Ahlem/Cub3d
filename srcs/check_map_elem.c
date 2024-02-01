@@ -45,4 +45,3 @@ void checkMapElement(t_game *game)
     // check_map(game.mapfile);
     // divide_elem(game);
 }
-

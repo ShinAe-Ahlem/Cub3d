@@ -3,8 +3,21 @@
 
 #include "../includes/game.h"
 
+/*
+
+    couleurs R,G,B range [0,255] : 0, 255, 255
+
+*/
+
+
+
+
+
+
 void checkFloorCeiling(t_game *game)
 {
+    int F_flag = 0;
+    int C_flag = 0;
     int i;
     i = game->pos;
     // while(game->mapfile[game->pos][0] == '\n')
@@ -19,12 +32,26 @@ void checkFloorCeiling(t_game *game)
         }
         if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
         {
+            if(F_flag)
+            {
+                printf("double floor found\n");
+                /*free game*/
+                exit(EXIT_FAILURE);
+            }
+            F_flag = 1;
             printf("floor found\n");
-            /*check line if ok?*/
         }
         else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
+        {
+            if(C_flag)
+            {
+                printf("double floor found\n");
+                /*free game*/
+                exit(EXIT_FAILURE);
+            }
+            C_flag = 1;
             printf("ceiling found\n");
-            /*check line is ok>*/
+        }
         game->pos++;
     }
 }
