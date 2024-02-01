@@ -61,7 +61,7 @@ void checkMapElement(t_game *game)
         {
             printf("position in map = %d\n", game->pos);
             // exportMap(game);
-            // checkMap(game);
+            // checkMap(game); ZIS IS ZE PARSING
         }
         game->pos++;/*to be removed later*/
     }
