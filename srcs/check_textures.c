@@ -3,12 +3,12 @@
 void export_texture(t_game *game)
 {
     int i; 
-    i = game->texture.pos - 4;
+    i = game->pos - 4;
 
 
     //Que se passe t-il quand il y a des espaces devant la direction des textures
     //ex) [           NO temp/temp.xpm]
-    while(i < game->texture.pos)
+    while(i < game->pos)
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
             game->texture.NO = ft_strdup(game->mapfile[i]);
@@ -66,24 +66,24 @@ void texture_file_exist(char *texture)
 }
 
 
-void    checkTextures(t_game *game, int *i, int *count)
+void    checkTextures(t_game *game, int *count)
 {
-    while (game->mapfile[*i])
+    while (game->mapfile[game->pos])
     {
-        // printf("line = %s \n", game->mapfile[*i]);
-        if (game->mapfile[*i][0] == '\n')
+        // printf("line = %s \n", game->mapfile[game->pos]);
+        if (game->mapfile[game->pos][0] == '\n')
         {
             ft_error("Enter found\n");
             break ;
         }
-        if (checkDirection(game->mapfile[*i]))
+        if (checkDirection(game->mapfile[game->pos]))
         {
             free_table(game->mapfile);
             exit(EXIT_FAILURE);
         }
         else
             (*count)++;
-        (*i)++;
+        (game->pos)++;
     }  
 }
 
@@ -98,14 +98,14 @@ bool	check_extension(char *line)
 	return (0);
 }
 
-void check_game_textures(t_game *game, int *i)
+void check_game_textures(t_game *game)
 {
     int count;
     count= 0;
-    checkTextures(game, i, &count);
+    checkTextures(game, &count);
     if (count == 4)
     {
-        game->texture.pos = *i;
+        // game->texture.pos = game->pos;
         export_texture(game);
         if (!check_extension(game->texture.NO) || \
                 !check_extension(game->texture.SO) || \
@@ -125,10 +125,7 @@ void check_game_textures(t_game *game, int *i)
 
 void    checkExportTextures(t_game *game)
 {
-    int i;
-
-    i = 0;
-    while (game->mapfile[i][0] == '\n')
-        i++;
-    check_game_textures(game, &i);
+    while (game->mapfile[game->pos][0] == '\n')
+        game->pos++;
+    check_game_textures(game);
 }

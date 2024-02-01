@@ -1,6 +1,6 @@
 #include "../includes/game.h"
 
-bool isDirectionLine(line)
+bool isDirectionLine(char *line)
 {
     if (!ft_strncmp("NO ", line, 3))
         return(true);
@@ -14,7 +14,7 @@ bool isDirectionLine(line)
 }
 
 
-bool isFloorCeilnigLine(line)
+bool isFloorCeilnigLine(char *line)
 {
     if (!ft_strncmp("F ", line, 2))
         return(true);
@@ -25,17 +25,22 @@ bool isFloorCeilnigLine(line)
 
 void checkMapElement(t_game *game)
 {
-
-    game->pos = 0;
+    game->pos = 1;
     while(game->mapfile[game->pos])
     {
         if (game->mapfile[game->pos][0] == '\n')
             game->pos++;
-
         if (isDirectionLine(game->mapfile[game->pos]))
+        {
             checkExportTextures(game);
+            printf("position in map = %d\n", game->pos);
+        }
         else if (isFloorCeilnigLine(game->mapfile[game->pos]))
+        {
+            printf("position in map = %d\n", game->pos);
             checkFloorCeiling(game);
+        }
+        game->pos++;/*to be removed later*/
     }
     // check_map(game.mapfile);
     // divide_elem(game);
