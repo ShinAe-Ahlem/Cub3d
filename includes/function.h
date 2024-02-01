@@ -34,8 +34,6 @@ void    ft_error(char *code_error);
 char	**ft_read_map(char *filename);
 void    checkMapElement(t_game *game);
 void    checkExportTextures(t_game *game);
-void    checkTextures(t_game *game, int *i, int *count);
-bool    checkDirection(char *line);
-int	    directionExist(char *direction, char *line, bool *exist);
+bool	checkDirection(char *line);
 
 #endif

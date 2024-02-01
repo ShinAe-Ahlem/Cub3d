@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 10:04:33 by anouri            #+#    #+#             */
-/*   Updated: 2024/02/01 10:01:24 by anouri           ###   ########.fr       */
+/*   Updated: 2024/02/01 15:16:49 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ int	main(int ac, char **av, char **env)
 
     // ft_create_window(&game);
     game.mapfile = ft_read_map(av[1]);
-    // if (game.mapfile)
-    //     print_char_table(game.mapfile);
+    if (game.mapfile)
+        print_char_table(game.mapfile);
     checkMapElement(&game);
     /* we will exit the loop if there's no window left, and execute this code */
     // mlx_destroy_display(game.mlx_ptr);
