@@ -70,7 +70,7 @@ typedef struct s_game
 	t_color				floor;
 	t_color				ceiling;
 	char				**map;
-    int                 pos;
+    int                 pos; /*position in the mapfile*/
 }						t_game;
 
 #endif

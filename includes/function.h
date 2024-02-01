@@ -39,4 +39,11 @@ bool    isMap(char *line);
 
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
+
+
+
+/*clolors*/
+int	create_trgb(int t, int r, int g, int b);
+
+
 #endif
