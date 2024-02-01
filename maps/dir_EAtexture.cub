@@ -4,10 +4,12 @@ F 200,100,0
 C 225,30,0
 
 EA ./img/xpm/east.xpm
-EA ./img/xpm/east.xpm
 SO ./img/xpm/south.xpm
 WE ./img/xpm/west.xpm
-NO ./img/xpm/west.xpm
+NO ./img/xpm/north.xpm
+
+F 200,100,0
+C 225,30,0
 
 1111111111111111
 1010000000000001

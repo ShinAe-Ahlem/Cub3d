@@ -1,48 +1,54 @@
 #include "../includes/game.h"
 
-static bool	NO = 0;
-static bool	SO = 0;
-static bool	WE = 0;
-static bool	EA = 0;
-
-int	directionExist(char *direction, char *line, bool *exist)
+typedef struct s_direction
 {
-	// printf("exist = %d\n", *exist);
-	if (!ft_strncmp(direction, line, 3))
+	int	NO;
+	int	SO;
+	int	EA;
+	int	WE;
+}			t_direction;
+
+bool	DirectionAlreadySeen(t_direction *direction, char *line)
+{
+	if (ft_strncmp("NO ", line, 3))
 	{
-		if (!(*exist))
-		{
-			*exist = 1;
-			printf("%s FOUND\n", direction);
-			return (0);
-		}
-		else 
-		{
-			ft_error("Invalid map (double attribution of texture)");
-			return (1);
-		}
+		direction->NO += 1;
+		return (1);
+	}	
+	else if (ft_strncmp("SO ", line, 3))
+	{
+		direction->SO += 1;
+		return (1);
 	}
-	return (1);
+	else if (ft_strncmp("EA ", line, 3))
+	{
+		direction->EA += 1;
+		return (1);
+	}
+	else if (ft_strncmp("WE ", line, 3))
+	{
+		direction->WE += 1;
+		return (1);
+	}
+	return (0);
+}
+
+void	direction_init(t_direction *direction)
+{
+	direction->NO = 0;
+	direction->SO = 0;
+	direction->EA = 0;
+	direction->WE = 0;
 }
 
 bool	checkDirection(char *line)
 {
-	// static bool	NO;
-	// static bool	SO;
-	// static bool	WE;
-	// static bool	EA;
+	t_direction	direction;
 
-
-	printf("\nno = %d, so = %d, we = %d, ea= %d\n", NO, SO, WE, EA);
-	printf("line = %s\n", line);
-	if (!ft_strncmp("NO ", line, 3) || !ft_strncmp("SO ", line, 3) || !ft_strncmp("WE ", line, 3) || !ft_strncmp("EA ", line, 3))
-	{
-		if (!directionExist("NO", line, &NO) || !directionExist("SO", line, &SO)
-			|| !!directionExist("EA", line, &EA) || !directionExist("WE", line, &WE))
-			return(0);
-	}
-	ft_error("Invalid map (Unknown direction)");
-	return (1);
-
+	direction_init(&direction);
+	DirectionAlreadySeen(&direction, line);
+	if (direction.NO > 1 || direction.SO >1 || direction.EA > 1 || direction.WE > 1)
+		return (1);
+	return (0);
+	
 }
-
