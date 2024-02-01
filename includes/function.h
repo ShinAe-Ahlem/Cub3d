@@ -35,6 +35,8 @@ char	**ft_read_map(char *filename);
 void    checkMapElement(t_game *game);
 void    checkExportTextures(t_game *game);
 bool	checkDirection(char *line);
+bool    isMap(char *line);
+
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
 

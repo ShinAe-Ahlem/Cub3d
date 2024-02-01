@@ -23,6 +23,23 @@ bool isFloorCeilnigLine(char *line)
     return(false);
 }
 
+bool isMap(char *line)
+{
+    int i;
+
+    i = 0;
+    while (line[i])
+    {
+        if (line[i] == '1')
+        {
+            printf("Test Print : Map element found\n");
+            return (true);
+        }
+        i++;
+    }
+    return (false);
+}
+
 void checkMapElement(t_game *game)
 {
     game->pos = 1;
@@ -32,13 +49,19 @@ void checkMapElement(t_game *game)
             game->pos++;
         if (isDirectionLine(game->mapfile[game->pos]))
         {
-            checkExportTextures(game);
             printf("position in map = %d\n", game->pos);
+            checkExportTextures(game);
         }
         else if (isFloorCeilnigLine(game->mapfile[game->pos]))
         {
             printf("position in map = %d\n", game->pos);
             checkFloorCeiling(game);
+        }
+        else if (isMap(game->mapfile[game->pos]))
+        {
+            printf("position in map = %d\n", game->pos);
+            // exportMap(game);
+            // checkMap(game); ZIS IS ZE PARSING
         }
         game->pos++;/*to be removed later*/
     }
