@@ -8,11 +8,6 @@ void export_texture(t_game *game)
 
     //Que se passe t-il quand il y a des espaces devant la direction des textures
     //ex) [           NO temp/temp.xpm]
-
-
-
-
-
     while(i < game->texture.pos)
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
@@ -75,6 +70,7 @@ void    checkTextures(t_game *game, int *i, int *count)
 {
     while (game->mapfile[*i])
     {
+        // printf("line = %s \n", game->mapfile[*i]);
         if (game->mapfile[*i][0] == '\n')
         {
             ft_error("Enter found\n");

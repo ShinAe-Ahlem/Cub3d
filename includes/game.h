@@ -19,6 +19,12 @@ typedef struct s_game	t_game;
 # include <sys/stat.h>
 # include <fcntl.h>
 
+
+static bool	NO;
+static bool	SO;
+static bool	WE;
+static bool	EA;
+
 typedef struct s_grp // graphique
 {
 	void *north;

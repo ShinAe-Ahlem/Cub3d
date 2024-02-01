@@ -3,6 +3,7 @@
 
 #include "../includes/game.h"
 
+
 //***** CHECK ARGUMENTS *****
 
 void    check_nb_arg(int ac);
@@ -35,5 +36,6 @@ void    checkMapElement(t_game *game);
 void    checkExportTextures(t_game *game);
 void    checkTextures(t_game *game, int *i, int *count);
 bool    checkDirection(char *line);
+int	    directionExist(char *direction, char *line, bool *exist);
 
 #endif
