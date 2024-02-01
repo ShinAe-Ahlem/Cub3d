@@ -52,7 +52,6 @@ typedef struct s_texture
 	char				*SO;
 	char				*EA;
 	char				*WE;
-    int                 pos;
 }						t_texture;
 
 typedef struct s_game
@@ -71,6 +70,7 @@ typedef struct s_game
 	t_color				floor;
 	t_color				ceiling;
 	char				**map;
+    int                 pos;
 }						t_game;
 
 #endif

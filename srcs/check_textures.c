@@ -3,12 +3,12 @@
 void export_texture(t_game *game)
 {
     int i; 
-    i = game->texture.pos - 4;
+    i = game->pos - 4;
 
 
     //Que se passe t-il quand il y a des espaces devant la direction des textures
     //ex) [           NO temp/temp.xpm]
-    while(i < game->texture.pos)
+    while(i < game->pos)
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
             game->texture.NO = ft_strdup(game->mapfile[i]);
@@ -20,7 +20,6 @@ void export_texture(t_game *game)
             game->texture.WE = ft_strdup(game->mapfile[i]);
         i++;
     }
-    printf("Test Print : Exported textures for each direction\n");
     printf("%s",game->texture.NO);
     printf("%s",game->texture.SO);
     printf("%s",game->texture.EA);
@@ -45,18 +44,18 @@ void texture_file_exist(char *texture)
     if (fd == -1)
     {
         // ft_error("invalid file : impossible to open a texture/");
-        perror(ERROR_OPEN);
+        perror("open");
         /*free_game*/
         exit(EXIT_FAILURE);
     }
     if (fstat(fd, &file_stat) == -1)
     {
-        ft_perror (ERROR_FILE_STATUS);
+        ft_perror ("Error getting file status");
     }
     if (S_ISDIR(file_stat.st_mode))
     {
         printf("filename : %s\n", filename);
-        ft_error(ERROR_XPM_DIR);
+        ft_error("Error : texture isdirectory");
         /*free game*/
         free(filename);
         close(fd);
@@ -67,25 +66,24 @@ void texture_file_exist(char *texture)
 }
 
 
-void    checkTextures(t_game *game, int *i, int *count)
+void    checkTextures(t_game *game, int *count)
 {
-    while (game->mapfile[*i])
+    while (game->mapfile[game->pos])
     {
-        if (game->mapfile[*i][0] == '\n')
+        // printf("line = %s \n", game->mapfile[game->pos]);
+        if (game->mapfile[game->pos][0] == '\n')
         {
-            ft_error("Enter found (end of textures info)\n");
+            ft_error("Enter found\n");
             break ;
         }
-        if (checkDirection(game->mapfile[*i]))
+        if (checkDirection(game->mapfile[game->pos]))
         {
             free_table(game->mapfile);
             exit(EXIT_FAILURE);
         }
         else
-        {
             (*count)++;
-        }
-        (*i)++;
+        (game->pos)++;
     }  
 }
 
@@ -100,14 +98,14 @@ bool	check_extension(char *line)
 	return (0);
 }
 
-void check_game_textures(t_game *game, int *i)
+void check_game_textures(t_game *game)
 {
     int count;
-    count = 0;
-    checkTextures(game, i, &count);
+    count= 0;
+    checkTextures(game, &count);
     if (count == 4)
     {
-        game->texture.pos = *i;
+        // game->texture.pos = game->pos;
         export_texture(game);
         if (!check_extension(game->texture.NO) || \
                 !check_extension(game->texture.SO) || \
@@ -115,19 +113,13 @@ void check_game_textures(t_game *game, int *i)
                 !check_extension(game->texture.WE))
         {
             // free 
-            ft_error(ERROR_FILE_EXT);
+            ft_error("Extension error\n");
             exit(EXIT_FAILURE);
         }
         texture_file_exist(game->texture.NO);
         texture_file_exist(game->texture.SO);
         texture_file_exist(game->texture.EA);
         texture_file_exist(game->texture.WE);
-    }
-    else 
-    {
-        ft_error(ERROR_LOAD_DIR);
-        // free ce qu'il faut
-        exit(EXIT_FAILURE);
     }
 }
 
