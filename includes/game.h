@@ -71,7 +71,7 @@ typedef struct s_game
 	t_color				ceiling;
 	t_list				*mapLL;
 	char				**map;
-    int                 pos;
+    int                 pos; /*position in the mapfile*/
 }						t_game;
 
 #endif

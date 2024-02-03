@@ -42,10 +42,15 @@ void checkPlayerPos(t_game *game);
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
 
-//***** UTILITY *****
 
+//***** UTILITY *****
 void    print_tlist(t_list *list);
 bool charset_finder(const char *charset, const char *str);
 void    LLtoArrayConverter(t_game *game);
+
+
+/*clolors*/
+int	create_trgb(int t, int r, int g, int b);
+
 
 #endif
