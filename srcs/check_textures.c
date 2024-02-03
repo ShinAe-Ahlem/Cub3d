@@ -72,7 +72,7 @@ void    checkTextures(t_game *game, int *count)
         // printf("line = %s \n", game->mapfile[game->pos]);
         if (game->mapfile[game->pos][0] == '\n')
         {
-            printf("Enter found (end of lecture : texture setting part\n");
+            ft_putstr_fd("Enter found (end of lecture : texture setting part\n", 1);
             break ;
         }
         if (checkDirection(game->mapfile[game->pos]))
