@@ -37,7 +37,7 @@ bool hasIntruder(char *str)
 {
     while(*str && *str != '\n')     
     {
-       if(*str >= '0' && *str <= '5')
+       if(*str >= '0' && *str <= '9')
             str++;
         else if (*str == ',')
             str++;
@@ -76,44 +76,42 @@ size_t lastDigitPosition(char *line)
     return(i);
 }
 
-void affectRGB(int *rgb, char *RGB, int *pos)
+void affectRGB(int *rgb, char *RGB, int *pos, char c)
 {
     int j;
     char *color;
-
+    if (RGB[*pos] == ',')
+        ((*pos)++);
     j = *pos;
-    while(RGB[*pos] != ',')
+    if(c == 'r' || c== 'g' )
     {
-        (*pos)++;
+        while(RGB[*pos] != ',')
+            (*pos)++;
     }
-    color = ft_substr(RGB,j , *pos - j);
-    ft_putstr_fd("\n\n\n\ncolor = ", 1);
-    ft_putstr_fd(color, 1);
+    else
+    {
+        while(RGB[*pos])
+            (*pos)++;
+    }
+    color = ft_substr(RGB,j , *pos - j + 1);
     *rgb = ft_atoi(color);
-
+    if (*rgb > 255 || *rgb < 0)
+    {
+        ft_error("ERROR : RGB out of range!\n");
+        /*free*/
+        exit(EXIT_FAILURE);
+    }
     free(color);
 }
 
 void affectRGBtoGame(t_color *rgb, char *RGB)
 {
     int i;
-    i = 0;
-    ft_putstr_fd("\n\n\n\nRGB = ", 1);
-    ft_putstr_fd(RGB, 1);
 
-    while(RGB[i])
-    {
-        ft_error("\n\n\n\n\n\n\n\n\n\n");
-        affectRGB(&rgb->red, RGB, &i);
-        printf("\n\n\nrgb->red = %d\n", rgb->red);
-        affectRGB(&rgb->green, RGB, &i);
-        printf("\n\n\nrgb->green = %d\n", rgb->green);
-        affectRGB(&rgb->blue, RGB, &i);
-        printf("\n\n\nrgb->blue = %d\n", rgb->blue);
-        break;
-        i++;
-    }
-    
+    i = 0;
+    affectRGB(&rgb->red, RGB, &i, 'r');
+    affectRGB(&rgb->green, RGB, &i, 'g');
+    affectRGB(&rgb->blue, RGB, &i, 'b');
 }
 
 void CheckIsValidFormat(t_game *game, char c)
@@ -136,18 +134,12 @@ void CheckIsValidFormat(t_game *game, char c)
         ft_error("Invalid RGB format\n");
         exit(EXIT_FAILURE);
     }
-    ft_putstr_fd("\n\nyahoooooooooo Valid RGB\n", 1);
     /*convert RGB to integers and affect them to game*/
     /*RGB now is 200,100,0*/
     if (c == 'F')
-    {
         affectRGBtoGame(&game->floor, RGB);
-        // printf("red = %d\n", game->floor.red);
-        // printf("green = %d\n", game->floor.green);
-        // printf("blue = %d\n", game->floor.blue);
-    }
-    // else
-    //     affectRGBtoGame(&game->ceiling, RGB);
+    else
+        affectRGBtoGame(&game->ceiling, RGB);
     free(RGB);
 }
 

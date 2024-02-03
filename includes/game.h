@@ -10,9 +10,9 @@ typedef struct s_game	t_game;
 # include "../includes/error.h"
 # include "../includes/function.h"
 # include "../includes/game.h"
-# include <../minilibx-linux/mlx.h>
-# include <X11/X.h>
-# include <X11/keysym.h>
+// # include <../minilibx-linux/mlx.h>
+// # include <X11/X.h>
+// # include <X11/keysym.h>
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
