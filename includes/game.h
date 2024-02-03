@@ -5,11 +5,11 @@
 typedef struct s_game	t_game;
 
 # include <stdbool.h>
+# include "../libft/libft.h"
 # include "../includes/color.h"
 # include "../includes/error.h"
 # include "../includes/function.h"
 # include "../includes/game.h"
-# include "../libft/libft.h"
 # include <../minilibx-linux/mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -69,6 +69,7 @@ typedef struct s_game
 	t_texture			texture;
 	t_color				floor;
 	t_color				ceiling;
+	t_list				*mapLL;
 	char				**map;
     int                 pos;
 }						t_game;

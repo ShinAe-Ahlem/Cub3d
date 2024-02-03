@@ -23,21 +23,23 @@ bool isFloorCeilnigLine(char *line)
     return(false);
 }
 
-bool isMap(char *line)
+bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
-    int i;
-
-    i = 0;
-    while (line[i])
+    char charset[7] = "01NSEW"; // add char such as X, Y and I if needed (bonus part)
+    printf("checking line in isMap : %s", line);
+    if (ft_isspace(line[0]))
+        return (0);
+    if (charset_finder(charset, line))
     {
-        if (line[i] == '1')
-        {
-            printf("Test Print : Map element found\n");
-            return (true);
-        }
-        i++;
+        printf("Test Print : Map element found\n");
+        return (true);
     }
-    return (false);
+    else
+    {
+        ft_perror(ERROR_NO_MATCHING_CHAR);
+        // free
+        exit (EXIT_FAILURE);
+    }
 }
 
 void checkMapElement(t_game *game)
@@ -47,7 +49,7 @@ void checkMapElement(t_game *game)
     {
         if (game->mapfile[game->pos][0] == '\n')
             game->pos++;
-        if (isDirectionLine(game->mapfile[game->pos]))
+        if (isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
         {
             printf("position in map = %d\n", game->pos);
             checkExportTextures(game);
@@ -60,11 +62,15 @@ void checkMapElement(t_game *game)
         else if (isMap(game->mapfile[game->pos]))
         {
             printf("position in map = %d\n", game->pos);
-            // exportMap(game);
+            exportMap(game);
+
             // checkMap(game); ZIS IS ZE PARSING
         }
-        game->pos++;/*to be removed later*/
+        game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
+    LLtoArrayConverter(game);
+    checkPlayerPos(game);
+    // make a function that makes sure that only one elem among NSEW exists on map
     // check_map(game.mapfile);
     // divide_elem(game);
 }

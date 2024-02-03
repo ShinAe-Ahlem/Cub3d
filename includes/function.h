@@ -36,7 +36,16 @@ void    checkMapElement(t_game *game);
 void    checkExportTextures(t_game *game);
 bool	checkDirection(char *line);
 bool    isMap(char *line);
+void    exportMap(t_game *game);
+void checkPlayerPos(t_game *game);
 
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
+
+//***** UTILITY *****
+
+void    print_tlist(t_list *list);
+bool charset_finder(const char *charset, const char *str);
+void    LLtoArrayConverter(t_game *game);
+
 #endif
