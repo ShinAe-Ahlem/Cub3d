@@ -13,7 +13,6 @@ bool isDirectionLine(char *line)
     return(false);
 }
 
-
 bool isFloorCeilnigLine(char *line)
 {
     if (!ft_strncmp("F ", line, 2))
@@ -51,13 +50,13 @@ void checkMapElement(t_game *game)
             game->pos++;
         if (isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
         {
-            printf("position in map = %d\n", game->pos);
             checkExportTextures(game);
         }
         else if (isFloorCeilnigLine(game->mapfile[game->pos]))
         {
-            printf("position in map = %d\n", game->pos);
+            ft_putstr_fd("\n\n----------------------- Floor Ceiling check BEGIN----------------------- \n\n\n", 1);
             checkFloorCeiling(game);
+            ft_putstr_fd("\n----------------------- Floor Ceiling check END----------------------- \n", 1);
         }
         else if (isMap(game->mapfile[game->pos]))
         {
