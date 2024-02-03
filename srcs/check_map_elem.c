@@ -58,17 +58,17 @@ void checkMapElement(t_game *game)
             checkFloorCeiling(game);
             ft_putstr_fd("\n----------------------- Floor Ceiling check END----------------------- \n", 1);
         }
-        else if (isMap(game->mapfile[game->pos]))
-        {
-            printf("position in map = %d\n", game->pos);
-            exportMap(game);
+        // else if (isMap(game->mapfile[game->pos]))
+        // {
+        //     printf("position in map = %d\n", game->pos);
+        //     exportMap(game);
 
-            // checkMap(game); ZIS IS ZE PARSING
-        }
+        //     // checkMap(game); ZIS IS ZE PARSING
+        // }
         game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
-    LLtoArrayConverter(game);
-    checkPlayerPos(game);
+    // LLtoArrayConverter(game);
+    // checkPlayerPos(game);
     // make a function that makes sure that only one elem among NSEW exists on map
     // check_map(game.mapfile);
     // divide_elem(game);
