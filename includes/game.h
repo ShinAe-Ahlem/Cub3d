@@ -10,9 +10,9 @@ typedef struct s_game	t_game;
 # include "../includes/error.h"
 # include "../includes/function.h"
 # include "../includes/game.h"
-// # include <../minilibx-linux/mlx.h>
-// # include <X11/X.h>
-// # include <X11/keysym.h>
+# include <../minilibx-linux/mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -24,6 +24,15 @@ static bool	NO;
 static bool	SO;
 static bool	WE;
 static bool	EA;
+
+typedef struct s_img
+{
+	void			*mlx_img;
+	char			*addr;
+	int				bpp;
+	int				line_len;
+	int				endian;
+}				t_img;
 
 typedef struct s_grp // graphique
 {
@@ -71,6 +80,7 @@ typedef struct s_game
 	t_color				ceiling;
 	t_list				*mapLL;
 	char				**map;
+	t_img				img;
     int                 pos; /*position in the mapfile*/
 }						t_game;
 
