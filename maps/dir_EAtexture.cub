@@ -1,10 +1,10 @@
+F 205,100,12
+C 20,30,14
+
 EA ./img/xpm/east.xpm
 SO ./img/xpm/south.xpm
 WE ./img/xpm/west.xpm
 NO ./img/xpm/north.xpm
-
-F 200,100,125
-C 220,30,0
 
 
     111

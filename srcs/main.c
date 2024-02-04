@@ -1,15 +1,3 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/31 10:04:33 by anouri            #+#    #+#             */
-/*   Updated: 2024/02/04 16:31:18 by shikwon          ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "../includes/game.h"
 
 #define WINDOW_WIDTH 600
@@ -45,7 +33,11 @@ int	main(int ac, char **av, char **env)
     if (game.mapfile)
         print_char_table(game.mapfile);
     checkMapElement(&game);
-    // ft_create_window(&game);
+    ft_create_window(&game);
+
+	printf("seg here in main\n");
+    
+    // renderGame(&game);
     /* we will exit the loop if there's no window left, and execute this code */
     // mlx_destroy_display(game.mlx_ptr);
     // free(game.mlx_ptr);
