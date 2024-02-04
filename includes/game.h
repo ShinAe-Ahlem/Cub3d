@@ -1,4 +1,3 @@
-
 #ifndef GAME_H
 # define GAME_H
 
@@ -74,7 +73,7 @@ typedef struct s_game
 	int					screen_y;
 	int					window_x;
 	int					window_y;
-	char				**mapfile;
+	char				**mapfile; // whole .cub file content
 	t_texture			texture;
 	t_color				floor;
 	t_color				ceiling;

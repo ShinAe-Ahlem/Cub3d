@@ -8,29 +8,24 @@ typedef struct s_direction
 	int	WE;
 }			t_direction;
 
-bool	DirectionAlreadySeen(t_direction *direction, char *line)
+void	DirectionAlreadySeen(t_direction *direction, char *line)
 {
 	if (ft_strncmp("NO ", line, 3))
 	{
 		direction->NO += 1;
-		return (1);
 	}	
 	else if (ft_strncmp("SO ", line, 3))
 	{
 		direction->SO += 1;
-		return (1);
 	}
 	else if (ft_strncmp("EA ", line, 3))
 	{
 		direction->EA += 1;
-		return (1);
 	}
 	else if (ft_strncmp("WE ", line, 3))
 	{
 		direction->WE += 1;
-		return (1);
 	}
-	return (0);
 }
 
 void	direction_init(t_direction *direction)
@@ -47,7 +42,7 @@ bool	checkDirection(char *line)
 
 	direction_init(&direction);
 	DirectionAlreadySeen(&direction, line);
-	if (direction.NO > 1 || direction.SO >1 || direction.EA > 1 || direction.WE > 1)
+	if (direction.NO > 1 || direction.SO > 1 || direction.EA > 1 || direction.WE > 1)
 		return (1);
 	return (0);
 	
