@@ -59,12 +59,11 @@ void checkMapElement(t_game *game)
         {
             printf("position in map = %d\n", game->pos);
             exportMap(game);
-
-            // checkMap(game); ZIS IS ZE PARSING
         }
         game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
     // printf("Check point0\n");
+    // checkMap(game); ZIS IS ZE PARSING this should regroup following map checking functions
     LLtoArrayConverter(game);
     checkPlayerPos(game);
     zeroBlankContact(game);

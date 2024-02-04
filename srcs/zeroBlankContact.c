@@ -6,7 +6,7 @@
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 15:25:57 by shikwon           #+#    #+#             */
-/*   Updated: 2024/02/04 17:44:58 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/02/04 18:08:23 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,9 @@ void    zeroExposed(char **map, int i)
     {
         if (map[i][j] == '0')
         {
-            if (ft_isspace(map[i - 1][j]) || ft_isspace(map[i + 1][j]))
+            if (ft_isspace(map[i - 1][j]) || ft_isspace(map[i + 1][j]) || !(map[i - 1][j]) || !(map[i + 1][j]))
             {
+                printf("Opened Zero found!!!\n\n\n");
                 ft_perror(ERROR_MAP_UNCLOSED);
                 //freethis
                 exit (EXIT_FAILURE);
