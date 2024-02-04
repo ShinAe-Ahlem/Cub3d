@@ -33,7 +33,7 @@ int	main(int ac, char **av, char **env)
     if (game.mapfile)
         print_char_table(game.mapfile);
     checkMapElement(&game);
-    ft_create_window(&game);
+    // ft_create_window(&game);
 
 	printf("seg here in main\n");
     
