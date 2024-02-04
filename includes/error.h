@@ -12,9 +12,10 @@
 # define ERROR_OPEN "Error has occured while opening a file"
 # define ERROR_XPM_DIR "Error : loaded texture may be a directory"
 # define ERROR_NO_MAP "Loaded file does not seem to contain a map"
-# define ERROR_NO_MATCHING_CHAR "Unexpected character has been found"
-# define ERROR_SAPCE "Unexpected space has been found"
+# define ERROR_NO_MATCH_CHAR "Unexpected character has been found"
+# define ERROR_SPACE "Unexpected space has been found"
 # define ERROR_MULT_PLA_POS "There are too many or no player position on map"
+# define ERROR_MAP_UNCLOSED "Map is not closed"
 
 # define ERROR_MLX 1
 

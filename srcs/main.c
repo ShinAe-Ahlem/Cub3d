@@ -6,7 +6,7 @@
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 10:04:33 by anouri            #+#    #+#             */
-/*   Updated: 2024/02/01 16:30:26 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/02/04 16:31:18 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,5 @@ int	main(int ac, char **av, char **env)
     /* we will exit the loop if there's no window left, and execute this code */
     // mlx_destroy_display(game.mlx_ptr);
     // free(game.mlx_ptr);
+    printf("<< main() correctly closed >>\n");
 }

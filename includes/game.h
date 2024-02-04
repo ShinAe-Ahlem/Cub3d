@@ -1,4 +1,3 @@
-
 #ifndef GAME_H
 # define GAME_H
 
@@ -10,9 +9,9 @@ typedef struct s_game	t_game;
 # include "../includes/error.h"
 # include "../includes/function.h"
 # include "../includes/game.h"
-// # include <../minilibx-linux/mlx.h>
-// # include <X11/X.h>
-// # include <X11/keysym.h>
+# include <../minilibx-linux/mlx.h>
+# include <X11/X.h>
+# include <X11/keysym.h>
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -65,7 +64,7 @@ typedef struct s_game
 	int					screen_y;
 	int					window_x;
 	int					window_y;
-	char				**mapfile;
+	char				**mapfile; // whole .cub file content
 	t_texture			texture;
 	t_color				floor;
 	t_color				ceiling;

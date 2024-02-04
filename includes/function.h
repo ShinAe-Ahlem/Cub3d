@@ -38,6 +38,7 @@ bool	checkDirection(char *line);
 bool    isMap(char *line);
 void    exportMap(t_game *game);
 void checkPlayerPos(t_game *game);
+void	zeroBlankContact(t_game *game);
 
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);

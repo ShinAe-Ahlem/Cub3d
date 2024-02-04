@@ -55,12 +55,12 @@ bool isValidRGB(char *RGB)
 {
     if (hasSpaces(RGB))
     {
-        ft_error(ERROR_SAPCE);
+        ft_error(ERROR_SPACE);
         return(false);
     }
     if (hasIntruder(RGB))
     {
-        ft_error(ERROR_NO_MATCHING_CHAR);
+        ft_error(ERROR_NO_MATCH_CHAR);
         return(false);
     }
     return(true);

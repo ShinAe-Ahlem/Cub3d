@@ -69,7 +69,7 @@ void    checkTextures(t_game *game, int *count)
 {
     while (game->mapfile[game->pos])
     {
-        // printf("line = %s \n", game->mapfile[game->pos]);
+        // printf("inside checkTextures, line = %s \n", game->mapfile[game->pos]);
         if (game->mapfile[game->pos][0] == '\n')
         {
             ft_putstr_fd("Enter found (end of lecture : texture setting part\n", 1);
@@ -101,6 +101,7 @@ void check_game_textures(t_game *game)
 {
     int count;
     count= 0;
+
     checkTextures(game, &count);
     if (count == 4)
     {
