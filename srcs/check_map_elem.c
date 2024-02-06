@@ -25,7 +25,7 @@ bool isFloorCeilnigLine(char *line)
 bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
     char charset[8] = "01NSEW "; // add char such as X, Y and I if needed (bonus part)
-//    ft_putstr_fd(line, 1);
+    ft_putstr_fd(line, 1);
     if (charset_finder(charset, line))
         return (true);
     else
@@ -51,11 +51,6 @@ void checkMapElement(t_game *game)
     {
         // printf("position in map = %d\n", game->pos);
         // printf("inside checkMapElement, line = %s \n", game->mapfile[game->pos]);
-        if (game->mapfile[game->pos][0] == '\n')
-        {
-            game->pos++;
-            // printf("position in map = %d\n", game->pos);
-        }
         if (game->mapfile[game->pos] && isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
         {
             ft_putstr_fd("\n\n----------------------- is direction line check BEGIN----------------------- \n\n\n", 1);
@@ -70,15 +65,20 @@ void checkMapElement(t_game *game)
             checkFloorCeiling(game);
             found_FC = true;
             ft_putstr_fd("\n----------------------- Floor Ceiling check END----------------------- \n", 1);
+
         }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
             checkIsLastElement(game);
             exportMap(game);
         }
+        else if (game->mapfile[game->pos][0] == '\n')
+        {
+            game->pos++;
+            // printf("position in map = %d\n", game->pos);
+        }
         game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
-    printf("Check point0\n");
     // checkMap(game); ZIS IS ZE PARSING this should regroup following map checking functions
     // found_map = true; /*if checkMap is ok*/
     // if (!(found_directions && found_FC && found_map)) /*to be enhanced later*/
