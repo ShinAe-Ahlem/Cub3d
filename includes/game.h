@@ -2,6 +2,7 @@
 # define GAME_H
 
 typedef struct s_game	t_game;
+typedef struct s_coord	t_coord;
 
 # include <stdbool.h>
 # include "../libft/libft.h"
@@ -62,6 +63,13 @@ typedef struct s_texture
 	char				*WE;
 }						t_texture;
 
+typedef struct s_coord
+{
+	int	x;
+	int y;
+}	t_coord;
+
+
 typedef struct s_game
 {
 	char				*game_name;
@@ -79,6 +87,7 @@ typedef struct s_game
 	t_color				ceiling;
 	t_list				*mapLL;
 	char				**map;
+	int					mapCharHeight;
 	t_img				img;
     int                 pos; /*position in the mapfile*/
 }						t_game;

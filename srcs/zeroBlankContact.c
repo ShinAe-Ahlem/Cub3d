@@ -6,7 +6,7 @@
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 15:25:57 by shikwon           #+#    #+#             */
-/*   Updated: 2024/02/04 18:08:23 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/02/06 12:51:12 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	zeroBlankContact(t_game *game)
 	i = 0;
 	j = 0;
     // printf("insideZBC1\n");
-    print_char_table(game->map);
+    // print_char_table(game->map);
     zeroThisLine(game, 0);
 	while (game->map[i])
 	{

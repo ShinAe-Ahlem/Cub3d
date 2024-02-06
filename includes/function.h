@@ -41,6 +41,8 @@ void    checkPlayerPos(t_game *game);
 void	zeroBlankContact(t_game *game);
 void    checkIsLastElement(t_game *game);
 bool    isEmptyLine(char *line);
+void    floodFillCheck(t_game *game);
+
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
 
@@ -62,5 +64,9 @@ void	my_mlx_pixel_put(t_img *image, int x, int y, int color);
 
 /*initialisation*/
 void initGame(t_game *game);
+void    coordInit(t_coord *coord);
+
+//***** FREE *****
+void freeCharArray(char ***array);
 
 #endif
