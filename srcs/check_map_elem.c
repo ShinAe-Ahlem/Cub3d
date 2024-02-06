@@ -74,10 +74,11 @@ void checkMapElement(t_game *game)
         }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
-            checkIsLastElement(game, &last_map_elem);
+            checkIsLastElement(game);
             exportMap(game);
         }
-        game->pos++;/*to be removed later*/ //shinae:or maybe not...
+        if (game->mapfile[game->pos])
+            game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
     // checkMap(game); ZIS IS ZE PARSING this should regroup following map checking functions
     // found_map = true; /*if checkMap is ok*/
