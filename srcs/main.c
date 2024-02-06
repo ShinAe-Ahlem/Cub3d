@@ -30,8 +30,8 @@ int	main(int ac, char **av, char **env)
     check_env(env);
 
     game.mapfile = ft_read_map(av[1]);
-    // if (game.mapfile)
-    //     print_char_table(game.mapfile);
+    if (game.mapfile)
+        print_char_table(game.mapfile);
     checkMapElement(&game);
     // ft_create_window(&game);    
     // renderGame(&game);
