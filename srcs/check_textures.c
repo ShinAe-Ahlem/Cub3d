@@ -21,12 +21,12 @@ void export_texture(t_game *game)
         i++;
     }
     // Test print
-    printf("\nTEST PRINT : succesfully created [game->texture.(directions)]\n");
-    printf("%s",game->texture.NO);
-    printf("%s",game->texture.SO);
-    printf("%s",game->texture.EA);
-    printf("%s",game->texture.WE);
-    printf("\n");
+    ft_putstr_fd("\nTEST PRINT : succesfully created [game->texture.(directions)]\n", 1);
+    ft_putstr_fd(game->texture.NO, 1);
+    ft_putstr_fd(game->texture.SO, 1);
+    ft_putstr_fd(game->texture.EA, 1);
+    ft_putstr_fd(game->texture.WE, 1);
+    ft_putstr_fd("\n", 1);
 
 }
 

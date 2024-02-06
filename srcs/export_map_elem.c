@@ -12,21 +12,20 @@ void    LLtoArrayConverter(t_game *game)
 {
     t_list  *temp;
     t_list  *temp2;
-    int     nbLine;
     int     len;
     int     i;
 
     temp = game->mapLL;
     temp2 = game->mapLL;
-    nbLine = 0;
+    game->mapCharHeight = 0;
     i = 0;
     game->map = NULL;
     while (temp != NULL)
     {
         temp = temp->next;
-        nbLine++;
+        game->mapCharHeight++;
     }
-    game->map = (char **)malloc((nbLine + 1) * sizeof(char *));
+    game->map = (char **)malloc((game->mapCharHeight + 1) * sizeof(char *));
     if (!(game->map))
         return ;
     while (temp2 != NULL)

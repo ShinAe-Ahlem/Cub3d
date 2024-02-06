@@ -1,5 +1,11 @@
 #include "../includes/game.h"
 
+void    coordInit(t_coord *coord)
+{
+    coord->x = 0;
+    coord->y = 0;
+}
+
 void    print_tlist(t_list *list)
 {
     t_list *copy = list;
