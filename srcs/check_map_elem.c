@@ -51,6 +51,11 @@ void checkMapElement(t_game *game)
     {
         // printf("position in map = %d\n", game->pos);
         // printf("inside checkMapElement, line = %s \n", game->mapfile[game->pos]);
+        if (game->mapfile[game->pos] && game->mapfile[game->pos][0] == '\n')
+        {
+            game->pos++;
+            // printf("position in map = %d\n", game->pos);
+        }
         if (game->mapfile[game->pos] && isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
         {
             ft_putstr_fd("\n\n----------------------- is direction line check BEGIN----------------------- \n\n\n", 1);
@@ -69,13 +74,8 @@ void checkMapElement(t_game *game)
         }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
-            checkIsLastElement(game);
+            checkIsLastElement(game, &last_map_elem);
             exportMap(game);
-        }
-        else if (game->mapfile[game->pos][0] == '\n')
-        {
-            game->pos++;
-            // printf("position in map = %d\n", game->pos);
         }
         game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }

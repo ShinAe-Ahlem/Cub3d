@@ -43,7 +43,6 @@ void    checkIsLastElement(t_game *game);
 /*floor ceiling*/
 void checkFloorCeiling(t_game *game);
 
-
 //***** UTILITY *****
 void    print_tlist(t_list *list);
 bool charset_finder(const char *charset, const char *str);
