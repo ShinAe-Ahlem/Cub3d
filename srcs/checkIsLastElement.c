@@ -9,21 +9,26 @@ void checkIsLastElement(t_game *game)
 {
     int i;
 
+    // ft_putstr_fd("c\nheck is last\n", 1);
     i = game->pos;
     while(game->mapfile[i])
     {
-        if (game->mapfile[i] && !ft_strncmp(game->mapfile[i], "\n", 2))
+
+        ft_putstr_fd(game->mapfile[i], 1);
+        if (game->mapfile[i] && isEmptyLine(game->mapfile[i]))
         {
-            while (game->mapfile[i] && !ft_strncmp(game->mapfile[i], "\n", 2))
+            
+            while (game->mapfile[i] && !isEmptyLine(game->mapfile[i]))
                 i++;
-            if (game->mapfile[i] && ft_strncmp(game->mapfile[i], "\n", 2))
+            if (game->mapfile[i] && isEmptyLine(game->mapfile[i]))
             {
                 ft_error(ERROR_MAP_SPLITTED);
                 //freethis
                 exit(EXIT_FAILURE);
             }
         }
-        i++;
+        if (game->mapfile[i])
+            i++;
     }
 }
 

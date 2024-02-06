@@ -40,6 +40,7 @@ void    exportMap(t_game *game);
 void    checkPlayerPos(t_game *game);
 void	zeroBlankContact(t_game *game);
 void    checkIsLastElement(t_game *game);
+bool    isEmptyLine(char *line);
 void    floodFillCheck(t_game *game);
 
 /*floor ceiling*/

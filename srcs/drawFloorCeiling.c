@@ -12,8 +12,6 @@ void	my_mlx_pixel_put(t_img *image, int x, int y, int color)
 
 	dst = image->addr + (y * image->line_len + x * (image->bpp / 8));
 	*(unsigned int *)dst = color;
-	printf("seg here in pixel put \n");
-
 }
 
 int	create_rgb(int r, int g, int b)
