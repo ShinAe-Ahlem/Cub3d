@@ -25,7 +25,7 @@ bool isFloorCeilnigLine(char *line)
 bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
     char charset[8] = "01NSEW "; // add char such as X, Y and I if needed (bonus part)
-    ft_putstr_fd(line, 1);
+    // ft_putstr_fd(line, 1);
     if (charset_finder(charset, line))
         return (true);
     else
@@ -74,7 +74,7 @@ void checkMapElement(t_game *game)
         }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
-            checkIsLastElement(game, &last_map_elem);
+            checkIsLastElement(game);
             exportMap(game);
         }
         game->pos++;/*to be removed later*/ //shinae:or maybe not...
@@ -89,6 +89,7 @@ void checkMapElement(t_game *game)
     LLtoArrayConverter(game);
     checkPlayerPos(game);
     zeroBlankContact(game);
+    floodFillCheck(game);
     // check_map(game.mapfile);
     // divide_elem(game);
 }

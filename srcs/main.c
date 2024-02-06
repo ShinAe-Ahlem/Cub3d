@@ -38,5 +38,5 @@ int	main(int ac, char **av, char **env)
     /* we will exit the loop if there's no window left, and execute this code */
     // mlx_destroy_display(game.mlx_ptr);
     // free(game.mlx_ptr);
-    printf("<< main() correctly closed >>\n");
+    printf("\n<< main() correctly closed >>\n");
 }
