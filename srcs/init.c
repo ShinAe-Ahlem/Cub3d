@@ -3,6 +3,7 @@
 void initGame(t_game *game)
 {
     game->mlx_ptr = mlx_init();
+	game->game_name = "Alhem and Shin Ae's World <3";
 	if (game->mlx_ptr == NULL)
 		ft_error("ERROR_MLX");
     window_size_setting(game);
