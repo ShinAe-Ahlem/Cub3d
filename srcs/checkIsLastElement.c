@@ -14,7 +14,7 @@ void checkIsLastElement(t_game *game)
     while(game->mapfile[i])
     {
 
-        ft_putstr_fd(game->mapfile[i], 1);
+        // ft_putstr_fd(game->mapfile[i], 1);
         if (game->mapfile[i] && isEmptyLine(game->mapfile[i]))
         {
             
