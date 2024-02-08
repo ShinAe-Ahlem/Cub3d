@@ -70,6 +70,12 @@ typedef struct s_coord
 }	t_coord;
 
 
+typedef struct s_player
+{
+	float px;
+	float py;
+}	t_player;
+
 typedef struct s_game
 {
 	char				*game_name;
@@ -90,6 +96,7 @@ typedef struct s_game
 	int					mapCharHeight;
 	t_img				img;
     int                 pos; /*position in the mapfile*/
+	t_player			*player;
 }						t_game;
 
 #endif

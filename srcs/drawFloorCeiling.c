@@ -41,7 +41,6 @@ void drawFloorCeiling(t_game *game)
 	/*ceiling*/
 	while (y < game->window_y / 2)
 	{
-		printf("seg here in draw \n");
 		while (x < game->window_x)
 		{
 			my_mlx_pixel_put(&(game->img), x, y, color2);

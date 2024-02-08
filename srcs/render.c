@@ -1,6 +1,9 @@
 
 #include "../includes/game.h"
 
+
+
+
 void	renderGame(t_game *game)
 {
 	if (!game->win_ptr)
@@ -11,9 +14,9 @@ void	renderGame(t_game *game)
 	}
 	// if (game->mlx_ptr == NULL)
 	// 	mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	printf("seg here\n");
-	printf("wing x = %d", game->window_x);
-	printf("wing y = %d", game->window_y);
     drawFloorCeiling(game);
+    // ft_putstr_fd("in render game", 1);
+
+	drawPlayer(game);
     mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
 }
