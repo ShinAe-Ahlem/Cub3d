@@ -33,8 +33,8 @@ int	main(int ac, char **av, char **env)
     if (game.mapfile)
         print_char_table(game.mapfile);
     checkMapElement(&game);
-    // ft_create_window(&game);    
-    // renderGame(&game);
+    ft_create_window(&game);
+    renderGame(&game);
     /* we will exit the loop if there's no window left, and execute this code */
     // mlx_destroy_display(game.mlx_ptr);
     // free(game.mlx_ptr);

@@ -37,6 +37,14 @@ bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S
     }
 }
 
+void    MapCheckDivision(t_game *game)
+{
+    LLtoArrayConverter(game);
+    checkPlayerPos(game);
+    zeroBlankContact(game);
+    floodFillCheck(game);
+}
+
 void checkMapElement(t_game *game)
 {
     game->pos = 0;
@@ -80,17 +88,5 @@ void checkMapElement(t_game *game)
         if (game->mapfile[game->pos])
             game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
-    // checkMap(game); ZIS IS ZE PARSING this should regroup following map checking functions
-    // found_map = true; /*if checkMap is ok*/
-    // if (!(found_directions && found_FC && found_map)) /*to be enhanced later*/
-    // {
-    //     //freethis
-    //     ft_error("something is missing in the file\n");
-    // }
-    LLtoArrayConverter(game);
-    checkPlayerPos(game);
-    zeroBlankContact(game);
-    floodFillCheck(game);
-    // check_map(game.mapfile);
-    // divide_elem(game);
+    MapCheckDivision(game);
 }
