@@ -60,10 +60,13 @@ int	create_rgb(int r, int g, int b);
 void	renderGame(t_game *game);
 void    drawFloorCeiling(t_game *game);
 void	my_mlx_pixel_put(t_img *image, int x, int y, int color);
+void    ft_draw_img(t_game *game);
+bool    import_textures(t_game *game);
+
 /*****************************************/
 void    drawPlayer(t_game *game);
 int     move(int keysym, t_game *game);
-int hande_move(int keysym, t_game *game);
+int     hande_move(int keysym, t_game *game);
 /*initialisation*/
 void    initGame(t_game *game);
 void    coordInit(t_coord *coord);

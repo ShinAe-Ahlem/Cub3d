@@ -19,11 +19,8 @@ typedef struct s_coord	t_coord;
 # include <sys/stat.h>
 # include <fcntl.h>
 
+# define TILE 32
 
-static bool	NO;
-static bool	SO;
-static bool	WE;
-static bool	EA;
 
 typedef struct s_img
 {
@@ -40,6 +37,8 @@ typedef struct s_grp // graphique
 	void *south;
 	void *east;
 	void *west;
+	void *wall;  //temporary
+	void *floor; //temporary
 	// void    *floor;
 	// void    *ceiling;
 	// void    *item;
@@ -97,6 +96,8 @@ typedef struct s_game
 	t_img				img;
     int                 pos; /*position in the mapfile*/
 	t_player			*player;
+	int x;
+	int y;
 }						t_game;
 
 #endif

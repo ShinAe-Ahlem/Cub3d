@@ -25,7 +25,8 @@ void drawPlayer(t_game *game)
 		perror("window");
 		exit(1);
 	}
-    my_mlx_pixel_put(&(game->img), (int)game->player->px, (int)game->player->py, create_rgb(240,100,12));
+    ft_putstr_fd("in draw player\n", 1);
+    my_mlx_pixel_put(&(game->img), (int)game->player->px, (int)game->player->py, create_rgb(255, 255, 255));
 }
 
 int move(int keysym, t_game *game)
