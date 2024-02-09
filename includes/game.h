@@ -43,7 +43,7 @@ typedef struct s_grp // graphique
 	// void    *ceiling;
 	// void    *item;
 	// void    *door;
-	// void    *ennemi_one;
+	void    *ennemi_one;
 	// void    *ennemi_two;
 }						t_grp;
 
@@ -69,18 +69,13 @@ typedef struct s_coord
 }	t_coord;
 
 
-typedef struct s_player
-{
-	float px;
-	float py;
-}	t_player;
 
 typedef struct s_game
 {
 	char				*game_name;
 	int fd; // fd of map we read with gnl
 	void				*mlx_ptr;
-	t_grp				grp;
+	t_grp				*grp;
 	void				*win_ptr;
 	int					screen_x;
 	int					screen_y;
@@ -93,9 +88,9 @@ typedef struct s_game
 	t_list				*mapLL;
 	char				**map;
 	int					mapCharHeight;
+	t_coord				*playerPos;
 	t_img				img;
     int                 pos; /*position in the mapfile*/
-	t_player			*player;
 	int x;
 	int y;
 }						t_game;

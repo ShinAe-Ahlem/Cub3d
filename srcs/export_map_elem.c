@@ -3,9 +3,11 @@
 void    exportMap(t_game *game)
 {
     t_list  *new;
-    
-    new = ft_lstnew((char *)(game->mapfile[game->pos]));
-    ft_lstadd_back(&(game->mapLL), new);
+    if (game->mapfile[game->pos])
+    {
+        new = ft_lstnew((char *)(game->mapfile[game->pos]));
+        ft_lstadd_back(&(game->mapLL), new);
+    }
 }
 
 void    LLtoArrayConverter(t_game *game)
