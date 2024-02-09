@@ -1,11 +1,16 @@
 #include "../includes/game.h"
 
-void init_player(t_game *game)
-{
-	game->player = malloc(1 * sizeof(t_player));
-    game->player->px = 10;
-    game->player->py = 10;
-}
+// void init_player(t_game *game)
+// {
+	// game->player = malloc(1 * sizeof(t_player));
+	// if (!game->player)
+	// {
+	// 	//freethis
+	// 	exit(EXIT_FAILURE);
+	// }
+    // game->player->px = 10;
+    // game->player->py = 10;
+// }
 
 void	window_size_setting(t_game *game)
 {
@@ -22,9 +27,8 @@ void	window_size_setting(t_game *game)
 int	ft_create_window(t_game *game)
 {
 	initGame(game);
-	init_player(game);
+	// init_player(game);
 	import_textures(game);
-	// drawFloorCeiling(game);
 	renderGame(game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
 	mlx_key_hook(game->win_ptr, &hande_move, game);

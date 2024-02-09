@@ -24,6 +24,7 @@ bool isFloorCeilnigLine(char *line)
 
 bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
+    ft_putstr_fd("\n\n----------------------- Map check BEGIN----------------------- \n\n\n", 1);
     char charset[8] = "01NSEW "; // add char such as X, Y and I if needed (bonus part)
     // ft_putstr_fd(line, 1);
     if (charset_finder(charset, line))
@@ -51,6 +52,7 @@ void checkMapElement(t_game *game)
     bool found_directions;
     bool found_FC;
     bool found_map;
+	game->mapLL = NULL;
 
     found_directions = false;
     found_FC = false;
@@ -89,4 +91,6 @@ void checkMapElement(t_game *game)
             game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
     MapCheckDivision(game);
+    ft_putstr_fd("\n\n----------------------- Map check END----------------------- \n\n\n", 1);
+
 }

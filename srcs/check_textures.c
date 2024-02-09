@@ -20,13 +20,6 @@ void export_texture(t_game *game)
             game->texture.WE = ft_strdup(game->mapfile[i]);
         i++;
     }
-    // Test print
-    ft_putstr_fd("\nTEST PRINT : succesfully created [game->texture.(directions)]\n", 1);
-    ft_putstr_fd(game->texture.NO, 1);
-    ft_putstr_fd(game->texture.SO, 1);
-    ft_putstr_fd(game->texture.EA, 1);
-    ft_putstr_fd(game->texture.WE, 1);
-    ft_putstr_fd("\n", 1);
 
 }
 
@@ -71,10 +64,7 @@ void    checkTextures(t_game *game, int *count)
     {
         // printf("inside checkTextures, line = %s \n", game->mapfile[game->pos]);
         if (game->mapfile[game->pos][0] == '\n')
-        {
-            ft_putstr_fd("Enter found (end of lecture : texture setting part\n", 1);
             break ;
-        }
         if (checkDirection(game->mapfile[game->pos]))
         {
             free_table(game->mapfile);

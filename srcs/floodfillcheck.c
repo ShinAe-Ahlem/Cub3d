@@ -11,12 +11,13 @@ char    **copyMap(t_game *game)
 		return (NULL);
 	while (i < game->mapCharHeight)
 	{
-		copy[i] = (char *)malloc((ft_strlen(game->map[i]) + 1) * sizeof(char));
-		if (copy[i] == NULL)
-			return (NULL);
-		ft_memcpy(copy[i], game->map[i], ft_strlen(game->map[i]));
-		copy[i][ft_strlen(copy[i])] = '\0';
-        // printf("   %s", copy[i]);
+		// copy[i] = (char *)malloc((ft_strlen(game->map[i]) + 1) * sizeof(char));
+		// if (copy[i] == NULL)
+		// 	return (NULL);
+		// ft_memcpy(copy[i], game->map[i], ft_strlen(game->map[i]));
+		// copy[i][ft_strlen(copy[i])] = '\0';
+        // // printf("   %s", copy[i]);
+		copy[i] = ft_strdup(game->map[i]);
 		i++;
 	}
 	copy[game->mapCharHeight] = NULL;
@@ -85,15 +86,16 @@ void	postFloodFillCheck(char **map_copy)
 void    floodFillCheck(t_game *game)
 {
     char **copy;
-	t_coord playerPos;
+	// t_coord playerPos;
     
     copy = copyMap(game);
-	coordInit(&playerPos);
+	coordInit(game->playerPos);
+	print_char_table(game->map);
     ft_putstr_fd("\nMap copy for FF\n", 1);
-	findPlayerPosition(game, &playerPos);
-	printf("\nPlayer Pos X: %d, Y: %d\n", playerPos.x, playerPos.y);
+	findPlayerPosition(game, game->playerPos);
+	printf("\nPlayer Pos X: %d, Y: %d\n", game->playerPos->x, game->playerPos->y);
 	print_char_table(copy);
-	floodFill(copy, playerPos.x, playerPos.y);
+	floodFill(copy, game->playerPos->x, game->playerPos->y);
     print_char_table(copy);
 	postFloodFillCheck(copy);
 	freeCharArray(&copy);

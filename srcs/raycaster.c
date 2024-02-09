@@ -25,31 +25,32 @@ void drawPlayer(t_game *game)
 		exit(1);
 	}
     ft_putstr_fd("in draw player\n", 1);
-    my_mlx_pixel_put(&(game->img), (int)game->player->px, (int)game->player->py, create_rgb(255, 255, 255));
+    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->ennemi_one, (TILE * game->playerPos->x), (TILE * game->playerPos->y));
+    // my_mlx_pixel_put(&(game->img), (int)game->playerPos->x + TILE, (int)game->playerPos->y + TILE, create_rgb(255, 255, 255));
 }
 
 int move(int keysym, t_game *game)
 {
     if(keysym == XK_a )
     {
-        if (game->player->px > 0)
-            game->player->px -= 10;
+        if (game->playerPos->x > 0)
+            game->playerPos->x -= 1;
     }
     if (keysym == XK_d)
     {
-        if (game->player->py < game->window_x)
-            game->player->px += 10;
+        if (game->playerPos->x < game->window_x)
+            game->playerPos->x += 1;
 
     }
     if (keysym == XK_w)
     {
-        if (game->player->py > 0)
-            game->player->py -= 10;
+        if (game->playerPos->y > 0)
+            game->playerPos->y -= 1;
     }
     if (keysym == XK_s)
     {
-        if (game->player->py < game->window_y)
-            game->player->py += 10;
+        if (game->playerPos->y < game->window_y)
+            game->playerPos->y += 1;
     }
     return(0);
 }
