@@ -18,14 +18,13 @@ the ray distance is converted to vertical lines that will make the walls
 
 void drawPlayer(t_game *game)
 {
+	mlx_clear_window(game->mlx_ptr, game->win_ptr);
     if (!game->win_ptr)
 	{
 		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 		perror("window");
 		exit(1);
 	}
-   
-    ft_putstr_fd("in draw player\n", 1);
     my_mlx_pixel_put(&(game->img), (int)game->player->px, (int)game->player->py, create_rgb(240,100,12));
 }
 

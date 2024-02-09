@@ -21,6 +21,7 @@ int	handle_keypress(int keysym, t_game *game)
     {
         printf("player x = %f", game->player->px);
         dprintf(1, "player y = %f", game->player->py);
+    	mlx_clear_window(game->mlx_ptr, game->win_ptr);     
         renderGame(game);
     }
     return (0);
