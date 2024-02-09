@@ -153,10 +153,7 @@ void checkFloorCeiling(t_game *game)
     while(game->mapfile[game->pos] != NULL)
     {
         if (game->mapfile[game->pos][0] == '\n')
-        {
-            ft_error("Enter found\n");
             break ;
-        }
         if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
         {
             if(F_flag)
