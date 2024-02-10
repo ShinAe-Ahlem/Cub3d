@@ -26,7 +26,7 @@ void	window_size_setting(t_game *game)
 
 int	ft_create_window(t_game *game)
 {
-	initGame(game);
+	initGameWindow(game);
 	// init_player(game);
 	import_textures(game);
 	renderGame(game);

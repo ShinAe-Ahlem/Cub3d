@@ -68,7 +68,8 @@ void    drawPlayer(t_game *game);
 int     move(int keysym, t_game *game);
 int     hande_move(int keysym, t_game *game);
 /*initialisation*/
-void    initGame(t_game *game);
+void initGameWindow(t_game *game);
+void initGameParam(t_game *game);
 void    coordInit(t_coord *coord);
 
 //***** FREE *****
