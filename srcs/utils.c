@@ -42,3 +42,19 @@ bool charset_finder(const char *charset, const char *str)
         return (1);
     return (0);
 }
+
+float angleToRadian (float angle)
+{
+    float radian;
+
+    radian = angle *(PI / 180);
+    return (radian);
+}
+
+float RadianToAngle (float radian)
+{
+    float angle;
+
+    angle = radian * (180 / PI);
+    return (angle);
+}

@@ -9,17 +9,19 @@ typedef struct s_coord	t_coord;
 # include "../includes/color.h"
 # include "../includes/error.h"
 # include "../includes/function.h"
+# include <stdlib.h>
 # include "../includes/game.h"
 # include <../minilibx-linux/mlx.h>
 # include <X11/X.h>
 # include <X11/keysym.h>
 # include <errno.h>
 # include <stdio.h>
-# include <stdlib.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include <math.h>
 
 # define TILE 32
+# define PI 3.1415926535
 
 
 typedef struct s_img
@@ -88,7 +90,10 @@ typedef struct s_game
 	t_list				*mapLL;
 	char				**map;
 	int					mapCharHeight;
+	int					maxMapWidth;
 	t_coord				*playerPos;
+	t_coord				*playerPosDelta;
+	float				playerAngle;
 	t_img				img;
     int                 pos; /*position in the mapfile*/
 	int x;

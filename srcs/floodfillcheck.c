@@ -31,6 +31,7 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 
 	i = 0;
 	j = 0;
+	(void)playerPos;
 	while (i < game->mapCharHeight)
 	{
 		j = 0;
@@ -38,13 +39,15 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 		{
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'S' || game->map[i][j] == 'E' || game->map[i][j] == 'A' )
 			{
-				playerPos->x = j;
-				playerPos->y = i;
+				game->playerPos->x = j;
+				game->playerPos->y = i;
 			}
 			j++;
 		}
 		i++;
 	}
+	game->playerPosDelta->x = cos(game->playerAngle) * 3;
+    game->playerPosDelta->y = sin(game->playerAngle) * 3;
 }
 
 void	floodFill(char **map_copy, int x, int y)
@@ -89,9 +92,8 @@ void    floodFillCheck(t_game *game)
 	// t_coord playerPos;
     
     copy = copyMap(game);
-	coordInit(game->playerPos);
+	// coordInit(game->playerPos);
 	print_char_table(game->map);
-    ft_putstr_fd("\nMap copy for FF\n", 1);
 	findPlayerPosition(game, game->playerPos);
 	printf("\nPlayer Pos X: %d, Y: %d\n", game->playerPos->x, game->playerPos->y);
 	print_char_table(copy);
