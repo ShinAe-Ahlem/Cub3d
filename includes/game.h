@@ -43,7 +43,7 @@ typedef struct s_grp // graphique
 	// void    *ceiling;
 	// void    *item;
 	// void    *door;
-	void    *ennemi_one;
+	void    *ennemi_one; //temporary
 	// void    *ennemi_two;
 }						t_grp;
 
