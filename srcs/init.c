@@ -3,6 +3,12 @@
 
 void graphique_init(t_game *game)
 {
+	game->grp = (t_grp *)malloc(sizeof(t_grp));
+    if (game->grp == NULL)
+	{
+        ft_perror(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+    }
 	game->grp->east = NULL;
 	game->grp->west = NULL;
 	game->grp->south = NULL;
@@ -36,8 +42,25 @@ void mapInfoInit(t_game *game)
 	game->mapLL = NULL;
 	game->map = NULL;
 	game->mapCharHeight = 0;
-	game->playerPos->x = 0;
-	game->playerPos->y = 0;
+	game->maxMapWidth = 0;
+    game->playerPos = (t_coord *)malloc(sizeof(t_coord));
+    if (game->playerPos == NULL)
+	{
+		ft_perror(ERROR_MALLOC);
+	    exit(EXIT_FAILURE);
+    }
+    game->playerPos->x = 0;
+    game->playerPos->y = 0;
+    game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
+    if (game->playerPosDelta == NULL)
+	{
+        ft_perror(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+    }
+    game->playerPosDelta->x = 0;
+    game->playerPosDelta->y = 0;
+
+    game->playerAngle = 0;
 }
 
 void initGameParam(t_game *game)
@@ -50,5 +73,4 @@ void initGameParam(t_game *game)
 	texture_init(game);
 	FC_init(game);
 	mapInfoInit(game);
-	initGameWindow(game);
 }

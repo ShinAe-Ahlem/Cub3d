@@ -18,6 +18,7 @@
 # define ERROR_MAP_UNCLOSED "Map is not closed"
 # define ERROR_MAP_SPLITTED "Map is splitted by an empty one or not last element is file"
 # define ERROR_FF_FAILED "Map contains inaccessible spots for player"
+# define ERROR_MALLOC "Memory error"
 # define ERROR_MLX 1
 
 #endif

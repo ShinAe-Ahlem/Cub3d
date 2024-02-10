@@ -3,7 +3,7 @@
 bool    import_textures(t_game *game) // temporary
 {
     int size;
-    game->grp = malloc(1 * sizeof(t_grp));
+
     if (!game->grp)
     {
         //freethis

@@ -51,7 +51,11 @@ void checkFloorCeiling(t_game *game);
 void    print_tlist(t_list *list);
 bool    charset_finder(const char *charset, const char *str);
 void    LLtoArrayConverter(t_game *game);
-
+float   RadianToAngle (float radian);
+float   angleToRadian (float angle);
+void    drawLine(t_game *game, int x0, int y0, int x1, int y1, int color);
+void    drawRectangle(t_game *game, int x, int y, int width, int height, int color);
+void    drawRays3D(t_game *game);
 
 /*clolors*/
 int	create_rgb(int r, int g, int b);

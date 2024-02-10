@@ -60,7 +60,6 @@ void checkMapElement(t_game *game)
     while(game->mapfile[game->pos])
     {
         // printf("position in map = %d\n", game->pos);
-        // printf("inside checkMapElement, line = %s \n", game->mapfile[game->pos]);
         if (game->mapfile[game->pos] && game->mapfile[game->pos][0] == '\n')
         {
             game->pos++;
@@ -84,6 +83,7 @@ void checkMapElement(t_game *game)
         }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
+            // printf("inside checkMapElement, isMap Loop, line = %s \n", game->mapfile[game->pos]);
             checkIsLastElement(game);
             exportMap(game);
         }
@@ -91,6 +91,8 @@ void checkMapElement(t_game *game)
             game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
     MapCheckDivision(game);
+    ft_putstr_fd("\n\nmaxMapWidth = ", 1);
+    ft_putnbr_fd(game->maxMapWidth, 1);
+    ft_putstr_fd("\n\n", 1);
     ft_putstr_fd("\n\n----------------------- Map check END----------------------- \n\n\n", 1);
-
 }
