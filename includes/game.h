@@ -22,7 +22,8 @@ typedef struct s_coord	t_coord;
 
 # define TILE 32
 # define PI 3.1415926535
-
+# define P2 PI/2
+# define P3 3*PI/2
 
 typedef struct s_img
 {
