@@ -2,16 +2,16 @@
 
 void    drawRays3D(t_game *game)
 {
-    int r;
-    int mx;
-    int my;
-    int mp;
-    int dof;
+    int r; //ray
+    int mx; // (probably x coord in map)
+    int my;//  (probably x coord in map)
+    int mp;//  (probably map position where the ray touches the wall (or not-_-))
+    int dof;//direction of focus
     float rx;
     float ry;
-    float ra;
-    float xo;
-    float yo;
+    float ra; // rayAngle
+    float xo; // x offset (variation of x coord)
+    float yo; // y offset (variation of y coord)
     float aTan; // negative inverse of tangent
     float nTan; // negative inverse of tangent
 
@@ -28,15 +28,15 @@ void    drawRays3D(t_game *game)
         if (ra > PI) // looking down 
         {
             ry = (((int)game->playerPos->y>>6)<<6)-0.0001; // to erase values after decimal point.
-            rx = (game->playerPos->y - ry) * (aTan + game->playerPos->x);
-            yo = -64;
+            rx = (game->playerPos->y - ry) * aTan + game->playerPos->x;
+            yo = -5000;
             xo = -yo * aTan;
         }
         if (ra < PI) // looking up
         {
             ry = (((int)game->playerPos->y>>6)<<6)+64; // to erase values after decimal point.
-            rx = (game->playerPos->y - ry) * (aTan + game->playerPos->x);
-            yo = 64;
+            rx = (game->playerPos->y - ry) * aTan + game->playerPos->x;
+            yo = 5000;
             xo = -yo * aTan;
         }
         if (ra == 0 || ra == PI) //looking straight right or left
@@ -50,9 +50,11 @@ void    drawRays3D(t_game *game)
             mx = (int)(rx)>>6;
             my = (int)(ry)>>6;
             mp = my * game->maxMapWidth + mx;
-            if (mp < game->maxMapWidth * 8 && game->map[my][mx] == 1)
+
+            if (mp < game->maxMapWidth * game->mapCharHeight && game->map[my][mx] == '1')
+
             {
-                dof = 8;
+                dof = 1;
             }
             else
             {
@@ -60,6 +62,7 @@ void    drawRays3D(t_game *game)
                 ry += yo;
                 dof += 1;
             }
+
             drawLine(game, game->playerPos->x + TILE, game->playerPos->y + TILE, rx, ry, BLUE);
         }
 
@@ -103,7 +106,50 @@ void    drawRays3D(t_game *game)
                 dof += 1;
             }
             drawLine(game, game->playerPos->x + TILE, game->playerPos->y + TILE, rx, ry, WHITE);
+
         }
+
+        float nTan;
+        dof = 0; //direction of focus
+        nTan = -tan(ra);
+        if (ra > P2 && ra <P3) // looking left
+        {
+            ry = (((int)game->playerPos->y>>6)<<6)-0.0001;
+            rx = (game->playerPos->y - ry) * nTan + game->playerPos->x;
+            yo = -5000;
+            xo = -yo * nTan;
+        }
+        if (ra < P2 || ra > P3) // looking right
+        {
+            ry = (((int)game->playerPos->y>>6)<<6)+64; // to erase values after decimal point.
+            rx = (game->playerPos->y - ry) * nTan + game->playerPos->x;
+            yo = 5000;
+            xo = -yo * nTan;
+        }
+        if (ra == 0 || ra == PI) //looking straight up or down
+        {
+            rx = game->playerPos->x;
+            ry = game->playerPos->y;
+            dof = 8;
+        }
+        while (dof < 1)
+        {
+            mx = (int)(rx)>>6;
+            my = (int)(ry)>>6;
+            mp = my * game->maxMapWidth + mx;
+            if (mp < game->maxMapWidth * game->mapCharHeight && game->map[my][mx] == '1')
+            {
+                dof = 1;
+            }
+            else
+            {
+                rx += xo;
+                ry += yo;
+                dof += 1;
+            }
+            drawLine(game, game->playerPos->x * TILE, game->playerPos->y * TILE, rx, ry, WHITE);
+        }
+
         r++;
     }
 
