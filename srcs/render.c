@@ -11,9 +11,9 @@ void	renderGame(t_game *game)
 	}
 	if (game->mlx_ptr != NULL)
 		mlx_clear_window(game->mlx_ptr, game->win_ptr);
-    drawFloorCeiling(game);
-    // ft_putstr_fd("in render game", 1);
-    // mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
+    mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
 	drawPlayer(game);
 	ft_draw_img(game);
+    // drawFloorCeiling(game);
+    // ft_putstr_fd("in render game", 1);
 }
