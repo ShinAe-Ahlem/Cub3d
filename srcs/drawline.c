@@ -149,3 +149,24 @@ void    drawRectangle(t_game *game, int x, int y, int width, int height, int col
     drawLine (game, x + width, y, x + width, y+ height, color);
     drawLine (game, x, y + height, x + width, y + height, color);
 }
+
+
+void draw3d(t_game *game)
+{
+    /*******lodev start*****************/
+    double posX = game->playerPos->x, posY = game->playerPos->y;  //x and y start position
+    double dirX = -1, dirY = 0; //initial direction vector
+    double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+    double time = 0; //time of current frame
+    double oldTime = 0; //time of previous frame
+
+
+    for(int x = 0; x < game->maxMapWidth; x++)
+    {
+      //calculate ray position and direction
+      double cameraX = 2 * x / (double)(game->maxMapWidth) - 1; //x-coordinate in camera space
+      double rayDirX = dirX + planeX * cameraX;
+      double rayDirY = dirY + planeY * cameraX;
+    }
+    /********lodev end*********/
+}
