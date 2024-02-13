@@ -13,6 +13,13 @@ the ray distance is converted to vertical lines that will make the walls
 */
 
 /**/
+/*this function has to be called in create window*/
+static void CastARay(t_game *game)
+{
+	
+	
+}
+
 
 void	drawPlayer(t_game *game)
 {
@@ -31,10 +38,18 @@ void	drawPlayer(t_game *game)
     printf("game->playerPos->y : %d\n", game->playerPos->y);
 	drawLine(game, game->playerPos->x * TILE, game->playerPos->y  * TILE, (game->playerPos->x
 		+ game->playerPosDelta->x) * TILE, (game->playerPos->y + game->playerPosDelta->y) * TILE, SHINAECOLOR);
-    drawRays3D(game);
+    // drawRays3D(game);
+	// draw3d(game);
 	// my_mlx_pixel_put(&(game->img), (int)game->playerPos->x + TILE,
 		// (int)game->playerPos->y + TILE, create_rgb(255, 255, 255);
 }
+
+
+
+
+
+
+
 
 int	move(int keysym, t_game *game)
 {
