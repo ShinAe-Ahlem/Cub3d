@@ -38,12 +38,77 @@ bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S
     }
 }
 
+static void EpurArray(t_game *game)
+{
+        dprintf(1,"\n********** EpurArray begin*********\n");
+    int i;
+    size_t lastOnePos;
+    char **new;
+    new = malloc((game->mapCharHeight + 1) * sizeof(char *));
+    if (!new)
+    {
+        /*free this*/
+        perror("malloc");
+        exit(EXIT_FAILURE);
+    }
+    i = 0;
+    while(game->map[i])
+    {
+        lastOnePos= ft_strlen(game->map[i]);
+        dprintf(1, "len de map[%d] = %zu\n", i, ft_strlen(game->map[i]));
+        dprintf(1, "lastOnePOs initialized to = %zu\n", lastOnePos);
+        if (game->map[i][lastOnePos -1 ] == '\n')
+            dprintf(1, "\n**********************************************************************\n");
+        lastOnePos--;
+        dprintf(1, "lastOnePOs = %zu\n", lastOnePos);
+        while(game->map[i][lastOnePos] == ' ' || game->map[i][lastOnePos] == '\n')
+            lastOnePos--;
+        dprintf(1, "lastOnePOs = %zu\n", lastOnePos);
+        if (lastOnePos == ft_strlen(game->map[i]) - 2)
+        {
+            dprintf(1, "no sapces found\n");
+            new[i] = ft_strdup(game->map[i]);
+            dprintf(1, "new[%d] = %s\n",i, new[i]);
+        }
+        else
+        {
+            new[i] = ft_substr(game->map[i], 0, lastOnePos + 2);
+            new[i][lastOnePos + 1] = '\n';
+            dprintf(1, "len de new[%d] = %zu\n", i, ft_strlen(new[i]));
+            dprintf(1, "new[%d] = %s\n",i, new[i]);
+        }
+        i++;
+    }
+    new[i] = NULL;
+    // dprintf(1, "in Epur");
+    // print_char_table(new);
+    free_table(game->map);
+    game->map = new;
+    dprintf(1,"\n********** EpurArray end*********\n");
+
+}
+
+void getMaxWidth(t_game *game)
+{
+    int i;
+    i = 0;
+    game->maxMapWidth = 0;
+    while(game->map[i])
+    {
+        if (ft_strlen(game->map[i]) > (size_t)game->maxMapWidth)
+            game->maxMapWidth = ft_strlen(game->map[i]);
+        i++;
+    }
+}
+
 void    MapCheckDivision(t_game *game)
 {
     LLtoArrayConverter(game);
     checkPlayerPos(game);
     zeroBlankContact(game);
     floodFillCheck(game);
+    EpurArray(game);
+    getMaxWidth(game);
 }
 
 void checkMapElement(t_game *game)

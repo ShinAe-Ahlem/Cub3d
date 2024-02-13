@@ -26,7 +26,6 @@ typedef struct s_coord	t_coord;
 # define P3 3*PI/2
 
 
-
 typedef struct s_img
 {
 	void			*mlx_img;

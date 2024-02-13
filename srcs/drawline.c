@@ -13,6 +13,7 @@ void    drawRays3D(t_game *game)
     float xo; // x offset (variation of x coord)
     float yo; // y offset (variation of y coord)
     float aTan; // negative inverse of tangent
+    float nTan; // negative inverse of tangent
 
     // int i;
     // i = 0;
@@ -20,9 +21,11 @@ void    drawRays3D(t_game *game)
     r = 0;
     while (r < 1)
     {
+        // ------------------CHECK HORIZANTAL LINES-------------------------
         dof = 0; //direction of focus
         aTan = -1/tan(ra);
-        if (ra > PI) // looking down
+        /* 1: FIND THE FIRST x and y where the ray hits a horizantal line */
+        if (ra > PI) // looking down 
         {
             ry = (((int)game->playerPos->y>>6)<<6)-0.0001; // to erase values after decimal point.
             rx = (game->playerPos->y - ry) * aTan + game->playerPos->x;
@@ -36,18 +39,20 @@ void    drawRays3D(t_game *game)
             yo = 5000;
             xo = -yo * aTan;
         }
-        if (ra == 0 || ra == PI)
+        if (ra == 0 || ra == PI) //looking straight right or left
         {
             rx = game->playerPos->x;
             ry = game->playerPos->y;
             dof = 8;
         }
-        while (dof < 1)
+        while (dof < 8) //max x/Y his ap is 8x8
         {
             mx = (int)(rx)>>6;
             my = (int)(ry)>>6;
             mp = my * game->maxMapWidth + mx;
+
             if (mp < game->maxMapWidth * game->mapCharHeight && game->map[my][mx] == '1')
+
             {
                 dof = 1;
             }
@@ -57,7 +62,51 @@ void    drawRays3D(t_game *game)
                 ry += yo;
                 dof += 1;
             }
-            drawLine(game, game->playerPos->x * TILE, game->playerPos->y * TILE, rx, ry, BLUE);
+
+            drawLine(game, game->playerPos->x + TILE, game->playerPos->y + TILE, rx, ry, BLUE);
+        }
+
+        //------------------CHECK VERTICAL LINES-------------------------
+        dof = 0; //direction of focus
+        nTan = -tan(ra);
+        /* 1: FIND THE FIRST x and y where the ray hits a horizantal line */
+        if (ra > P2 && ra < P3) // looking left
+        {
+            rx = (((int)game->playerPos->x>>6)<<6)-0.0001; // to erase values after decimal point.
+            ry = (game->playerPos->x - rx) * (nTan + game->playerPos->y);
+            xo = -64;
+            yo = -yo * nTan;
+        }
+        if (ra < P2 || ra > P3) // looking right
+        {
+            rx = (((int)game->playerPos->x>>6)<<6)+64; // to erase values after decimal point.
+            ry = (game->playerPos->x - rx) * (nTan + game->playerPos->y);
+            xo = 64;
+            yo = -yo * nTan;
+        }
+        if (ra == 0 || ra == PI) //looking straight up or down
+        {
+            ry = game->playerPos->y;
+            rx = game->playerPos->x;
+            dof = 8;
+        }
+        while (dof < 8) //max x/Y his ap is 8x8
+        {
+            mx = (int)(rx)>>6;
+            my = (int)(ry)>>6;
+            mp = my * game->maxMapWidth + mx;
+            if (mp < game->maxMapWidth * 8 && game->map[my][mx] == 1)
+            {
+                dof = 8;
+            }
+            else
+            {
+                rx += xo;
+                ry += yo;
+                dof += 1;
+            }
+            drawLine(game, game->playerPos->x + TILE, game->playerPos->y + TILE, rx, ry, WHITE);
+
         }
 
         float nTan;
@@ -145,4 +194,25 @@ void    drawRectangle(t_game *game, int x, int y, int width, int height, int col
     drawLine (game, x, y, x, y + height, color);
     drawLine (game, x + width, y, x + width, y+ height, color);
     drawLine (game, x, y + height, x + width, y + height, color);
+}
+
+
+void draw3d(t_game *game)
+{
+    /*******lodev start*****************/
+    double posX = game->playerPos->x, posY = game->playerPos->y;  //x and y start position
+    double dirX = -1, dirY = 0; //initial direction vector
+    double planeX = 0, planeY = 0.66; //the 2d raycaster version of camera plane
+    double time = 0; //time of current frame
+    double oldTime = 0; //time of previous frame
+
+
+    for(int x = 0; x < game->maxMapWidth; x++)
+    {
+      //calculate ray position and direction
+      double cameraX = 2 * x / (double)(game->maxMapWidth) - 1; //x-coordinate in camera space
+      double rayDirX = dirX + planeX * cameraX;
+      double rayDirY = dirY + planeY * cameraX;
+    }
+    /********lodev end*********/
 }
