@@ -148,8 +148,6 @@ void checkFloorCeiling(t_game *game)
 {
     int F_flag = 0;
     int C_flag = 0;
-    int i;
-    i = game->pos;
     while(game->mapfile[game->pos] != NULL)
     {
         if (game->mapfile[game->pos][0] == '\n')

@@ -66,7 +66,7 @@ void    drawFloorCeiling(t_game *game);
 void	my_mlx_pixel_put(t_img *image, int x, int y, int color);
 void    ft_draw_img(t_game *game);
 bool    import_textures(t_game *game);
-
+void draw3d(t_game *game);
 /*****************************************/
 void    drawPlayer(t_game *game);
 int     move(int keysym, t_game *game);
