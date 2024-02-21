@@ -14,12 +14,12 @@ the ray distance is converted to vertical lines that will make the walls
 
 /**/
 /*this function has to be called in create window*/
-static void CastARay(t_game *game)
+/*static void CastARay(t_game *game)
 {
 	
 	
 }
-
+*/
 
 void	drawPlayer(t_game *game)
 {

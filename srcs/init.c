@@ -88,5 +88,5 @@ void initGameParam(t_game *game)
 	game->direction->x = -1;//initial direction vector
 	game->direction->y = 0; //initial direction vector
 	game->cameraPlane->x = 0;
-	game->cameraPlane->y = 0.66;
+	game->cameraPlane->y = 1;
 }

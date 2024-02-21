@@ -14,7 +14,7 @@ void    LLtoArrayConverter(t_game *game)
 {
     t_list  *temp;
     t_list  *temp2;
-    int     len;
+   // int     len;
     int     i;
 
     temp = game->mapLL;
@@ -32,7 +32,7 @@ void    LLtoArrayConverter(t_game *game)
         return ;
     while (temp2 != NULL)
     {
-        len = ft_strlen(temp2->content);
+        //len = ft_strlen(temp2->content);
         game->map[i] = ft_strdup(temp2->content);
         game->maxMapWidth = game->maxMapWidth > (int)ft_strlen(game->map[i])?game->maxMapWidth:(int)ft_strlen(game->map[i]); // sorry it's not single responsibility TT.
         i++;

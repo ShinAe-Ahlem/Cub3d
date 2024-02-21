@@ -114,14 +114,14 @@ void    MapCheckDivision(t_game *game)
 void checkMapElement(t_game *game)
 {
     game->pos = 0;
-    bool found_directions;
-    bool found_FC;
-    bool found_map;
+    //bool found_directions;
+    //bool found_FC;
+    //bool found_map;
 	game->mapLL = NULL;
 
-    found_directions = false;
-    found_FC = false;
-    found_map = false;
+    //found_directions = false;
+   // found_FC = false;
+    //found_map = false;
     while(game->mapfile[game->pos])
     {
         // printf("position in map = %d\n", game->pos);
@@ -134,7 +134,7 @@ void checkMapElement(t_game *game)
         {
             ft_putstr_fd("\n\n----------------------- is direction line check BEGIN----------------------- \n\n\n", 1);
             checkExportTextures(game);
-            found_directions = true;
+           // found_directions = true;
             ft_putstr_fd("\n----------------------- is direction line check END----------------------- \n", 1);
 
         }
@@ -142,7 +142,7 @@ void checkMapElement(t_game *game)
         {
             ft_putstr_fd("\n\n----------------------- Floor Ceiling check BEGIN----------------------- \n\n\n", 1);
             checkFloorCeiling(game);
-            found_FC = true;
+         //   found_FC = true;
             ft_putstr_fd("\n----------------------- Floor Ceiling check END----------------------- \n", 1);
 
         }
