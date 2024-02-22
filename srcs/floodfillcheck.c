@@ -41,6 +41,8 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 			{
 				game->playerPos->x = j;
 				game->playerPos->y = i;
+				game->posX = j + 0.5; //reste a verifier pourquoi loooool
+				game->posY = i + 0.5; 
 			}
 			j++;
 		}

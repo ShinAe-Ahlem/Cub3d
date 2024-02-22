@@ -45,12 +45,6 @@ void	drawPlayer(t_game *game)
 }
 
 
-
-
-
-
-
-
 int	move(int keysym, t_game *game)
 {
 	if (keysym == XK_a)
@@ -92,4 +86,168 @@ int	move(int keysym, t_game *game)
 		//     game->playerPos->y += 1;
 	}
 	return (0);
+}
+
+/*this is the raycasting function*/
+/*img will be initialized here all the time 
+it is also destroyed after being put to window, I have no Idea why*/
+
+static void initImage(t_game *game)
+{
+	game->img.mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
+	if(!game->img.mlx_img)
+	{
+		//freethis
+		exit(EXIT_FAILURE);
+	}
+	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, &game->img.line_len, &game->img.endian);
+
+}
+
+static void RayPosAndDir(t_game *game, int x)
+{
+	game->cameraX = 2 * x / (double)game->window_x - 1; //x-coordinate in camera space
+	game->rayDirX = game->dirX + game->planeX * game->cameraX;
+	game->rayDirY = game->dirY + game->planeY * game->cameraX;
+	game->mapX = (int)game->posX;
+	game->mapY = (int)game->posY;
+	    ft_putstr_fd("in ray dir\n", 1);
+
+}
+
+static void StepAndInitialSideDist(t_game *game)
+{
+	if (game->rayDirX < 0)
+	{
+		game->stepX = -1;
+		game->sideDistX = (game->posX - game->mapX)
+			* game->deltaDistX;
+	}
+	else
+	{
+		game->stepX = 1;
+		game->sideDistX = (game->mapX + 1.0 - game->posX)
+			* game->deltaDistX;
+	}
+	if (game->rayDirY < 0)
+	{
+		game->stepY = -1;
+		game->sideDistY = (game->posY - game->mapY)
+			* game->deltaDistY;
+	}
+	else
+	{
+		game->stepY = 1;
+		game->sideDistY = (game->mapY + 1.0 - game->posY)
+			* game->deltaDistY;
+	}
+	    ft_putstr_fd("in step side \n", 1);
+
+}
+
+static void PerformDDA(t_game *game)
+{
+	int hit;
+
+	hit = 0;
+	while (hit == 0)
+	{
+		//jump to next map square, either in x-direction, or in y-direction
+		if (game->sideDistX < game->sideDistY)
+		{
+			game->sideDistX += game->deltaDistX;
+			game->mapX += game->stepX;
+			game->side = 0;
+		}
+		else
+		{
+			game->sideDistY += game->deltaDistY;
+			game->mapY += game->stepY;
+			game->side = 1;
+		}
+		//Check if ray has hit a wall
+		if (game->map[game->mapX][game->mapY] > 0)
+			hit = 1;
+	} 
+	//Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
+	if(game->side == 0)
+		game->perpWallDist = (game->sideDistX - game->deltaDistX);
+	else
+	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
+	
+	ft_putstr_fd("in perform\n", 1);
+
+}
+
+static void calculateWallHeight(t_game *game)
+{
+	//Calculate height of line to draw on screen
+	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
+
+	//calculate lowest and highest pixel to fill in current stripe
+	game->drawStart = -game->lineHeight / 2 +game->window_y/ 2;
+	if(game->drawStart < 0)
+		game->drawStart = 0;
+	game->drawEnd = game->lineHeight / 2 +game->window_y/ 2;
+	if(game->drawEnd >= game->window_y)
+		game->drawEnd =game->window_y- 1;
+	    ft_putstr_fd("in calculate\n", 1);
+
+}
+
+void render(t_game *game, int x)
+{
+	int y;
+	int color1;
+	int color2;
+
+	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
+	color2 = create_rgb(game->ceiling.red, game->ceiling.green, game->ceiling.blue);
+
+	y = 0;
+	while (y < game->drawStart)
+	{
+		my_mlx_pixel_put(&game->img, x, y, color1);
+		y++;
+	}
+	while(y < game->drawEnd)
+	{
+		my_mlx_pixel_put(&game->img, x, y, SHINAECOLOR);
+		y++;
+	}
+	while (y < game->window_y)
+	{
+		my_mlx_pixel_put(&game->img, x, y, color2);
+		y++;
+	}
+	ft_putstr_fd("in render\n", 1);
+
+}
+
+int renderNextFrame(t_game *game)
+{
+	int x; //will be used to sample every column of the screan
+	
+	x = 0;
+	initImage(game);
+	/*Raycasting loop*/
+	while(x < game->window_x)
+	{
+	    ft_putstr_fd("************in render next frame****************\n", 1);
+		/* the ray starts at the postion of the player //lodev*/
+		//calculate ray position and direction
+		RayPosAndDir(game, x);
+		StepAndInitialSideDist(game);
+		PerformDDA(game); //check if a wall is hit
+		calculateWallHeight(game);
+		dprintf(1,"starting point = %d\n", game->drawStart);
+		dprintf(1,"end point = %d\n", game->drawEnd);
+		render(game, x);
+	    ft_putstr_fd("after pixel put\n", 1);
+		x++;
+		dprintf(1,"x = %d\n", x);
+	}
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
+	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
+	return(1);//presonaly I prefer 0 but I guess this is a loop_hook thing
 }

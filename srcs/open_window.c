@@ -27,11 +27,13 @@ void	window_size_setting(t_game *game)
 int	ft_create_window(t_game *game)
 {
 	initGameWindow(game);
-	// init_player(game);
-	import_textures(game);
-	renderGame(game);
-	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
+	//import_textures(game);
+	//renderGame(game);
+	//renderNextFrame(game);
 	mlx_key_hook(game->win_ptr, &hande_move, game);
+	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
+	mlx_loop_hook(game->mlx_ptr, renderNextFrame, game);
+	ft_putstr_fd("in create wivndow\n", 1);
 	mlx_loop(game->mlx_ptr);
 	return (1);
 }

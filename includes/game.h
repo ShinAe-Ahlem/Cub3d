@@ -72,8 +72,6 @@ typedef struct s_coord
 	int y;
 }	t_coord;
 
-
-
 typedef struct s_game
 {
 	char				*game_name;
@@ -100,8 +98,31 @@ typedef struct s_game
 	t_coord				*direction;
 	t_img				img;
     int                 pos; /*position in the mapfile*/
-	int x;
-	int y;
+	int 				x;
+	int 				y;
+	double				dirX;
+	double				dirY;
+	double				planeX;
+	double				planeY;
+	double				cameraX;
+	double				cameraY;
+	double				rayDirX;
+	double				rayDirY;
+	int 				mapX; //which box in the map we're in
+	int					mapY;
+	double				sideDistX; //length of ray from current position to next x or y side
+	double				sideDistY;
+	double 				deltaDistX; //length of ray from one x or y side to the next x or y side
+	double 				deltaDistY;
+	double				perpWallDist;
+	double				stepX; // what direction to step in x or y direction (either +1 or -1)
+	double				stepY;
+	double				posX; // player position
+	double				posY;
+	int					side; //was a NS or a EW wall hit?
+	int					lineHeight;
+	int					drawStart;
+	int					drawEnd;
 }						t_game;
 
 #endif

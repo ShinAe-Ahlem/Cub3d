@@ -9,14 +9,7 @@ typedef struct s_data
     void	*win_ptr;
 }	t_data;
 
-int	render(t_data *data)
-{
-    /* if window has been destroyed, we don't want to put the pixel ! */
-    if (data->win_ptr != NULL)
-        mlx_pixel_put(data->mlx_ptr, data->win_ptr, 
-            WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2, RED_PIXEL);
-    return (0);
-}
+
 
 int	main(int ac, char **av, char **env)
 {
