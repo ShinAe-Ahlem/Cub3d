@@ -39,10 +39,16 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 		{
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'S' || game->map[i][j] == 'E' || game->map[i][j] == 'A' )
 			{
-				game->playerPos->x = j;
-				game->playerPos->y = i;
-				game->posX = j + 0.5; //reste a verifier pourquoi loooool
-				game->posY = i + 0.5; 
+				game->playerPos->x = i;
+				game->playerPos->y = j;
+				dprintf(1,"player position  x = %d\n", game->playerPos->x);
+				dprintf(1,"player position  y = %d\n", game->playerPos->y);
+				
+				game->posX = i + 0.5; //reste a verifier pourquoi loooool
+				game->posY = j + 0.5;
+				dprintf(1,"player position  x = %f\n", game->posX);
+				dprintf(1,"player position  y = %f\n", game->posY);
+				
 			}
 			j++;
 		}
