@@ -19,9 +19,9 @@ int	handle_keypress(int keysym, t_game *game)
     ft_error("moved well\n");
     if (!move(keysym, game))
     {
-        printf("player x = %d", game->playerPos->x);
-        dprintf(1, "player y = %d", game->playerPos->y);
-        renderGame(game);
+        printf("player x = %d\n", game->playerPos->x);
+        dprintf(1, "player y = %d\n", game->playerPos->y);
+        renderNextFrame(game);
     }
     return (0);
 }
