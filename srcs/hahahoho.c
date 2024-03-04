@@ -9,9 +9,15 @@ bool    import_textures(t_game *game) // temporary
         //freethis
         exit(EXIT_FAILURE);
     }
-    game->grp->floor = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/floor.xpm", &size, &size);
-    game->grp->wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/wall.xpm", &size, &size);
-    game->grp->ennemi_one = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/shikwon.xpm", &size, &size);
+    game->grp->north = malloc(1 * sizeof(void));
+    game->grp->north = mlx_xpm_file_to_image(game->mlx_ptr, "./img/xpm/north.xpm",&size, &size);
+    game->grp->south = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/south.xpm",&size, &size);
+    game->grp->west = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/west.xpm",&size, &size);
+    game->grp->east = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/east.xpm",&size, &size);
+
+    game->grp->floor = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/floor.xpm",&size, &size);
+    game->grp->wall = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/wall.xpm",&size, &size);
+    game->grp->ennemi_one = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/shikwon.xpm",&size, &size);
     if (game->grp->floor == NULL || game->grp->wall == NULL || game->grp->ennemi_one == NULL)
         return (1);
     return (0);

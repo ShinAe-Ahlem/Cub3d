@@ -256,31 +256,18 @@ static void PerformDDA(t_game *game)
 			//ft_putstr_fd("A wall has been hit \n", 1);
 			hit = 1;
 		}
-		//dprintf(1,"in performDDA: sideDistX = %f\n", game->sideDistX);
-		//dprintf(1,"in performDDA: sideDistY = %f\n", game->sideDistY);
 	}
-	////dprintf(1,"in perform DDA : sideDistX = %f\n", game->sideDistX);
-	////dprintf(1,"in perform DDA : sideDistY = %f\n", game->sideDistY);
-	////dprintf(1,"in perform DDA : deltaDistX = %f\n", game->deltaDistX);
-	////dprintf(1,"in perform DDA : deltaDistY = %f\n", game->deltaDistY);
-	
 	//Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
 	if(game->side == 0)
 		game->perpWallDist = (game->sideDistX - game->deltaDistX);
 	else
 	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
-	//dprintf(1,"in caculate : perpWallDist = %f\n", game->perpWallDist);
-	//ft_putstr_fd("in perform\n", 1);
-
 }
 
 static void calculateWallHeight(t_game *game)
 {
 	//Calculate height of line to draw on screen
 	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
-	//dprintf(1,"in caculate : lineHeight = %d\n", game->lineHeight);
-	//dprintf(1,"in caculate : window_y = %d\n", game->window_y);
-	////dprintf(1,"in caculate : perpWallDist = %f\n", game->perpWallDist);
 
 	//calculate lowest and highest pixel to fill in current stripe
 	game->drawStart = -game->lineHeight/2 + game->window_y/2 ;
@@ -294,12 +281,40 @@ static void calculateWallHeight(t_game *game)
 
 }
 
+static void texturingCalculation(t_game *game)
+{
+	game->texNum = game->map[game->mapX][game->mapY] - 1;//1 subtracted from it so that texture 0 can be used!
+
+	//calculate value of game->wallX
+	//where exactly the wall was hit
+	if (game->side == 0) 
+		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
+	else
+		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
+	game->wallX -= floor((game->wallX));
+
+	//x coordinate on the texture
+	game->texX = (int)(game->wallX * texWidth);
+
+	if(game->side == 0 && game->rayDirX > 0) 
+		game->texX = texWidth - game->texX - 1;
+	if(game->side == 1 && game->rayDirY < 0) 
+		game->texX = texWidth - game->texX - 1;
+
+
+	// How much to increase the texture coordinate per screen pixel
+	game->step = 1.0 * texHeight / game->lineHeight;
+	// Starting texture coordinate
+	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2) * game->step;
+}
+
+
 void render(t_game *game, int x)
 {
 	int y;
 	int color1;
 	int color2;
-
+	int	color3;
 	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
 	color2 = create_rgb(game->ceiling.red, game->ceiling.green, game->ceiling.blue);
 
@@ -311,7 +326,19 @@ void render(t_game *game, int x)
 	}
 	while(y < game->drawEnd)
 	{
-		my_mlx_pixel_put(&game->img, x, y, SHINAECOLOR);
+		/*here I need to draw textures*/
+		// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->north, x, y);
+			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+		game->texY = (int)game->texPos * (texHeight - 1);
+		game->texPos += game->step;
+		color3 = game->texture.NO[texHeight * game->texY + game->texX];
+		// dprintf(1, "texX = %d\n, texY = %d\n", game->texX, game->texY);
+		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		// if(game->side == 1) 
+		// 	color3 = (color3 >> 1) & 8355711;
+		my_mlx_pixel_put(&game->img, x, y, color3);
+		// my_mlx_pixel_put(&game->img, x, y, SHINAECOLOR);
+
 		y++;
 	}
 	y = game->drawEnd;
@@ -321,7 +348,6 @@ void render(t_game *game, int x)
 		y++;
 	}
 	//ft_putstr_fd("in render\n", 1);
-
 }
 
 int renderNextFrame(t_game *game)
@@ -340,12 +366,10 @@ int renderNextFrame(t_game *game)
 		StepAndInitialSideDist(game);
 		PerformDDA(game); //check if a wall is hit
 		calculateWallHeight(game);
-		//dprintf(1,"starting point = %d\n", game->drawStart);
-		//dprintf(1,"end point = %d\n", game->drawEnd);
+		texturingCalculation(game);
 		render(game, x);
 	    //ft_putstr_fd("after pixel put\n", 1);
 		x++;
-		////dprintf(1,"x = %d\n", x);
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);

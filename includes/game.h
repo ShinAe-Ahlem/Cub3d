@@ -24,7 +24,8 @@ typedef struct s_coord	t_coord;
 # define PI 3.1415926535
 # define P2 PI/2
 # define P3 3*PI/2
-
+#define texWidth 64
+#define texHeight 64
 
 typedef struct s_img
 {
@@ -123,6 +124,12 @@ typedef struct s_game
 	int					lineHeight;
 	int					drawStart;
 	int					drawEnd;
+	double 				wallX; // where exactly the wall was hit
+	int					texNum; // the value of current square - 1 (so that texture 0 can be used?)
+	double				step;
+	double				texPos;
+	int					texX;
+	int					texY;
 }						t_game;
 
 #endif

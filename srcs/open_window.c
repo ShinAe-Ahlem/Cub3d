@@ -27,7 +27,7 @@ void	window_size_setting(t_game *game)
 int	ft_create_window(t_game *game)
 {
 	initGameWindow(game);
-	//import_textures(game);
+	import_textures(game);
 	//renderGame(game);
 	//renderNextFrame(game);
 	mlx_loop_hook(game->mlx_ptr, renderNextFrame, game);
