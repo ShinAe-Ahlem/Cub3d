@@ -30,7 +30,7 @@ void	drawPlayer(t_game *game)
 		perror("window");
 		exit(1);
 	}
-	//ft_putstr_fd("in draw player\n", 1);
+	ft_putstr_fd("in draw player\n", 1);
     drawRectangle(game, (TILE * game->playerPos->x), (TILE * game->playerPos->y), 20, 20, RED_PIXEL);
 	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->ennemi_one,
 	// 	(TILE * game->playerPos->x), (TILE * game->playerPos->y));
@@ -158,13 +158,20 @@ it is also destroyed after being put to window, I have no Idea why*/
 
 static void initImage(t_game *game)
 {
-	game->img.mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
-	if(!game->img.mlx_img)
+	game->img = malloc(1 * sizeof(t_img));
+	if(!game->img)
+	{
+		//free this
+		ft_error("malloc");
+		exit(EXIT_FAILURE);
+	}
+	game->img->mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
+	if(!game->img->mlx_img)
 	{
 		//freethis
 		exit(EXIT_FAILURE);
 	}
-	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, &game->img.line_len, &game->img.endian);
+	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 
 }
 
@@ -177,7 +184,7 @@ static void RayPosAndDir(t_game *game, int x)
 	game->mapY = (int)game->posY;
 	game->deltaDistX = fabs(1 / game->rayDirX);
 	game->deltaDistY = fabs(1 / game->rayDirY);
-	//ft_putstr_fd("in ray dir\n", 1);
+	// ft_putstr_fd("in ray dir\n", 1);
 
 }
 
@@ -185,40 +192,32 @@ static void StepAndInitialSideDist(t_game *game)
 {
 	if (game->rayDirX < 0)
 	{
-		//ft_putstr_fd("raydirx < 0 \n", 1);
+		// ft_putstr_fd("raydirx < 0 \n", 1);
 		game->stepX = -1;
 		game->sideDistX = (game->posX - game->mapX) * game->deltaDistX;
 		
 	}
 	else
 	{
-		//ft_putstr_fd("raydirx >= 0 \n", 1);
+		// ft_putstr_fd("raydirx >= 0 \n", 1);
 		game->stepX = 1;
 		game->sideDistX = (game->mapX + 1.0 - game->posX) * game->deltaDistX;
-		////dprintf(1,"in step and raydir : posX = %f\n", game->posX);
-		////dprintf(1,"in step and raydir : mapX = %d\n", game->mapX);
-		////dprintf(1,"in step and raydir : detlaDistX = %f\n", game->deltaDistX);
 	}
 	if (game->rayDirY < 0)
 	{
-		//ft_putstr_fd("raydiry < 0 \n", 1);
+		// ft_putstr_fd("raydiry < 0 \n", 1);
 		game->stepY = -1;
 		game->sideDistY = (game->posY - game->mapY) * game->deltaDistY;
 	}
 	else
 	{
-		//ft_putstr_fd("raydiry >= 0 \n", 1);
+		// ft_putstr_fd("raydiry >= 0 \n", 1);
 		game->stepY = 1;
 		game->sideDistY = (game->mapY + 1.0 - game->posY)
 			* game->deltaDistY;
-		////dprintf(1,"in step and raydir : posY = %f\n", game->posY);
-		////dprintf(1,"in step and raydir : mapY = %d\n", game->mapY);
-		////dprintf(1,"in step and raydir : detlaDistY = %f\n", game->deltaDistY);
 		
 	}
-	////dprintf(1,"in step and raydir : raydirX = %f\n", game->rayDirX);
-	////dprintf(1,"in step and raydir : raydirY = %f\n", game->rayDirY);
-	//ft_putstr_fd("in step side \n", 1);
+	// ft_putstr_fd("in step side \n", 1);
 
 }
 
@@ -230,30 +229,25 @@ static void PerformDDA(t_game *game)
 	while (hit == 0)
 	{
 		//jump to next map square, either in x-direction, or in y-direction
-		//dprintf(1,"in step and raydir : mapx = %d\n", game->mapX);
-		//dprintf(1,"in step and raydir : mapY = %d\n", game->mapY);
 		if (game->sideDistX < game->sideDistY)
 		{
-			//ft_putstr_fd("sideDistX < sideDistY \n", 1);
+			// ft_putstr_fd("sideDistX < sideDistY \n", 1);
 			game->sideDistX += game->deltaDistX;
 			game->mapX += game->stepX;
-			//dprintf(1,"in performDDA: stepX = %f\n", game->stepX);
-			//dprintf(1,"in step and raydir : mapx = %d\n", game->mapX);
 			game->side = 0;
-			//ft_putstr_fd("in performDDA \n", 1);
+			// ft_putstr_fd("in performDDA \n", 1);
 		}
 		else
 		{
-			//ft_putstr_fd("sideDistX > sideDistY \n", 1);
+			// ft_putstr_fd("sideDistX > sideDistY \n", 1);
 			game->sideDistY += game->deltaDistY;
 			game->mapY += game->stepY;
-			//dprintf(1,"in step and raydir : mapY = %d\n", game->mapY);
 			game->side = 1;
 		}
 		//Check if ray has hit a wall
 		if (game->map[game->mapX][game->mapY] == '1')
 		{
-			//ft_putstr_fd("A wall has been hit \n", 1);
+			// ft_putstr_fd("A wall has been hit \n", 1);
 			hit = 1;
 		}
 	}
@@ -262,6 +256,8 @@ static void PerformDDA(t_game *game)
 		game->perpWallDist = (game->sideDistX - game->deltaDistX);
 	else
 	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
+	// ft_putstr_fd("in DDA \n", 1);
+	
 }
 
 static void calculateWallHeight(t_game *game)
@@ -271,13 +267,12 @@ static void calculateWallHeight(t_game *game)
 
 	//calculate lowest and highest pixel to fill in current stripe
 	game->drawStart = -game->lineHeight/2 + game->window_y/2 ;
-	//dprintf(1,"in caculate : drawstart = %d\n", game->drawStart);
 	if(game->drawStart < 0)
 		game->drawStart = 0;
 	game->drawEnd = game->lineHeight / 2 + game->window_y/ 2;
 	if(game->drawEnd >= game->window_y)
 		game->drawEnd =game->window_y- 1;
-	    //ft_putstr_fd("in calculate\n", 1);
+	// ft_putstr_fd("in calculate\n", 1);
 
 }
 
@@ -306,6 +301,8 @@ static void texturingCalculation(t_game *game)
 	game->step = 1.0 * texHeight / game->lineHeight;
 	// Starting texture coordinate
 	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2) * game->step;
+	// ft_putstr_fd("in calculation\n", 1);
+
 }
 
 
@@ -315,39 +312,53 @@ void render(t_game *game, int x)
 	int color1;
 	int color2;
 	int	color3;
+
 	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
 	color2 = create_rgb(game->ceiling.red, game->ceiling.green, game->ceiling.blue);
-
 	y = 0;
 	while (y < game->drawStart)
 	{
-		my_mlx_pixel_put(&game->img, x, y, color2);
+		my_mlx_pixel_put(game->img, x, y, color2);
 		y++;
 	}
+	// ft_putstr_fd("ceiling ok\n", 1);
 	while(y < game->drawEnd)
 	{
+		// ft_putstr_fd("wall\n", 1);	
 		/*here I need to draw textures*/
 		// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->north, x, y);
 			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 		game->texY = (int)game->texPos * (texHeight - 1);
+		// if (game->texY < 0)
+		// 	game->texY = 0;
+		// if (game->texY > texHeight)
+		// 	game->texY = 0;
+		// if (game->texX > texWidth)
+		// 	game->texX = 0;
+		// if (game->texX < 0)
+		// 	game->texX = 0;
 		game->texPos += game->step;
-		color3 = game->texture.NO[texHeight * game->texY + game->texX];
-		// dprintf(1, "texX = %d\n, texY = %d\n", game->texX, game->texY);
+		color3 = game->texAddress[0][texHeight * game->texY + game->texX];
 		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
-		// if(game->side == 1) 
-		// 	color3 = (color3 >> 1) & 8355711;
-		my_mlx_pixel_put(&game->img, x, y, color3);
-		// my_mlx_pixel_put(&game->img, x, y, SHINAECOLOR);
+		if(game->side == 1) 
+			color3 = (color3 >> 1) & 8355711;
+		// dprintf(1, "texX = %d\n", game->texX);
+		// dprintf(1, "texY = %d\n", game->texY);
 
+		my_mlx_pixel_put(game->img, x, y, color3);
+		// my_mlx_pixel_put(&game->img, x, y, SHINAECOLOR);
 		y++;
+
 	}
+	// ft_putstr_fd("walls ok\n", 1);
 	y = game->drawEnd;
 	while (y < game->window_y)
 	{
-		my_mlx_pixel_put(&game->img, x, y, color1);
+		my_mlx_pixel_put(game->img, x, y, color1);
 		y++;
 	}
-	//ft_putstr_fd("in render\n", 1);
+	// ft_putstr_fd("floor ok\n", 1);
+	// ft_putstr_fd("********************************in render*******************************************\n", 1);
 }
 
 int renderNextFrame(t_game *game)
@@ -356,10 +367,11 @@ int renderNextFrame(t_game *game)
 	
 	x = 0;
 	initImage(game);
+	// initTextures(game);
 	/*Raycasting loop*/
 	while(x < game->window_x)
 	{
-	    //ft_putstr_fd("************in render next frame****************\n", 1);
+	    // ft_putstr_fd("************in render next frame****************\n", 1);
 		/* the ray starts at the postion of the player //lodev*/
 		//calculate ray position and direction
 		RayPosAndDir(game, x);
@@ -368,10 +380,10 @@ int renderNextFrame(t_game *game)
 		calculateWallHeight(game);
 		texturingCalculation(game);
 		render(game, x);
-	    //ft_putstr_fd("after pixel put\n", 1);
+	    // ft_putstr_fd("after pixel put\n", 1);
 		x++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0, 0);
-	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
+	mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
 	return(1);//presonaly I prefer 0 but I guess this is a loop_hook thing
 }

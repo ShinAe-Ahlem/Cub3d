@@ -9,7 +9,6 @@ bool    import_textures(t_game *game) // temporary
         //freethis
         exit(EXIT_FAILURE);
     }
-    game->grp->north = malloc(1 * sizeof(void));
     game->grp->north = mlx_xpm_file_to_image(game->mlx_ptr, "./img/xpm/north.xpm",&size, &size);
     game->grp->south = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/south.xpm",&size, &size);
     game->grp->west = mlx_xpm_file_to_image(game->mlx_ptr, "img/xpm/west.xpm",&size, &size);

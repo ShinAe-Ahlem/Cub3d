@@ -43,7 +43,7 @@ void drawFloorCeiling(t_game *game)
 	{
 		while (x < game->window_x)
 		{
-			my_mlx_pixel_put(&(game->img), x, y, color2);
+			my_mlx_pixel_put((game->img), x, y, color2);
 			x++;
 		}
 		x = 0;
@@ -54,7 +54,7 @@ void drawFloorCeiling(t_game *game)
 	{
 		while (x <= game->window_x)
 		{
-			my_mlx_pixel_put(&(game->img), x, y, color1);
+			my_mlx_pixel_put((game->img), x, y, color1);
 			x++;
 		}
 		x = 0;

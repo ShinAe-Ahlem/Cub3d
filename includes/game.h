@@ -79,6 +79,8 @@ typedef struct s_game
 	int fd; // fd of map we read with gnl
 	void				*mlx_ptr;
 	t_grp				*grp;
+	void				**tex; // tableaux pour les xpm;
+	char 				**texAddress; // addresse des xpm pour recuperer les pixel plutard
 	void				*win_ptr;
 	int					screen_x;
 	int					screen_y;
@@ -97,7 +99,7 @@ typedef struct s_game
 	float				playerAngle;
 	t_coord				*cameraPlane;
 	t_coord				*direction;
-	t_img				img;
+	t_img				*img;
     int                 pos; /*position in the mapfile*/
 	int 				x;
 	int 				y;

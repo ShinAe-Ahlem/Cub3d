@@ -30,7 +30,7 @@ int	main(int ac, char **av, char **env)
     ft_create_window(&game);
     
     /* we will exit the loop if there's no window left, and execute this code */
-    // mlx_destroy_display(game.mlx_ptr);
-    // free(game.mlx_ptr);
+    mlx_destroy_display(game.mlx_ptr);
+    free(game.mlx_ptr);
     printf("\n<< main() correctly closed >>\n");
 }
