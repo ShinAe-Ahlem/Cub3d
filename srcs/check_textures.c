@@ -8,16 +8,17 @@ void export_texture(t_game *game)
 
     //Que se passe t-il quand il y a des espaces devant la direction des textures
     //ex) [           NO temp/temp.xpm]
+    game->texture = malloc(1 * sizeof(t_texture *));
     while(i < game->pos)
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
-            game->texture.NO = ft_strdup(game->mapfile[i]);
+            game->texture->NO = ft_strdup(game->mapfile[i]);
         else if (!ft_strncmp("SO ", game->mapfile[i], 3))
-            game->texture.SO = ft_strdup(game->mapfile[i]);
+            game->texture->SO = ft_strdup(game->mapfile[i]);
         else if (!ft_strncmp("EA ", game->mapfile[i], 3))
-            game->texture.EA = ft_strdup(game->mapfile[i]);
+            game->texture->EA = ft_strdup(game->mapfile[i]);
         else if (!ft_strncmp("WE ", game->mapfile[i], 3))
-            game->texture.WE = ft_strdup(game->mapfile[i]);
+            game->texture->WE = ft_strdup(game->mapfile[i]);
         i++;
     }
 
@@ -97,19 +98,19 @@ void check_game_textures(t_game *game)
     {
         // game->texture.pos = game->pos;
         export_texture(game);
-        if (!check_extension(game->texture.NO) || \
-                !check_extension(game->texture.SO) || \
-                !check_extension(game->texture.EA) || \
-                !check_extension(game->texture.WE))
+        if (!check_extension(game->texture->NO) || \
+                !check_extension(game->texture->SO) || \
+                !check_extension(game->texture->EA) || \
+                !check_extension(game->texture->WE))
         {
             // free 
             ft_error(ERROR_FILE_EXT);
             exit(EXIT_FAILURE);
         }
-        texture_file_exist(game->texture.NO);
-        texture_file_exist(game->texture.SO);
-        texture_file_exist(game->texture.EA);
-        texture_file_exist(game->texture.WE);
+        texture_file_exist(game->texture->NO);
+        texture_file_exist(game->texture->SO);
+        texture_file_exist(game->texture->EA);
+        texture_file_exist(game->texture->WE);
     }
     else
     {

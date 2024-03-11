@@ -234,14 +234,22 @@ static void PerformDDA(t_game *game)
 			// ft_putstr_fd("sideDistX < sideDistY \n", 1);
 			game->sideDistX += game->deltaDistX;
 			game->mapX += game->stepX;
-			game->side = 0;
+			if (game->stepX > 0)
+				game->dir = 1;
+			else
+				game->dir = 3;
 			// ft_putstr_fd("in performDDA \n", 1);
+			game->side = 0;
 		}
 		else
 		{
 			// ft_putstr_fd("sideDistX > sideDistY \n", 1);
 			game->sideDistY += game->deltaDistY;
 			game->mapY += game->stepY;
+			if (game->stepY > 0)
+				game->dir = 2;
+			else
+				game->dir = 3;
 			game->side = 1;
 		}
 		//Check if ray has hit a wall
@@ -278,7 +286,7 @@ static void calculateWallHeight(t_game *game)
 
 static void texturingCalculation(t_game *game)
 {
-	game->texNum = game->map[game->mapX][game->mapY] - 1;//1 subtracted from it so that texture 0 can be used!
+	// game->texNum = game->map[game->mapX][game->mapY] - 1;//1 subtracted from it so that texture 0 can be used!
 
 	//calculate value of game->wallX
 	//where exactly the wall was hit
@@ -305,41 +313,55 @@ static void texturingCalculation(t_game *game)
 
 }
 
-
 void render(t_game *game, int x)
 {
 	int y;
 	int color1;
 	int color2;
 	int	color3;
-
 	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
 	color2 = create_rgb(game->ceiling.red, game->ceiling.green, game->ceiling.blue);
 	y = 0;
+
 	while (y < game->drawStart)
 	{
+		if (y < 0)
+			y = 0;
+		else if (y > game->window_y)
+			y = game->window_y;
+		if (x < 0)
+			x = 0;
+		else if (x > game->window_x)
+			x = game->window_x;
 		my_mlx_pixel_put(game->img, x, y, color2);
 		y++;
 	}
 	// ft_putstr_fd("ceiling ok\n", 1);
 	while(y < game->drawEnd)
 	{
+		// if (y < 0)
+		// 	y = 0;
+		// else if (y > game->window_y)
+		// 	y = game->window_y;
+		// if (x < 0)
+		// 	x = 0;
+		// else if (x > game->window_x)
+		// 	x = game->window_x;
 		// ft_putstr_fd("wall\n", 1);	
 		/*here I need to draw textures*/
-		// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->north, x, y);
-			// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
+		// Cast the texture coordinate to integer, and mask with (texHeight - 1) in case of overflow
 		game->texY = (int)game->texPos * (texHeight - 1);
-		// if (game->texY < 0)
-		// 	game->texY = 0;
-		// if (game->texY > texHeight)
-		// 	game->texY = 0;
-		// if (game->texX > texWidth)
-		// 	game->texX = 0;
-		// if (game->texX < 0)
-		// 	game->texX = 0;
+		if (game->texY < 0)
+			game->texY = 0;
+		if (game->texY > texHeight)
+			game->texY = 0;
+		if (game->texX > texWidth)
+			game->texX = 0;
+		if (game->texX < 0)
+			game->texX = 0;
 		game->texPos += game->step;
-		color3 = game->texAddress[0][texHeight * game->texY + game->texX];
-		//make color darker for y-sides: R, G and B byte each divided through two with a "shift" and an "and"
+		color3 = game->texAddress[game->dir][texHeight * game->texY + game->texX];
+		//make color darker for y-dirs: R, G and B byte each divided through two with a "shift" and an "and"
 		if(game->side == 1) 
 			color3 = (color3 >> 1) & 8355711;
 		// dprintf(1, "texX = %d\n", game->texX);
@@ -352,11 +374,20 @@ void render(t_game *game, int x)
 	}
 	// ft_putstr_fd("walls ok\n", 1);
 	y = game->drawEnd;
-	while (y < game->window_y)
+	while (y < game->window_y - 1)
 	{
+		if (y < 0)
+			y = 0;
+		else if (y > game->window_y)
+			y = game->window_y;
+		if (x < 0)
+			x = 0;
+		else if (x > game->window_x)
+			x = game->window_x;
 		my_mlx_pixel_put(game->img, x, y, color1);
 		y++;
 	}
+
 	// ft_putstr_fd("floor ok\n", 1);
 	// ft_putstr_fd("********************************in render*******************************************\n", 1);
 }

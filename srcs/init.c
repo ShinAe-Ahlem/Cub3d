@@ -20,10 +20,11 @@ void graphique_init(t_game *game)
 
 void texture_init(t_game *game)
 {
-	game->texture.NO = NULL;
-	game->texture.SO = NULL;
-	game->texture.EA = NULL;
-	game->texture.WE = NULL;
+	game->texture = NULL;
+	// game->texture->NO = NULL;
+	// game->texture->SO = NULL;
+	// game->texture->EA = NULL;
+	// game->texture->WE = NULL;
 }
 
 void FC_init(t_game *game)
@@ -69,6 +70,7 @@ void initGameParam(t_game *game)
 	game->pos = 0;
 	game->x = 0;
 	game->y = 0;
+	game->mlx_ptr = NULL;
 	graphique_init(game);
 	texture_init(game);
 	FC_init(game);

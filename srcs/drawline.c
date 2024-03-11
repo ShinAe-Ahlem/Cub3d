@@ -226,7 +226,7 @@ void draw3d(t_game *game)
         int stepX;
         int stepY;
         int hit = 0; //was there a wall hit?
-        int side; //was a NS or a EW wall hit?
+        //was a NS or a EW wall hit?
         //calculate step and initial sideDist
          if(rayDirX < 0)
       {
@@ -256,18 +256,18 @@ void draw3d(t_game *game)
         {
           sideDistX += deltaDistX;
           mapX += stepX;
-          side = 0;
+          game->side = 0;
         }
         else
         {
           sideDistY += deltaDistY;
           mapY += stepY;
-          side = 1;
+          game->side = 1;
         }
         //Check if ray has hit a wall
         if(game->map[mapX][mapY] > 0) hit = 1; 
     }
-     if(side == 0) perpWallDist = (sideDistX - deltaDistX);
+     if(game->side == 0) perpWallDist = (sideDistX - deltaDistX);
       else          perpWallDist = (sideDistY - deltaDistY);
 
       //Calculate height of line to draw on screen
@@ -291,7 +291,7 @@ void draw3d(t_game *game)
     //   }
 
     //   //give x and y sides different brightness
-    //   if(side == 1) {color = color / 2;}
+    //   if(game->side == 1) {color = color / 2;}
 
     //   //draw the pixels of the stripe as a vertical line
       
