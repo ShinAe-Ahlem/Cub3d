@@ -55,8 +55,6 @@ static void EpurArray(t_game *game)
     while(game->map[i])
     {
         lastOnePos= ft_strlen(game->map[i]);
-       // dprintf(1, "len de map[%d] = %zu\n", i, ft_strlen(game->map[i]));
-       // dprintf(1, "lastOnePOs initialized to = %zu\n", lastOnePos);
         if (game->map[i][lastOnePos -1 ] == '\n')
            // dprintf(1, "\n**********************************************************************\n");
         lastOnePos--;
@@ -74,8 +72,6 @@ static void EpurArray(t_game *game)
         {
             new[i] = ft_substr(game->map[i], 0, lastOnePos + 2);
             new[i][lastOnePos + 1] = '\n';
-           // dprintf(1, "len de new[%d] = %zu\n", i, ft_strlen(new[i]));
-           // dprintf(1, "new[%d] = %s\n",i, new[i]);
         }
         i++;
     }
@@ -114,41 +110,19 @@ void    MapCheckDivision(t_game *game)
 void checkMapElement(t_game *game)
 {
     game->pos = 0;
-    //bool found_directions;
-    //bool found_FC;
-    //bool found_map;
 	game->mapLL = NULL;
 
-    //found_directions = false;
-   // found_FC = false;
-    //found_map = false;
     while(game->mapfile[game->pos])
     {
         // printf("position in map = %d\n", game->pos);
         if (game->mapfile[game->pos] && game->mapfile[game->pos][0] == '\n')
-        {
             game->pos++;
-            // printf("position in map = %d\n", game->pos);
-        }
         if (game->mapfile[game->pos] && isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
-        {
-            ft_putstr_fd("\n\n----------------------- is direction line check BEGIN----------------------- \n\n\n", 1);
             checkExportTextures(game);
-           // found_directions = true;
-            ft_putstr_fd("\n----------------------- is direction line check END----------------------- \n", 1);
-
-        }
         else if (game->mapfile[game->pos] && isFloorCeilnigLine(game->mapfile[game->pos]))
-        {
-            ft_putstr_fd("\n\n----------------------- Floor Ceiling check BEGIN----------------------- \n\n\n", 1);
             checkFloorCeiling(game);
-         //   found_FC = true;
-            ft_putstr_fd("\n----------------------- Floor Ceiling check END----------------------- \n", 1);
-
-        }
         else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
         {
-            // printf("inside checkMapElement, isMap Loop, line = %s \n", game->mapfile[game->pos]);
             checkIsLastElement(game);
             exportMap(game);
         }
@@ -156,8 +130,4 @@ void checkMapElement(t_game *game)
             game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
     MapCheckDivision(game);
-    ft_putstr_fd("\n\nmaxMapWidth = ", 1);
-    ft_putnbr_fd(game->maxMapWidth, 1);
-    ft_putstr_fd("\n\n", 1);
-    ft_putstr_fd("\n\n----------------------- Map check END----------------------- \n\n\n", 1);
 }

@@ -21,10 +21,6 @@ void graphique_init(t_game *game)
 void texture_init(t_game *game)
 {
 	game->texture = NULL;
-	// game->texture->NO = NULL;
-	// game->texture->SO = NULL;
-	// game->texture->EA = NULL;
-	// game->texture->WE = NULL;
 }
 
 void FC_init(t_game *game)

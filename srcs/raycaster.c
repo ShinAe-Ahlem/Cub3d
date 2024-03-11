@@ -14,166 +14,15 @@ the ray distance is converted to vertical lines that will make the walls
 
 /**/
 /*this function has to be called in create window*/
-/*static void CastARay(t_game *game)
-{
-	
-	
-}
-*/
 
-void	drawPlayer(t_game *game)
-{
-	mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	if (!game->win_ptr)
-	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		perror("window");
-		exit(1);
-	}
-	ft_putstr_fd("in draw player\n", 1);
-    drawRectangle(game, (TILE * game->playerPos->x), (TILE * game->playerPos->y), 20, 20, RED_PIXEL);
-	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->ennemi_one,
-	// 	(TILE * game->playerPos->x), (TILE * game->playerPos->y));
-    printf("game->playerPos->x : %d\n", game->playerPos->x);
-    printf("game->playerPos->y : %d\n", game->playerPos->y);
-	drawLine(game, game->playerPos->x * TILE, game->playerPos->y  * TILE, (game->playerPos->x
-		+ game->playerPosDelta->x) * TILE, (game->playerPos->y + game->playerPosDelta->y) * TILE, SHINAECOLOR);
-    // drawRays3D(game);
-	// draw3d(game);
-	// my_mlx_pixel_put(&(game->img), (int)game->playerPos->x + TILE,
-		// (int)game->playerPos->y + TILE, create_rgb(255, 255, 255);
-}
 
-/*
-int	move(int keysym, t_game *game)
-{
-	if (keysym == XK_a)
-	{
-		game->playerAngle -= 0.1;
-		if (game->playerAngle < 0)
-		{
-			game->playerAngle += 2 * PI;
-		}
-		game->playerPosDelta->x = cos(game->playerAngle) * 3;
-		game->playerPosDelta->y = sin(game->playerAngle) * 3;
-		// if (game->playerPos->x > 0)
-		//     game->playerPos->x -= 1;
-	}
-	if (keysym == XK_d)
-	{
-		game->playerAngle += 0.1;
-		if (game->playerAngle > 2 * PI)
-		{
-			game->playerAngle -= 2 * PI;
-		}
-		game->playerPosDelta->x = cos(game->playerAngle) * 3;
-		game->playerPosDelta->y = sin(game->playerAngle) * 3;
-		// if (game->playerPos->x < game->window_x)
-		//     game->playerPos->x += 1;
-	}
-	if (keysym == XK_w)
-	{
-		game->playerPos->x += game->playerPosDelta->x;
-		game->playerPos->y += game->playerPosDelta->y;
-		// if (game->playerPos->y > 0)
-		//     game->playerPos->y -= 1;
-	}
-	if (keysym == XK_s)
-	{
-		game->playerPos->x -= game->playerPosDelta->x;
-		game->playerPos->y -= game->playerPosDelta->y;
-		// if (game->playerPos->y < game->window_y)
-		//     game->playerPos->y += 1;
-	}
-	return (0);
-}
-*/
-
-int	move(int keysym, t_game *game)
-{
-	double	olddirX;
-	double	moveSpeed;
-	double oldplaneX;
-	double	rotatSpeed;
-
-	rotatSpeed = 0.042;
-	moveSpeed = 0.083;
-	oldplaneX = game->planeX;
-	olddirX = game->dirX;
-	if (keysym == XK_Right)
-	{
-		game->dirX = game->dirX * cos(-rotatSpeed) - game->dirY * sin(-rotatSpeed);
-		game->dirY = olddirX * sin(-rotatSpeed) + game->dirY * cos(-rotatSpeed);
-		game->planeX = game->planeX * cos(-rotatSpeed) - game->planeY * sin(-rotatSpeed);
-		game->planeY = oldplaneX * sin(-rotatSpeed) + game->planeY * cos(-rotatSpeed);
-	}
-	if (keysym == XK_Left)
-	{
-		game->dirX = game->dirX * cos(rotatSpeed) - game->dirY * sin(rotatSpeed);
-		game->dirY = olddirX * sin(rotatSpeed) + game->dirY * cos(rotatSpeed);
-		game->planeX = game->planeX * cos(rotatSpeed) - game->planeY * sin(rotatSpeed);
-		game->planeY = oldplaneX * sin(rotatSpeed) + game->planeY * cos(rotatSpeed);
-	}
-
-	if (keysym == XK_a)
-	{
-		if (game->map[(int)((game->posX - game->dirY * moveSpeed - 0.000001))][(int)(game->posY)] != '1')
-			game->posX -= game->dirY * moveSpeed - 0.000001;
-		if (game->map[(int)(game->posX)]
-			[((int)(game->posY + game->dirX * moveSpeed - 0.000001))] != '1')
-			game->posY += game->dirX * moveSpeed - 0.000001;
-	}
-	if (keysym == XK_d)
-	{
-		if (game->map[(int)((game->posX + game->dirY * moveSpeed - 0.000001))]
-			[(int)(game->posY)] != '1')
-			game->posX += game->dirY * moveSpeed - 0.000001;
-		if (game->map[(int)(game->posX)]
-			[((int)(game->posY - game->dirX * moveSpeed - 0.000001))] != '1')
-			game->posY -= game->dirX * moveSpeed - 0.000001;
-	}
-	if (keysym == XK_w)
-	{
-		if (game->map[(int)(game->posX + game->dirX * moveSpeed - 0.000001)][(int)(game->posY - 0.000001)] != '1')
-			game->posX += game->dirX * moveSpeed;
-		if (game->map[(int)(game->posX - 0.000001)][((int)(game->posY + game->dirY * moveSpeed - 0.000001))] != '1')
-			game->posY += game->dirY * moveSpeed;
-	}
-	if (keysym == XK_s)
-	{
-		if (game->map[(int)((game->posX - game->dirX * moveSpeed - 0.000001))]
-			[(int)(game->posY - 0.000001)] != '1')
-			game->posX -= game->dirX * moveSpeed;
-		if (game->map[(int)(game->posX - 0.000001)]
-			[((int)(game->posY - game->dirY * moveSpeed - 0.000001))] != '1')
-			game->posY -= game->dirY * moveSpeed;
-	}
-	return (0);
-}
 
 
 /*this is the raycasting function*/
 /*img will be initialized here all the time 
 it is also destroyed after being put to window, I have no Idea why*/
 
-static void initImage(t_game *game)
-{
-	game->img = malloc(1 * sizeof(t_img));
-	if(!game->img)
-	{
-		//free this
-		ft_error("malloc");
-		exit(EXIT_FAILURE);
-	}
-	game->img->mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
-	if(!game->img->mlx_img)
-	{
-		//freethis
-		exit(EXIT_FAILURE);
-	}
-	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
 
-}
 
 static void RayPosAndDir(t_game *game, int x)
 {
@@ -398,7 +247,6 @@ int renderNextFrame(t_game *game)
 	
 	x = 0;
 	initImage(game);
-	// initTextures(game);
 	/*Raycasting loop*/
 	while(x < game->window_x)
 	{

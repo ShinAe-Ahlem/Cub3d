@@ -25,13 +25,16 @@ int	main(int ac, char **av, char **env)
     initGameParam(&game);
     printf("\n<< main()>>\n");
     game.mapfile = ft_read_map(av[1]);
-    if (game.mapfile)
-        print_char_table(game.mapfile);
+    if (!game.mapfile)
+    {
+        free_all(&game);
+        return (1);
+    }
     checkMapElement(&game);
     ft_create_window(&game);
     
     /* we will exit the loop if there's no window left, and execute this code */
-    mlx_destroy_display(game.mlx_ptr);
-    free(game.mlx_ptr);
+    // mlx_destroy_display(game.mlx_ptr);
+    // free(game.mlx_ptr);
     printf("\n<< main() correctly closed >>\n");
 }

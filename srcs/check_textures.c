@@ -36,6 +36,7 @@ void texture_file_exist(char *texture)
         i++;
     filename = ft_substr(texture, i, ft_strlen(texture) - (i + 1));
     free(texture);
+    texture = NULL;
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
@@ -54,7 +55,8 @@ void texture_file_exist(char *texture)
         close(fd);
         exit (EXIT_SUCCESS);
     }
-    free(filename);
+   texture = ft_strdup(filename);
+   free(filename);
     close (fd);
 }
 
@@ -107,10 +109,19 @@ void check_game_textures(t_game *game)
             ft_error(ERROR_FILE_EXT);
             exit(EXIT_FAILURE);
         }
+        printf("game->texture->north =%s\n", game->texture->NO);
+        printf("game->texture->south =%s\n", game->texture->SO);
+        printf("game->texture->west =%s\n", game->texture->WE);
+        printf("game->texture->east =%s\n", game->texture->EA);
         texture_file_exist(game->texture->NO);
         texture_file_exist(game->texture->SO);
         texture_file_exist(game->texture->EA);
         texture_file_exist(game->texture->WE);
+        printf("game->texture->north =%s\n", game->texture->NO);
+        printf("game->texture->south =%s\n", game->texture->SO);
+        printf("game->texture->west =%s\n", game->texture->WE);
+        printf("game->texture->east =%s\n", game->texture->EA);
+
     }
     else
     {

@@ -79,8 +79,9 @@ int     hande_move(int keysym, t_game *game);
 void initGameWindow(t_game *game);
 void initGameParam(t_game *game);
 void    coordInit(t_coord *coord);
+void initImage(t_game *game);
 
 //***** FREE *****
 void freeCharArray(char ***array);
-
+void free_all(t_game *game);
 #endif

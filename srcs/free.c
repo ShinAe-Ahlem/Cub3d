@@ -13,3 +13,14 @@ void freeCharArray(char ***array)
     *array = NULL;
 }
 
+void free_all(t_game *game)
+{
+    // mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+    // free(game->img);
+    free(game->direction);
+    free(game->grp);
+    free(game->playerPos);
+    free(game->playerPosDelta);
+    free(game->cameraPlane);
+    game->img = NULL;
+}

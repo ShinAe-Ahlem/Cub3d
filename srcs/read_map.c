@@ -59,7 +59,8 @@ char	**ft_read_map(char *filename)
 	if (fd == -1)
 	{
 		perror("open");
-		exit(EXIT_FAILURE);
+		// exit(EXIT_FAILURE);
+		return(NULL);
 	}
 	while (1)
 	{
@@ -78,23 +79,3 @@ char	**ft_read_map(char *filename)
 	return (map_lines);
 }
 
-// int	main(int ac, char **av, char **env)
-// {
-// 	// t_game	game;
-
-// 	// 1) init
-// 	// 2) parsing (argument check, lecture cartte, map validity check)
-// 	// 3) free / destroy
-
-// 	// check_arg(ac, av);
-// 	// check_env(env);
-// 	(void)ac;
-// 	(void)env;
-// 	// ft_create_window(&game);
-// 	char **map_lines = ft_read_map(av[1]);
-// 	if (!map_lines)
-// 		ft_error("invalid map");
-// 	print_table(map_lines);
-// 	ft_putstr_fd("yahooooooooo\n", 1);
-// 	/* we will exit the loop if there's no window left, and execute this code */
-// }
