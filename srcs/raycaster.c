@@ -121,7 +121,6 @@ static void calculateWallHeight(t_game *game)
 {
 	//Calculate height of line to draw on screen
 	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
-
 	//calculate lowest and highest pixel to fill in current stripe
 	game->drawStart = -game->lineHeight/2 + game->window_y/2 ;
 	if(game->drawStart < 0)
@@ -130,13 +129,10 @@ static void calculateWallHeight(t_game *game)
 	if(game->drawEnd >= game->window_y)
 		game->drawEnd =game->window_y- 1;
 	// ft_putstr_fd("in calculate\n", 1);
-
 }
 
 static void texturingCalculation(t_game *game)
 {
-	// game->texNum = game->map[game->mapX][game->mapY] - 1;//1 subtracted from it so that texture 0 can be used!
-
 	//calculate value of game->wallX
 	//where exactly the wall was hit
 	if (game->side == 0) 
@@ -152,8 +148,6 @@ static void texturingCalculation(t_game *game)
 		game->texX = texWidth - game->texX - 1;
 	if(game->side == 1 && game->rayDirY < 0) 
 		game->texX = texWidth - game->texX - 1;
-
-
 	// How much to increase the texture coordinate per screen pixel
 	game->step = 1.0 * texHeight / game->lineHeight;
 	// Starting texture coordinate
@@ -171,17 +165,16 @@ void render(t_game *game, int x)
 	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
 	color2 = create_rgb(game->ceiling.red, game->ceiling.green, game->ceiling.blue);
 	y = 0;
-
 	while (y < game->drawStart)
 	{
-		if (y < 0)
-			y = 0;
-		else if (y > game->window_y)
-			y = game->window_y;
-		if (x < 0)
-			x = 0;
-		else if (x > game->window_x)
-			x = game->window_x;
+		// if (y < 0)
+		// 	y = 0;
+		// else if (y > game->window_y)
+		// 	y = game->window_y;
+		// if (x < 0)
+		// 	x = 0;
+		// else if (x > game->window_x)
+		// 	x = game->window_x;
 		my_mlx_pixel_put(game->img, x, y, color2);
 		y++;
 	}

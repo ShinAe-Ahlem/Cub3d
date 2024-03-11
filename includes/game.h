@@ -128,15 +128,14 @@ typedef struct s_game
 	int					drawStart;
 	int					drawEnd;
 	double 				wallX; // where exactly the wall was hit
-	int					texNum; // the value of current square - 1 (so that texture 0 can be used?)
 	double				step;
 	double				texPos;
 	int					texX;
 	int					texY;
 	int					dir;
-	int				bpp[4];
-	int				line_len[4];
-	int				endian[4];
+	int					bpp[4];
+	int					line_len[4];
+	int					endian[4];
 }						t_game;
 
 #endif

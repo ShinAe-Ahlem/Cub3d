@@ -3,8 +3,6 @@
 void initGameWindow(t_game *game)
 {
 	/******************************************************/
-	dprintf(1, "initGame\n");
-	
     game->mlx_ptr = mlx_init();
     game->game_name = "Alhem and Shin Ae's World <3";
 	if (game->mlx_ptr == NULL)

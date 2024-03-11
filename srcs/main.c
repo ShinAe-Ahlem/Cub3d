@@ -23,7 +23,6 @@ int	main(int ac, char **av, char **env)
     check_env(env);
 
     initGameParam(&game);
-    printf("\n<< main()>>\n");
     game.mapfile = ft_read_map(av[1]);
     if (!game.mapfile)
     {
@@ -31,6 +30,7 @@ int	main(int ac, char **av, char **env)
         return (1);
     }
     checkMapElement(&game);
+    printf("\n<< main()>>\n");
     ft_create_window(&game);
     
     /* we will exit the loop if there's no window left, and execute this code */
