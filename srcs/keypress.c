@@ -13,7 +13,7 @@ int	handle_keypress(int keysym, t_game *game)
     return (0);
 }
 
-int hande_move(int keysym, t_game *game)
+int handle_move(int keysym, t_game *game)
 {
     if (!move(keysym, game))
         renderNextFrame(game);

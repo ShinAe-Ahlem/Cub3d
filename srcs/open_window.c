@@ -62,10 +62,9 @@ void	window_size_setting(t_game *game)
 int	ft_create_window(t_game *game)
 {
 	initGameWindow(game);
-	// ft_putstr_fd("in create window\n", 1);
 	importTextures(game);
 	getTextureAddress(game);
-	mlx_key_hook(game->win_ptr, &hande_move, game);
+	mlx_key_hook(game->win_ptr, &handle_move, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
 	mlx_loop_hook(game->mlx_ptr, renderNextFrame, game);
 	mlx_loop(game->mlx_ptr);
