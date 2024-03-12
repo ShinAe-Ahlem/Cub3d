@@ -32,7 +32,7 @@ void    ft_error(char *code_error);
 
 //***** CHECK MAP *****
 
-bool    isMap(char *line);
+bool    isMap(t_game *game, char *line);
 bool    isEmptyLine(char *line);
 bool	checkDirection(char *line);
 

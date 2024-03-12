@@ -179,5 +179,6 @@ void checkFloorCeiling(t_game *game)
         }
         game->pos++;
     }
+
 }
 

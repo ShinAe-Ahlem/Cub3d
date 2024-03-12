@@ -22,7 +22,7 @@ bool isFloorCeilnigLine(char *line)
     return(false);
 }
 
-bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
+bool isMap(t_game *game, char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
    // ft_putstr_fd("\n\n----------------------- Map check BEGIN----------------------- \n\n\n", 1);
     char charset[8] = "01NSEW "; // add char such as X, Y and I if needed (bonus part)
@@ -33,7 +33,7 @@ bool isMap(char *line) //needs to be enhanced, using all charset such as 1,0,N,S
     {
         ft_perror(ERROR_NO_MATCH_CHAR);
         sleep(1);
-        // free
+        free_all(game);
         exit (EXIT_FAILURE);
     }
 }
@@ -121,8 +121,9 @@ void checkMapElement(t_game *game)
             checkExportTextures(game);
         else if (game->mapfile[game->pos] && isFloorCeilnigLine(game->mapfile[game->pos]))
             checkFloorCeiling(game);
-        else if (game->mapfile[game->pos] && isMap(game->mapfile[game->pos]))
+        else if (game->mapfile[game->pos] && isMap(game, game->mapfile[game->pos]))
         {
+
             checkIsLastElement(game);
             exportMap(game);
         }

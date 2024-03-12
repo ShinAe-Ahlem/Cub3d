@@ -10,7 +10,6 @@ typedef struct s_data
 }	t_data;
 
 
-
 int	main(int ac, char **av, char **env)
 {
     t_game	game;

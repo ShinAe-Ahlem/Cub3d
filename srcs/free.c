@@ -19,6 +19,9 @@ void free_all(t_game *game)
     // free(game->img);
     free(game->direction);
     free(game->grp);
+    free(game->mapfile);
+    free(game->map);
+    
     free(game->playerPos);
     free(game->playerPosDelta);
     free(game->cameraPlane);
