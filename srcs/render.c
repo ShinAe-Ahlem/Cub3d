@@ -5,8 +5,6 @@
 void	my_mlx_pixel_put(t_img *image, int x, int y, int color)
 {
 	char	*dst;
-	// dprintf(1, "x = %d\n", x);
-	// dprintf(1, "y = %d\n", y);
 
 	dst = image->addr + (y * image->line_len + x * (image->bpp / 8));
 	*(unsigned int *)dst = color;

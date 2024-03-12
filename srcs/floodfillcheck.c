@@ -11,12 +11,6 @@ char    **copyMap(t_game *game)
 		return (NULL);
 	while (i < game->mapCharHeight)
 	{
-		// copy[i] = (char *)malloc((ft_strlen(game->map[i]) + 1) * sizeof(char));
-		// if (copy[i] == NULL)
-		// 	return (NULL);
-		// ft_memcpy(copy[i], game->map[i], ft_strlen(game->map[i]));
-		// copy[i][ft_strlen(copy[i])] = '\0';
-        // // printf("   %s", copy[i]);
 		copy[i] = ft_strdup(game->map[i]);
 		i++;
 	}
