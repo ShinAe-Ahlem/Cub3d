@@ -68,11 +68,32 @@ void	window_size_setting(t_game *game)
 	game->window_y = TILE * 30;
 }
 
+
+// static void generateTextures(t_game *game)
+// {
+// 	game->texg = malloc(4 * sizeof(int *));
+
+// 	//generate some textures
+// 	for(int x = 0; x < texWidth; x++)
+// 	for(int y = 0; y < texHeight; y++)
+// 	{
+// 		int xorcolor = (x * 256 / texWidth) ^ (y * 256 / texHeight);
+// 		//int xcolor = x * 256 / texWidth;
+// 		// int ycolor = y * 256 / texHeight;
+// 		int xycolor = y * 128 / texHeight + x * 128 / texWidth;
+// 		game->texg[0][texWidth * y + x] = 65536 * 254 * (x != y && x != texWidth - y); //flat red game->tex with black cross
+// 		game->texg[1][texWidth * y + x] = xycolor + 256 * xycolor + 65536 * xycolor; //sloped greyscaleg
+// 		game->texg[2][texWidth * y + x] = 256 * xycolor + 65536 * xycolor; //sloped yellow gradient
+// 		game->texg[3][texWidth * y + x] = xorcolor + 256 * xorcolor + 65536 * xorcolor; //xor greyscale
+// 	}
+// }  
+
 int	ft_create_window(t_game *game)
 {
 	initGameWindow(game);
 	importTextures(game);
 	getTextureAddress(game);
+	// generateTextures(game);
 	mlx_key_hook(game->win_ptr, &handle_move, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
 	mlx_loop_hook(game->mlx_ptr, renderNextFrame, game);

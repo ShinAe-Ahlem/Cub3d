@@ -13,34 +13,25 @@ void export_texture(t_game *game)
     {
         exit(EXIT_FAILURE);
     }
-    while(i < game->pos)
+    while(i < game->pos && game->mapfile[i])
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
         {
             game->texture->NO = ft_strdup(game->mapfile[i]);
-            dprintf(1,"game->tex->NO = %s\n", game->texture->NO);
         }
         else if (!ft_strncmp("SO ", game->mapfile[i], 3))
         {
             game->texture->SO = ft_strdup(game->mapfile[i]);
-            dprintf(1,"game->tex->SO = %s\n", game->texture->SO);
-
         }
         else if (!ft_strncmp("EA ", game->mapfile[i], 3))
         {
             game->texture->EA = ft_strdup(game->mapfile[i]);
-            dprintf(1,"game->tex->EA = %s\n", game->texture->EA);
-
         }
         else if (!ft_strncmp("WE ", game->mapfile[i], 3))
         {
-            game->texture->WE = ft_strdup(game->mapfile[i]);
-            dprintf(1,"game->tex->WE = %s\n", game->texture->WE);
-
-        }
+            game->texture->WE = ft_strdup(game->mapfile[i]);        }
         i++;
     }
-
 }
 
 void texture_file_exist(t_game * game, char *texture, int texNum)
@@ -54,8 +45,8 @@ void texture_file_exist(t_game * game, char *texture, int texNum)
     while (texture[i] == ' ')
         i++;
     filename = ft_substr(texture, i, ft_strlen(texture) - (i + 1));
-    free(texture);
-    texture = NULL;
+    // free(texture);
+    // texture = NULL;
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
@@ -76,7 +67,8 @@ void texture_file_exist(t_game * game, char *texture, int texNum)
     }
    game->texFiles[texNum] = ft_strdup(filename);
    dprintf(1, "\n\n\n\ntexture = %s\n\n\\n", texture);
-   free(filename);
+//    free(filename);
+//    filename = NULL;
     close (fd);
 }
 
@@ -135,7 +127,6 @@ void check_game_textures(t_game *game)
         texture_file_exist(game, game->texture->SO, 2);
         texture_file_exist(game, game->texture->EA, 1);
         texture_file_exist(game, game->texture->WE, 3);
-    	dprintf(1,"\nin check && export : tex = %s\n", game->texture->NO);
     }
     else
     {
@@ -151,7 +142,4 @@ void    checkExportTextures(t_game *game)
     while (game->mapfile[game->pos][0] == '\n')
         game->pos++;
     check_game_textures(game);
-	dprintf(1,"\nin check && export : tex = %s\n", game->texFiles[0]);
-    dprintf(1,"\nhihihi\n");
-
 }
