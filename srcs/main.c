@@ -29,6 +29,8 @@ int	main(int ac, char **av, char **env)
         return (1);
     }
     checkMapElement(&game);
+	dprintf(1,"\nin main : tex = %s\n", game.texFiles[0]);
+    
     ft_create_window(&game);
     
     /* we will exit the loop if there's no window left, and execute this code */

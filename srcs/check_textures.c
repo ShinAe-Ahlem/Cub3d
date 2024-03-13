@@ -8,23 +8,42 @@ void export_texture(t_game *game)
 
     //Que se passe t-il quand il y a des espaces devant la direction des textures
     //ex) [           NO temp/temp.xpm]
-    game->texture = malloc(1 * sizeof(t_texture *));
+    game->texture =(t_texture *) malloc(1 * sizeof(t_texture *));
+    if (!game->texture)
+    {
+        exit(EXIT_FAILURE);
+    }
     while(i < game->pos)
     {
         if (!ft_strncmp("NO ", game->mapfile[i], 3))
+        {
             game->texture->NO = ft_strdup(game->mapfile[i]);
+            dprintf(1,"game->tex->NO = %s\n", game->texture->NO);
+        }
         else if (!ft_strncmp("SO ", game->mapfile[i], 3))
+        {
             game->texture->SO = ft_strdup(game->mapfile[i]);
+            dprintf(1,"game->tex->SO = %s\n", game->texture->SO);
+
+        }
         else if (!ft_strncmp("EA ", game->mapfile[i], 3))
+        {
             game->texture->EA = ft_strdup(game->mapfile[i]);
+            dprintf(1,"game->tex->EA = %s\n", game->texture->EA);
+
+        }
         else if (!ft_strncmp("WE ", game->mapfile[i], 3))
+        {
             game->texture->WE = ft_strdup(game->mapfile[i]);
+            dprintf(1,"game->tex->WE = %s\n", game->texture->WE);
+
+        }
         i++;
     }
 
 }
 
-void texture_file_exist(char *texture)
+void texture_file_exist(t_game * game, char *texture, int texNum)
 {
     int fd;
     char *filename;
@@ -55,7 +74,8 @@ void texture_file_exist(char *texture)
         close(fd);
         exit (EXIT_SUCCESS);
     }
-   texture = ft_strdup(filename);
+   game->texFiles[texNum] = ft_strdup(filename);
+   dprintf(1, "\n\n\n\ntexture = %s\n\n\\n", texture);
    free(filename);
     close (fd);
 }
@@ -109,19 +129,13 @@ void check_game_textures(t_game *game)
             ft_error(ERROR_FILE_EXT);
             exit(EXIT_FAILURE);
         }
-        printf("game->texture->north =%s\n", game->texture->NO);
-        printf("game->texture->south =%s\n", game->texture->SO);
-        printf("game->texture->west =%s\n", game->texture->WE);
-        printf("game->texture->east =%s\n", game->texture->EA);
-        texture_file_exist(game->texture->NO);
-        texture_file_exist(game->texture->SO);
-        texture_file_exist(game->texture->EA);
-        texture_file_exist(game->texture->WE);
-        printf("game->texture->north =%s\n", game->texture->NO);
-        printf("game->texture->south =%s\n", game->texture->SO);
-        printf("game->texture->west =%s\n", game->texture->WE);
-        printf("game->texture->east =%s\n", game->texture->EA);
-
+        game->texFiles = malloc(5 * sizeof(char *));
+        game->texFiles[4] = NULL;
+        texture_file_exist(game, game->texture->NO, 0);
+        texture_file_exist(game, game->texture->SO, 2);
+        texture_file_exist(game, game->texture->EA, 1);
+        texture_file_exist(game, game->texture->WE, 3);
+    	dprintf(1,"\nin check && export : tex = %s\n", game->texture->NO);
     }
     else
     {
@@ -129,6 +143,7 @@ void check_game_textures(t_game *game)
         //free whatever you need to
         exit(EXIT_FAILURE);
     }
+
 }
 
 void    checkExportTextures(t_game *game)
@@ -136,4 +151,7 @@ void    checkExportTextures(t_game *game)
     while (game->mapfile[game->pos][0] == '\n')
         game->pos++;
     check_game_textures(game);
+	dprintf(1,"\nin check && export : tex = %s\n", game->texFiles[0]);
+    dprintf(1,"\nhihihi\n");
+
 }

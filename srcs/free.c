@@ -19,11 +19,13 @@ void free_all(t_game *game)
     // free(game->img);
     free(game->direction);
     free(game->grp);
-    free(game->mapfile);
-    free(game->map);
-    
+    free_table(game->mapfile);
+    free_table(game->map);
+    free_table(game->texFiles);
     free(game->playerPos);
     free(game->playerPosDelta);
     free(game->cameraPlane);
+    // mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+    free(game->img);
     game->img = NULL;
 }

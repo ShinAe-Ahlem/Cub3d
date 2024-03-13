@@ -33,13 +33,13 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 		{
 			if (game->map[i][j] == 'N' || game->map[i][j] == 'S' || game->map[i][j] == 'E' || game->map[i][j] == 'A' )
 			{
-				game->playerPos->x = i;
-				game->playerPos->y = j;
+				game->playerPos->x = j;
+				game->playerPos->y = i;
 				dprintf(1,"player position  x = %d\n", game->playerPos->x);
 				dprintf(1,"player position  y = %d\n", game->playerPos->y);
 				
-				game->posX = i + 0.5; //reste a verifier pourquoi loooool
-				game->posY = j + 0.5;
+				game->posX = j + 0.5; //reste a verifier pourquoi loooool
+				game->posY = i + 0.5;
 				dprintf(1,"player position  x = %f\n", game->posX);
 				dprintf(1,"player position  y = %f\n", game->posY);
 				
@@ -54,21 +54,27 @@ void	findPlayerPosition(t_game *game, t_coord *playerPos)
 
 void	floodFill(char **map_copy, int x, int y)
 {
-	if (map_copy[y][x] == '1' || map_copy[y][x] == 'X' || map_copy[y][x] == ' ') // add if other elements to avoid floodfilling
+	if (map_copy[y] && (map_copy[y][x] == '1' || map_copy[y][x] == 'X' || map_copy[y][x] == ' ')) // add if other elements to avoid floodfilling
 		return ;
-	map_copy[y][x] = 'X';
-	floodFill (map_copy, (x + 1), y);
-	floodFill (map_copy, (x - 1), y);
-	floodFill (map_copy, x, (y - 1));
-	floodFill (map_copy, x, (y + 1));
+	if (map_copy[y])
+	{
+		map_copy[y][x] = 'X';
+		floodFill (map_copy, (x + 1), y);
+		floodFill (map_copy, (x - 1), y);
+		floodFill (map_copy, x, (y - 1));
+		floodFill (map_copy, x, (y + 1));
+	}
+
 }
 
 void	postFloodFillCheck(char **map_copy)
 {
 	int	i;
 	int	j;
-
+	
 	i = 0;
+    dprintf(1,"\nhere\n");
+
 	while (map_copy[i])
 	{
 		j = 0;
@@ -90,17 +96,19 @@ void	postFloodFillCheck(char **map_copy)
 
 void    floodFillCheck(t_game *game)
 {
+
     char **copy;
 	// t_coord playerPos;
     
     copy = copyMap(game);
 	// coordInit(game->playerPos);
-	print_char_table(game->map);
+	// print_char_table(game->map);
 	findPlayerPosition(game, game->playerPos);
-	printf("\nPlayer Pos X: %d, Y: %d\n", game->playerPos->x, game->playerPos->y);
+	dprintf(1,"\nPlayer Pos X: %d, Y: %d\n", game->playerPos->x, game->playerPos->y);
 	print_char_table(copy);
 	floodFill(copy, game->playerPos->x, game->playerPos->y);
-    print_char_table(copy);
+    // print_char_table(copy);
 	postFloodFillCheck(copy);
+    dprintf(1,"post flood fill\n");
 	freeCharArray(&copy);
 }

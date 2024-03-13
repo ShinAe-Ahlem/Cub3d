@@ -24,8 +24,9 @@ bool isFloorCeilnigLine(char *line)
 
 bool isMap(t_game *game, char *line) //needs to be enhanced, using all charset such as 1,0,N,S,E,W,I,X,Y
 {
-   // ft_putstr_fd("\n\n----------------------- Map check BEGIN----------------------- \n\n\n", 1);
+//    ft_putstr_fd("\n\n----------------------- Map check BEGIN----------------------- \n\n\n", 1);
     char charset[8] = "01NSEW "; // add char such as X, Y and I if needed (bonus part)
+    // (void)game;
     // ft_putstr_fd(line, 1);
     if (charset_finder(charset, line))
         return (true);
@@ -99,6 +100,8 @@ void getMaxWidth(t_game *game)
 
 void    MapCheckDivision(t_game *game)
 {
+    dprintf(1,"\nin map chaeck division\n");
+    
     LLtoArrayConverter(game);
     checkPlayerPos(game);
     zeroBlankContact(game);
@@ -130,5 +133,11 @@ void checkMapElement(t_game *game)
         if (game->mapfile[game->pos])
             game->pos++;/*to be removed later*/ //shinae:or maybe not...
     }
+        dprintf(1,"\nafter export\n");
+    
+    // dprintf(1,"\nin check map elm : tex = %s\n", game->texFiles[0]);
+    dprintf(1,"\nbefore map chaeck division\n");
+
     MapCheckDivision(game);
+
 }

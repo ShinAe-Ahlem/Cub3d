@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 10:10:05 by anouri            #+#    #+#             */
-/*   Updated: 2024/02/13 10:39:56 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/13 10:13:48 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,5 @@ void	print_char_table(char **tab)
 			// printf("%s", *tab++);
 		// ft_putstr_fd("\n----------------------- seperation end of map ---------------------\n\n", 1);
 	}
+	ft_putstr_fd("\n",1);
 }

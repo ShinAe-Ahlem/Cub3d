@@ -1,6 +1,7 @@
 
 NAME= cub3D
 SRC_DIR = ./srcs
+OBJDIR = ./objs
 SRCS= $(wildcard $(SRC_DIR)/*.c)
 
 # SRCS_BONUS=
@@ -11,11 +12,12 @@ LIB_DIR		= ./libft/
 LIB_INC		= -I$(LIB_DIR)includes/
 LIB_NAME	= $(LIB_DIR)libft.a
 
-OBJS= ${SRCS:.c=.o}
+# OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
+OBJS= ${SRCS:.c=.o}
 OBJS_BONUS= ${SRCS_BONUS:.c=.o}
 CC= clang #cc
-FLAGS= -Wall -Wextra -Werror -g3 #-fsanitize=address 
+FLAGS= -Wall -Wextra -Werror -g3 -fsanitize=address 
 
 RM=rm -f
 

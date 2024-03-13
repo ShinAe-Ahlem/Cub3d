@@ -132,6 +132,7 @@ typedef struct s_game
 	double				texPos;
 	int					texX;
 	int					texY;
+	char				**texFiles;
 	int					dir;
 	int					bpp[4];
 	int					line_len[4];

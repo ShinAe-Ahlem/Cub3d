@@ -179,6 +179,7 @@ void checkFloorCeiling(t_game *game)
         }
         game->pos++;
     }
+    dprintf(1,"here\n");
 
 }
 

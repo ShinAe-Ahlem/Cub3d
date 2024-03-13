@@ -83,6 +83,7 @@ void initGameParam(t_game *game)
 		perror("malloc\n");
 		exit(EXIT_FAILURE);
 	}
+	game->texture = NULL;
 	game->direction->x = -1;//initial direction vector
 	game->direction->y = 0; //initial direction vector
 	game->cameraPlane->x = 0;
