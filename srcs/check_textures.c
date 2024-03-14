@@ -11,6 +11,7 @@ void export_texture(t_game *game)
     game->texture =(t_texture *) malloc(1 * sizeof(t_texture *));
     if (!game->texture)
     {
+        free_all(game);
         exit(EXIT_FAILURE);
     }
     while(i < game->pos && game->mapfile[i])
@@ -67,8 +68,8 @@ void texture_file_exist(t_game * game, char *texture, int texNum)
     }
    game->texFiles[texNum] = ft_strdup(filename);
    dprintf(1, "\n\n\n\ntexture = %s\n\n\\n", texture);
-//    free(filename);
-//    filename = NULL;
+   free(filename);
+   filename = NULL;
     close (fd);
 }
 
@@ -121,8 +122,7 @@ void check_game_textures(t_game *game)
             ft_error(ERROR_FILE_EXT);
             exit(EXIT_FAILURE);
         }
-        game->texFiles = malloc(5 * sizeof(char *));
-        game->texFiles[4] = NULL;
+        game->texFiles = malloc(4 * sizeof(char *));
         texture_file_exist(game, game->texture->NO, 0);
         texture_file_exist(game, game->texture->SO, 2);
         texture_file_exist(game, game->texture->EA, 1);

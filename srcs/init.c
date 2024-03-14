@@ -1,23 +1,6 @@
 #include "../includes/game.h"
 
 
-void graphique_init(t_game *game)
-{
-	game->grp = (t_grp *)malloc(sizeof(t_grp));
-    if (game->grp == NULL)
-	{
-        ft_perror(ERROR_MALLOC);
-		exit(EXIT_FAILURE);
-    }
-	game->grp->east = NULL;
-	game->grp->west = NULL;
-	game->grp->south = NULL;
-	game->grp->north = NULL;
-	game->grp->floor = NULL;
-	game->grp->wall = NULL;
-	game->grp->ennemi_one = NULL;
-}
-
 void texture_init(t_game *game)
 {
 	game->texture = NULL;
@@ -67,8 +50,8 @@ void initGameParam(t_game *game)
 	game->x = 0;
 	game->y = 0;
 	game->mlx_ptr = NULL;
-	graphique_init(game);
-	texture_init(game);
+	game->texture = NULL;
+	// texture_init(game);
 	FC_init(game);
 	mapInfoInit(game);
 	game->direction = malloc(1 * sizeof(t_coord));

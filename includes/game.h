@@ -37,22 +37,6 @@ typedef struct s_img
 	int				endian;
 }				t_img;
 
-typedef struct s_grp // graphique
-{
-	void *north;
-	void *south;
-	void *east;
-	void *west;
-	void *wall;  //temporary
-	void *floor; //temporary
-	// void    *floor;
-	// void    *ceiling;
-	// void    *item;
-	// void    *door;
-	void    *ennemi_one; //temporary
-	// void    *ennemi_two;
-}						t_grp;
-
 typedef struct s_color
 {
 	int					red;
@@ -79,7 +63,6 @@ typedef struct s_game
 	char				*game_name;
 	int fd; // fd of map we read with gnl
 	void				*mlx_ptr;
-	t_grp				*grp;
 	void				**tex; // tableaux pour les xpm;
 	int 				**texAddress; // addresse des xpm pour recuperer les pixel plutard
 	void				*win_ptr;
