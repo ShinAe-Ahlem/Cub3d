@@ -27,7 +27,8 @@ void export_texture(t_game *game)
         }
         else if (!ft_strncmp("WE ", game->mapfile[i], 3))
         {
-            game->texLines[3] = ft_strdup(game->mapfile[i]);        }
+            game->texLines[3] = ft_strdup(game->mapfile[i]);
+        }
         i++;
     }
 }

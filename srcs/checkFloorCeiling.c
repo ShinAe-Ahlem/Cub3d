@@ -179,7 +179,7 @@ void checkFloorCeiling(t_game *game)
         }
         game->pos++;
     }
-    dprintf(1,"here\n");
-
+    // while(game->mapfile[game->pos][0] == '\n')
+    //     game->pos++;
 }
 
