@@ -4,7 +4,6 @@ static void	importTextures(t_game *game)
 {
 	int	size;
 
-	dprintf(1,"\n\n\n\n\n\n\n\n\n\n\ngame->no = %s \n\n\n\n\n\n\n\n\n\n\n", game->texture->NO);
 
 	game->tex =(void **) malloc(5 * sizeof(void *));
 	if (!game->tex)
@@ -13,7 +12,6 @@ static void	importTextures(t_game *game)
 		ft_error("malloc");
 		exit(EXIT_FAILURE);
 	}
-	dprintf(1,"\ntex = %s\n", game->texture->NO);
 	game->tex[0] = mlx_xpm_file_to_image(game->mlx_ptr,game->texFiles[0],
 			&size, &size);
 	dprintf(1, "tex[0] = %p\n", game->tex[0]);

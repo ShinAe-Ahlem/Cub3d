@@ -162,7 +162,7 @@ void checkFloorCeiling(t_game *game)
             }
             F_flag = 1;
             CheckIsValidFormat(game, 'F');
-            ft_putstr_fd("floor found\n", 1);
+            // ft_putstr_fd("floor found\n", 1);
 
         }
         else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
@@ -175,7 +175,7 @@ void checkFloorCeiling(t_game *game)
             }
             C_flag = 1;
             CheckIsValidFormat(game, 'C');
-            ft_putstr_fd("ceiling found\n", 1);
+            // ft_putstr_fd("ceiling found\n", 1);
         }
         game->pos++;
     }

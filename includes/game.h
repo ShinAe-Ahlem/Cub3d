@@ -120,6 +120,7 @@ typedef struct s_game
 	int					bpp[4];
 	int					line_len[4];
 	int					endian[4];
+	char				**texLines;
 	int **texg;
 }						t_game;
 

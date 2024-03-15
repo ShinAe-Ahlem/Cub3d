@@ -121,9 +121,19 @@ void checkMapElement(t_game *game)
         if (game->mapfile[game->pos] && game->mapfile[game->pos][0] == '\n')
             game->pos++;
         if (game->mapfile[game->pos] && isDirectionLine(game->mapfile[game->pos]))  //do not change the order of the checking
-            checkExportTextures(game);
+        {
+             checkExportTextures(game);
+             ft_error("************************************************************\n");
+
+        }   
         else if (game->mapfile[game->pos] && isFloorCeilnigLine(game->mapfile[game->pos]))
+        {
+             ft_error("************************************************************\n");
+
             checkFloorCeiling(game);
+             ft_error("************************************************************\n");
+
+        }
         else if (game->mapfile[game->pos] && isMap(game, game->mapfile[game->pos]))
         {
 
@@ -139,5 +149,5 @@ void checkMapElement(t_game *game)
     dprintf(1,"\nbefore map chaeck division\n");
 
     MapCheckDivision(game);
-
+    ft_error("checkMapElements\n");
 }

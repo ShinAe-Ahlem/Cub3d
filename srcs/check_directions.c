@@ -38,6 +38,7 @@ void	direction_init(t_direction *direction)
 
 bool	checkDirection(char *line)
 {
+
 	t_direction	direction;
 
 	direction_init(&direction);

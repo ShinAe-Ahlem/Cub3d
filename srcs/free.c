@@ -14,16 +14,6 @@ void freeCharArray(char ***array)
 }
 
 
-void free_texture(t_game *game)
-{
-    free(game->texture->NO);
-    free(game->texture->SO);
-    free(game->texture->WE);
-    free(game->texture->EA);
-    free(game->texture);
-
-}
-
 void free_all(t_game *game)
 {
     // mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
@@ -35,7 +25,6 @@ void free_all(t_game *game)
     free(game->playerPos);
     free(game->playerPosDelta);
     free(game->cameraPlane);
-    free_texture(game);
     // mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
     // free(game->img->mlx_img);
     free(game->img);
