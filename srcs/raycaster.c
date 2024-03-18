@@ -73,37 +73,6 @@ static void PerformDDA(t_game *game)
 	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
 }
 
-// static void	get_height_and_texture(t_game *game)
-// {
-// 	game->lineHeight = (int)(HEIGHT / game->perpWallDist);
-// 	game->drawStart = -(game->lineHeight) / 2 + HEIGHT / 2;
-// 	if (game->drawStart < 0)
-// 		game->drawStart = 0;
-// 	game->drawEnd = game->lineHeight / 2 + HEIGHT / 2;
-// 	if (game->drawEnd >= HEIGHT)
-// 		game->drawEnd = HEIGHT - 1;
-
-// 	if (game->side == 0 && game->rayDirX < 0)
-// 		game->dir = 1;
-// 	else if (game->side == 0 && game->rayDirX >= 0)
-// 		game->dir = 0;
-// 	else if (game->side == 1 && game->rayDirY < 0)
-// 		game->dir = 3;
-// 	else if (game->side == 1 && game->rayDirY >= 0)
-// 		game->dir = 2;
-
-// 	if (game->side == 0)
-// 		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
-// 	else
-// 		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
-// 	game->wallX -= floor(game->wallX);
-// 	game->step = 1.0 * 64 / game->lineHeight;
-// 	game->texX = (int)(game->wallX * (double)64);
-// 	if ((game->side == 0 && game->rayDirX > 0)
-// 		|| (game->side == 1 && game->rayDirY < 0))
-// 		game->texX = 64 - game->texX - 1;
-// }
-
 static void calculateWallHeight(t_game *game)
 {
 	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
