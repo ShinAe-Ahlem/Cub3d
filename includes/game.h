@@ -28,6 +28,10 @@ typedef struct s_coord	t_coord;
 #define texHeight 64
 #define WIDTH 920
 #define HEIGHT 700
+
+// #define WINDOW_WIDTH 600
+// #define WINDOW_HEIGHT 300
+
 typedef struct s_img
 {
 	void			*mlx_img;
@@ -121,6 +125,8 @@ typedef struct s_game
 	int					line_len[4];
 	int					endian[4];
 	char				**texLines;
+	int					width[4];
+	int					height[4];
 	int **texg;
 }						t_game;
 

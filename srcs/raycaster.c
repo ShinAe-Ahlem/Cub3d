@@ -49,9 +49,9 @@ static void PerformDDA(t_game *game)
 			game->sideDistX += game->deltaDistX;
 			game->mapX += game->stepX;
 			if (game->stepX > 0)
-				game->dir = 1;
+				game->dir = 0; // north
 			else
-				game->dir = 3;
+				game->dir = 2; //south
 			game->side = 0;
 		}
 		else
@@ -59,74 +59,90 @@ static void PerformDDA(t_game *game)
 			game->sideDistY += game->deltaDistY;
 			game->mapY += game->stepY;
 			if (game->stepY > 0)
-				game->dir = 2;
+				game->dir = 3; //west
 			else
-				game->dir = 0;
+				game->dir = 1; // east
 			game->side = 1;
 		}
-		//Check if ray has hit a wall
 		if (game->map[game->mapX][game->mapY] == '1')
 			hit = 1;
 	}
-	//Calculate distance projected on camera direction (Euclidean distance would give fisheye effect!)
 	if(game->side == 0)
 		game->perpWallDist = (game->sideDistX - game->deltaDistX);
 	else
 	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
 }
 
+// static void	get_height_and_texture(t_game *game)
+// {
+// 	game->lineHeight = (int)(HEIGHT / game->perpWallDist);
+// 	game->drawStart = -(game->lineHeight) / 2 + HEIGHT / 2;
+// 	if (game->drawStart < 0)
+// 		game->drawStart = 0;
+// 	game->drawEnd = game->lineHeight / 2 + HEIGHT / 2;
+// 	if (game->drawEnd >= HEIGHT)
+// 		game->drawEnd = HEIGHT - 1;
+
+// 	if (game->side == 0 && game->rayDirX < 0)
+// 		game->dir = 1;
+// 	else if (game->side == 0 && game->rayDirX >= 0)
+// 		game->dir = 0;
+// 	else if (game->side == 1 && game->rayDirY < 0)
+// 		game->dir = 3;
+// 	else if (game->side == 1 && game->rayDirY >= 0)
+// 		game->dir = 2;
+
+// 	if (game->side == 0)
+// 		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
+// 	else
+// 		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
+// 	game->wallX -= floor(game->wallX);
+// 	game->step = 1.0 * 64 / game->lineHeight;
+// 	game->texX = (int)(game->wallX * (double)64);
+// 	if ((game->side == 0 && game->rayDirX > 0)
+// 		|| (game->side == 1 && game->rayDirY < 0))
+// 		game->texX = 64 - game->texX - 1;
+// }
+
 static void calculateWallHeight(t_game *game)
 {
-	//Calculate height of line to draw on screen
 	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
-	//calculate lowest and highest pixel to fill in current stripe
 	game->drawStart = -game->lineHeight/2 + game->window_y/2 ;
 	if(game->drawStart < 0)
 		game->drawStart = 0;
 	game->drawEnd = game->lineHeight / 2 + game->window_y/ 2;
 	if(game->drawEnd >= game->window_y)
-		game->drawEnd =game->window_y- 1;
-	// ft_putstr_fd("in calculate\n", 1);
+		game->drawEnd =game->window_y - 1;
 }
 
 static void texturingCalculation(t_game *game)
 {
-	//calculate value of game->wallX
-	//where exactly the wall was hit
 	if (game->side == 0) 
 		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
 	else
 		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
 	game->wallX -= floor((game->wallX));
-
-	//x coordinate on the texture
 	game->texX = (int)(game->wallX * texWidth);
-
 	if(game->side == 0 && game->rayDirX > 0) 
 		game->texX = texWidth - game->texX - 1;
 	if(game->side == 1 && game->rayDirY < 0) 
 		game->texX = texWidth - game->texX - 1;
-	// How much to increase the texture coordinate per screen pixel
 	game->step = 1.0 * texHeight / game->lineHeight;
-	// Starting texture coordinate
 	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2) * game->step;
-	// ft_putstr_fd("in calculation\n", 1);
 }
 
 int renderNextFrame(t_game *game)
 {
-	int x; //will be used to sample every column of the screan
+	int x;
 	
 	x = 0;
 	initImage(game);
-	/*Raycasting loop*/
 	while(x < game->window_x)
 	{
-		/* the ray starts at the postion of the player //lodev*/
-		//calculate ray position and direction
 		RayPosAndDir(game, x);
 		StepAndInitialSideDist(game);
-		PerformDDA(game); //check if a wall is hit
+		PerformDDA(game);
+		// get_height_and_texture(game);
 		calculateWallHeight(game);
 		texturingCalculation(game);
 		render(game, x);

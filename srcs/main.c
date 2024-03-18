@@ -1,14 +1,5 @@
 #include "../includes/game.h"
 
-#define WINDOW_WIDTH 600
-#define WINDOW_HEIGHT 300
-
-typedef struct s_data
-{
-    void	*mlx_ptr;
-    void	*win_ptr;
-}	t_data;
-
 
 int	main(int ac, char **av, char **env)
 {
