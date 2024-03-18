@@ -60,5 +60,5 @@ void	check_map_elements(t_game *game)
 		if (game->mapfile[game->pos])
 			game->pos++;
 	}
-	MapCheckDivision(game);
+	map_check_division(game);
 }

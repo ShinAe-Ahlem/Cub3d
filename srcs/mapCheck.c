@@ -1,9 +1,9 @@
 #include "../includes/game.h"
 
-static void	EpurArray(t_game *game)
+static void	epur_array(t_game *game)
 {
 	int		i;
-	size_t	lastOnePos;
+	size_t	last_one_pos;
 	char	**new;
 
 	new = malloc((game->mapCharHeight + 1) * sizeof(char *));
@@ -16,20 +16,20 @@ static void	EpurArray(t_game *game)
 	i = 0;
 	while (game->map[i])
 	{
-		lastOnePos = ft_strlen(game->map[i]);
-		if (game->map[i][lastOnePos - 1] == '\n')
-			lastOnePos--;
-		while (game->map[i][lastOnePos] == ' '
-			|| game->map[i][lastOnePos] == '\n')
-			lastOnePos--;
-		if (lastOnePos == ft_strlen(game->map[i]) - 2)
+		last_one_pos = ft_strlen(game->map[i]);
+		if (game->map[i][last_one_pos - 1] == '\n')
+			last_one_pos--;
+		while (game->map[i][last_one_pos] == ' '
+			|| game->map[i][last_one_pos] == '\n')
+			last_one_pos--;
+		if (last_one_pos == ft_strlen(game->map[i]) - 2)
 		{
 			new[i] = ft_strdup(game->map[i]);
 		}
 		else
 		{
-			new[i] = ft_substr(game->map[i], 0, lastOnePos + 2);
-			new[i][lastOnePos + 1] = '\n';
+			new[i] = ft_substr(game->map[i], 0, last_one_pos + 2);
+			new[i][last_one_pos + 1] = '\n';
 		}
 		i++;
 	}
@@ -38,7 +38,7 @@ static void	EpurArray(t_game *game)
 	game->map = new;
 }
 
-void	getMaxWidth(t_game *game)
+void	get_max_width(t_game *game)
 {
 	int	i;
 
@@ -52,12 +52,12 @@ void	getMaxWidth(t_game *game)
 	}
 }
 
-void	MapCheckDivision(t_game *game)
+void	map_check_division(t_game *game)
 {
 	ll_toarray_converter(game);
 	check_player_pos(game);
-	zeroBlankContact(game);
+	zero_blank_contact(game);
 	floodfill_check(game);
-	EpurArray(game);
-	getMaxWidth(game);
+	epur_array(game);
+	get_max_width(game);
 }

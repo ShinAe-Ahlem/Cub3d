@@ -57,7 +57,7 @@ void	zeroExposed(char **map, int i)
 	}
 }
 
-void	zeroBlankContact(t_game *game)
+void	zero_blank_contact(t_game *game)
 {
 	int	i;
 

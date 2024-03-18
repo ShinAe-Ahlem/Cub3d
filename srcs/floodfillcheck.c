@@ -99,5 +99,5 @@ void	floodfill_check(t_game *game)
 	find_player_position(game, game->playerPos);
 	floodfill(copy, game->playerPos->x, game->playerPos->y);
 	post_floodfill_check(copy);
-	freeCharArray(&copy);
+	free_char_array(&copy);
 }

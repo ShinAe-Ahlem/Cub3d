@@ -33,14 +33,14 @@ void    ft_error(char *code_error);
 //***** CHECK MAP *****
 bool    is_empty_line(char *line);
 bool	checkdirection(char *line);
-void	MapCheckDivision(t_game *game);
+void	map_check_division(t_game *game);
 size_t	last_digit_position(char *line);
 
 void    export_map(t_game *game);
 void    floodfill_check(t_game *game);
 void    check_player_pos(t_game *game);
 void	check_map_elements(t_game *game);
-void	zeroBlankContact(t_game *game);
+void	zero_blank_contact(t_game *game);
 void    check_is_last_element(t_game *game);
 void    check_export_textures(t_game *game);
 
@@ -84,5 +84,5 @@ void    initGameWindow(t_game *game);
 
 //***** FREE *****
 void free_all(t_game *game);
-void freeCharArray(char ***array);
+void free_char_array(char ***array);
 #endif

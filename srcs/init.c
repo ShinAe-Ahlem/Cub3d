@@ -1,12 +1,11 @@
 #include "../includes/game.h"
 
-
-void texture_init(t_game *game)
+void	texture_init(t_game *game)
 {
 	game->texture = NULL;
 }
 
-void FC_init(t_game *game)
+void	FC_init(t_game *game)
 {
 	game->floor.red = 0;
 	game->floor.green = 0;
@@ -16,34 +15,33 @@ void FC_init(t_game *game)
 	game->ceiling.blue = 0;
 }
 
-void mapInfoInit(t_game *game)
+void	mapInfoInit(t_game *game)
 {
 	game->mapfile = NULL;
 	game->mapLL = NULL;
 	game->map = NULL;
 	game->mapCharHeight = 0;
 	game->maxMapWidth = 0;
-    game->playerPos = (t_coord *)malloc(sizeof(t_coord));
-    if (game->playerPos == NULL)
+	game->playerPos = (t_coord *)malloc(sizeof(t_coord));
+	if (game->playerPos == NULL)
 	{
 		ft_perror(ERROR_MALLOC);
-	    exit(EXIT_FAILURE);
-    }
-    game->playerPos->x = 0;
-    game->playerPos->y = 0;
-    game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
-    if (game->playerPosDelta == NULL)
-	{
-        ft_perror(ERROR_MALLOC);
 		exit(EXIT_FAILURE);
-    }
-    game->playerPosDelta->x = 0;
-    game->playerPosDelta->y = 0;
-
-    game->playerAngle = 0;
+	}
+	game->playerPos->x = 0;
+	game->playerPos->y = 0;
+	game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
+	if (game->playerPosDelta == NULL)
+	{
+		ft_perror(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
+	game->playerPosDelta->x = 0;
+	game->playerPosDelta->y = 0;
+	game->playerAngle = 0;
 }
 
-void initGameParam(t_game *game)
+void	initGameParam(t_game *game)
 {
 	game->fd = 0;
 	game->pos = 0;
@@ -67,8 +65,8 @@ void initGameParam(t_game *game)
 		exit(EXIT_FAILURE);
 	}
 	game->texture = NULL;
-	game->direction->x = -1;//initial direction vector
-	game->direction->y = 0; //initial direction vector
+	game->direction->x = -1; //initial direction vector
+	game->direction->y = 0;  //initial direction vector
 	game->cameraPlane->x = 0;
 	game->cameraPlane->y = 1;
 }
