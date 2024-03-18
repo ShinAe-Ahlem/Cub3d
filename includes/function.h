@@ -31,31 +31,39 @@ int	    handle_keypress(int keysym, t_game *game);
 void    ft_error(char *code_error);
 
 //***** CHECK MAP *****
+bool    is_empty_line(char *line);
+bool	checkdirection(char *line);
+void	MapCheckDivision(t_game *game);
+size_t	last_digit_position(char *line);
 
-bool    isMap(t_game *game, char *line);
-bool    isEmptyLine(char *line);
-bool	checkDirection(char *line);
-
-void    exportMap(t_game *game);
-void    floodFillCheck(t_game *game);
-void    checkPlayerPos(t_game *game);
-void    checkMapElement(t_game *game);
+void    export_map(t_game *game);
+void    floodfill_check(t_game *game);
+void    check_player_pos(t_game *game);
+void	check_map_elements(t_game *game);
 void	zeroBlankContact(t_game *game);
-void    checkIsLastElement(t_game *game);
-void    checkExportTextures(t_game *game);
+void    check_is_last_element(t_game *game);
+void    check_export_textures(t_game *game);
 
 char	**ft_read_map(char *filename);
 
 /*floor ceiling*/
-void checkFloorCeiling(t_game *game);
+void check_floor_ceiling(t_game *game);
 
 //***** UTILITY *****
 void    print_tlist(t_list *list);
-void    LLtoArrayConverter(t_game *game);
+void    ll_toarray_converter(t_game *game);
 
 float   angleToRadian (float angle);
 float   RadianToAngle (float radian);
 
+/******FORMAT CHECK*******/
+
+bool	are_valid_texture_formats(t_game *game)
+;
+/**************************************/
+
+bool	has_spaces(char *str);
+bool	has_intruder(char *str);
 bool    charset_finder(const char *charset, const char *str);
 
 /*clolors*/

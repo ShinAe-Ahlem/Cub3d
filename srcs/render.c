@@ -46,12 +46,10 @@ static void	drawWall(t_game *game, int *y, int x)
 
 	while ((*y) < game->drawEnd)
 	{
-		// Cast the texture coordinate to integer, and mask with (texHeight- 1) in case of overflow
 		game->texY = (int)game->texPos & (texHeight - 1);
 		game->texPos += game->step;
 		color3 = game->texAddress[game->dir][texHeight * game->texY
 			+ game->texX];
-		//make color darker for y-dirs: R, G and B byte each divided through two with a "shift" and an "and"
 		if (game->side == 1)
 			color3 = (color3 >> 1) & 8355711;
 		my_mlx_pixel_put(game->img, x, *y, color3);

@@ -19,7 +19,7 @@ int	main(int ac, char **av, char **env)
         free_all(&game);
         return (1);
     }
-    checkMapElement(&game);
+    check_map_elements(&game);
 	ft_error("in main");
     ft_create_window(&game);
     

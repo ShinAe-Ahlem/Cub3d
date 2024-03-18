@@ -1,27 +1,24 @@
-
 #include "../includes/game.h"
 
-void checkIsLastElement(t_game *game)
+void	check_is_last_element(t_game *game)
 {
-    int i;
+	int	i;
 
-    i = game->pos;
-    while(game->mapfile[i])
-    {
-
-        if (game->mapfile[i] && isEmptyLine(game->mapfile[i]))
-        {
-            
-            while (game->mapfile[i] && !isEmptyLine(game->mapfile[i]))
-                i++;
-            if (game->mapfile[i] && isEmptyLine(game->mapfile[i]))
-            {
-                ft_error(ERROR_MAP_SPLITTED);
-                //freethis
-                exit(EXIT_FAILURE);
-            }
-        }
-        if (game->mapfile[i])
-            i++;
-    }
+	i = game->pos;
+	while (game->mapfile[i])
+	{
+		if (game->mapfile[i] && is_empty_line(game->mapfile[i]))
+		{
+			while (game->mapfile[i] && !is_empty_line(game->mapfile[i]))
+				i++;
+			if (game->mapfile[i] && is_empty_line(game->mapfile[i]))
+			{
+				ft_error(ERROR_MAP_SPLITTED);
+				free_all(game);
+				exit(EXIT_FAILURE);
+			}
+		}
+		if (game->mapfile[i])
+			i++;
+	}
 }

@@ -43,7 +43,6 @@ static void PerformDDA(t_game *game)
 	hit = 0;
 	while (hit == 0)
 	{
-		//jump to next map square, either in x-direction, or in y-direction
 		if (game->sideDistX < game->sideDistY)
 		{
 			game->sideDistX += game->deltaDistX;
@@ -111,7 +110,6 @@ int renderNextFrame(t_game *game)
 		RayPosAndDir(game, x);
 		StepAndInitialSideDist(game);
 		PerformDDA(game);
-		// get_height_and_texture(game);
 		calculateWallHeight(game);
 		texturingCalculation(game);
 		render(game, x);
