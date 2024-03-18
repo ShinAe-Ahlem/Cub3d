@@ -44,18 +44,10 @@ static void	drawWall(t_game *game, int *y, int x)
 {
 	int	color3;
 
-	while (*y < game->drawEnd)
+	while ((*y) < game->drawEnd)
 	{
 		// Cast the texture coordinate to integer, and mask with (texHeight- 1) in case of overflow
-		game->texY = (int)game->texPos * (texHeight - 1);
-		if (game->texY < 0)
-			game->texY = 0;
-		if (game->texY > texHeight)
-			game->texY = 0;
-		if (game->texX > texWidth)
-			game->texX = 0;
-		if (game->texX < 0)
-			game->texX = 0;
+		game->texY = (int)game->texPos & (texHeight - 1);
 		game->texPos += game->step;
 		color3 = game->texAddress[game->dir][texHeight * game->texY
 			+ game->texX];
