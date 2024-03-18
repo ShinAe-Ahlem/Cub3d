@@ -70,10 +70,9 @@ bool    charset_finder(const char *charset, const char *str);
 int	create_rgb(int r, int g, int b);
 
 /*renderring*/
-int     renderNextFrame(t_game *game);
+int     render_next_frame(t_game *game);
 
 void    render(t_game *game, int x);
-bool    import_textures(t_game *game);
 void	my_mlx_pixel_put(t_img *image, int x, int y, int color);
 
 /*initialisation*/

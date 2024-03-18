@@ -1,7 +1,7 @@
 
 #include "../includes/game.h"
 
-static void RayPosAndDir(t_game *game, int x)
+static void	ray_pos_and_dir(t_game *game, int x)
 {
 	game->cameraX = 2 * x / (double)game->window_x - 1;
 	game->rayDirX = game->dirX + game->planeX * game->cameraX;
@@ -12,7 +12,7 @@ static void RayPosAndDir(t_game *game, int x)
 	game->deltaDistY = fabs(1 / game->rayDirY);
 }
 
-static void StepAndInitialSideDist(t_game *game)
+static void	step_and_initial_sidedist(t_game *game)
 {
 	if (game->rayDirX < 0)
 	{
@@ -32,14 +32,14 @@ static void StepAndInitialSideDist(t_game *game)
 	else
 	{
 		game->stepY = 1;
-		game->sideDistY = (game->mapY + 1.0 - game->posY) * game->deltaDistY;	
+		game->sideDistY = (game->mapY + 1.0 - game->posY) * game->deltaDistY;
 	}
 }
 
-static void PerformDDA(t_game *game)
+static void	perform_dda(t_game *game)
 {
-	int hit;
-	
+	int	hit;
+
 	hit = 0;
 	while (hit == 0)
 	{
@@ -66,56 +66,58 @@ static void PerformDDA(t_game *game)
 		if (game->map[game->mapX][game->mapY] == '1')
 			hit = 1;
 	}
-	if(game->side == 0)
+	if (game->side == 0)
 		game->perpWallDist = (game->sideDistX - game->deltaDistX);
 	else
-	    game->perpWallDist = (game->sideDistY - game->deltaDistY);
+		game->perpWallDist = (game->sideDistY - game->deltaDistY);
 }
 
-static void calculateWallHeight(t_game *game)
+static void	calculate_wall_height(t_game *game)
 {
-	game->lineHeight = (int)(game->window_y/ game->perpWallDist);
-	game->drawStart = -game->lineHeight/2 + game->window_y/2 ;
-	if(game->drawStart < 0)
+	game->lineHeight = (int)(game->window_y / game->perpWallDist);
+	game->drawStart = -game->lineHeight / 2 + game->window_y / 2;
+	if (game->drawStart < 0)
 		game->drawStart = 0;
-	game->drawEnd = game->lineHeight / 2 + game->window_y/ 2;
-	if(game->drawEnd >= game->window_y)
-		game->drawEnd =game->window_y - 1;
+	game->drawEnd = game->lineHeight / 2 + game->window_y / 2;
+	if (game->drawEnd >= game->window_y)
+		game->drawEnd = game->window_y - 1;
 }
 
-static void texturingCalculation(t_game *game)
+static void	texturing_calculation(t_game *game)
 {
-	if (game->side == 0) 
+	if (game->side == 0)
 		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
 	else
 		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
 	game->wallX -= floor((game->wallX));
 	game->texX = (int)(game->wallX * texWidth);
-	if(game->side == 0 && game->rayDirX > 0) 
+	if (game->side == 0 && game->rayDirX > 0)
 		game->texX = texWidth - game->texX - 1;
-	if(game->side == 1 && game->rayDirY < 0) 
+	if (game->side == 1 && game->rayDirY < 0)
 		game->texX = texWidth - game->texX - 1;
 	game->step = 1.0 * texHeight / game->lineHeight;
-	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2) * game->step;
+	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2)
+		* game->step;
 }
 
-int renderNextFrame(t_game *game)
+int	render_next_frame(t_game *game)
 {
 	int x;
-	
+
 	x = 0;
 	initImage(game);
-	while(x < game->window_x)
+	while (x < game->window_x)
 	{
-		RayPosAndDir(game, x);
-		StepAndInitialSideDist(game);
-		PerformDDA(game);
-		calculateWallHeight(game);
-		texturingCalculation(game);
+		ray_pos_and_dir(game, x);
+		step_and_initial_sidedist(game);
+		perform_dda(game);
+		calculate_wall_height(game);
+		texturing_calculation(game);
 		render(game, x);
 		x++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0, 0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0,
+			0);
 	mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	return(1);//presonaly I prefer 0 but I guess this is a loop_hook thing
+	return (1); //presonaly I prefer 0 but I guess this is a loop_hook thing
 }

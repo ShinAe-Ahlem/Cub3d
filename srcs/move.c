@@ -2,73 +2,73 @@
 
 int	move(int keysym, t_game *game)
 {
-	double	olddirX;
-	double	moveSpeed;
-	double	oldplaneX;
-	double	rotatSpeed;
+	double	olddir_x;
+	double	move_speed;
+	double	oldplane_x;
+	double	rotat_speed;
 
-	rotatSpeed = 0.042;
-	moveSpeed = 0.083;
-	oldplaneX = game->planeX;
-	olddirX = game->dirX;
+	rotat_speed = 0.042;
+	move_speed = 0.083;
+	oldplane_x = game->planeX;
+	olddir_x = game->dirX;
 	if (keysym == XK_Right)
 	{
-		game->dirX = game->dirX * cos(-rotatSpeed) - game->dirY
-			* sin(-rotatSpeed);
-		game->dirY = olddirX * sin(-rotatSpeed) + game->dirY * cos(-rotatSpeed);
-		game->planeX = game->planeX * cos(-rotatSpeed) - game->planeY
-			* sin(-rotatSpeed);
-		game->planeY = oldplaneX * sin(-rotatSpeed) + game->planeY
-			* cos(-rotatSpeed);
+		game->dirX = game->dirX * cos(-rotat_speed) - game->dirY
+			* sin(-rotat_speed);
+		game->dirY = olddir_x * sin(-rotat_speed) + game->dirY * cos(-rotat_speed);
+		game->planeX = game->planeX * cos(-rotat_speed) - game->planeY
+			* sin(-rotat_speed);
+		game->planeY = oldplane_x * sin(-rotat_speed) + game->planeY
+			* cos(-rotat_speed);
 	}
 	if (keysym == XK_Left)
 	{
-		game->dirX = game->dirX * cos(rotatSpeed) - game->dirY
-			* sin(rotatSpeed);
-		game->dirY = olddirX * sin(rotatSpeed) + game->dirY * cos(rotatSpeed);
-		game->planeX = game->planeX * cos(rotatSpeed) - game->planeY
-			* sin(rotatSpeed);
-		game->planeY = oldplaneX * sin(rotatSpeed) + game->planeY
-			* cos(rotatSpeed);
+		game->dirX = game->dirX * cos(rotat_speed) - game->dirY
+			* sin(rotat_speed);
+		game->dirY = olddir_x * sin(rotat_speed) + game->dirY * cos(rotat_speed);
+		game->planeX = game->planeX * cos(rotat_speed) - game->planeY
+			* sin(rotat_speed);
+		game->planeY = oldplane_x * sin(rotat_speed) + game->planeY
+			* cos(rotat_speed);
 	}
 	if (keysym == XK_a)
 	{
-		if (game->map[(int)((game->posX - game->dirY * moveSpeed
+		if (game->map[(int)((game->posX - game->dirY * move_speed
 					- 0.000001))][(int)(game->posY)] != '1')
-			game->posX -= game->dirY * moveSpeed - 0.000001;
+			game->posX -= game->dirY * move_speed - 0.000001;
 		if (game->map[(int)(game->posX)]
-						[((int)(game->posY + game->dirX * moveSpeed
+						[((int)(game->posY + game->dirX * move_speed
 									- 0.000001))] != '1')
-			game->posY += game->dirX * moveSpeed - 0.000001;
+			game->posY += game->dirX * move_speed - 0.000001;
 	}
 	if (keysym == XK_d)
 	{
-		if (game->map[(int)((game->posX + game->dirY * moveSpeed - 0.000001))]
+		if (game->map[(int)((game->posX + game->dirY * move_speed - 0.000001))]
 						[(int)(game->posY)] != '1')
-			game->posX += game->dirY * moveSpeed - 0.000001;
+			game->posX += game->dirY * move_speed - 0.000001;
 		if (game->map[(int)(game->posX)]
-						[((int)(game->posY - game->dirX * moveSpeed
+						[((int)(game->posY - game->dirX * move_speed
 									- 0.000001))] != '1')
-			game->posY -= game->dirX * moveSpeed - 0.000001;
+			game->posY -= game->dirX * move_speed - 0.000001;
 	}
 	if (keysym == XK_w)
 	{
-		if (game->map[(int)(game->posX + game->dirX * moveSpeed
+		if (game->map[(int)(game->posX + game->dirX * move_speed
 				- 0.000001)][(int)(game->posY - 0.000001)] != '1')
-			game->posX += game->dirX * moveSpeed;
+			game->posX += game->dirX * move_speed;
 		if (game->map[(int)(game->posX - 0.000001)][((int)(game->posY
-					+ game->dirY * moveSpeed - 0.000001))] != '1')
-			game->posY += game->dirY * moveSpeed;
+					+ game->dirY * move_speed - 0.000001))] != '1')
+			game->posY += game->dirY * move_speed;
 	}
 	if (keysym == XK_s)
 	{
-		if (game->map[(int)((game->posX - game->dirX * moveSpeed - 0.000001))]
+		if (game->map[(int)((game->posX - game->dirX * move_speed - 0.000001))]
 						[(int)(game->posY - 0.000001)] != '1')
-			game->posX -= game->dirX * moveSpeed;
+			game->posX -= game->dirX * move_speed;
 		if (game->map[(int)(game->posX - 0.000001)]
-						[((int)(game->posY - game->dirY * moveSpeed
+						[((int)(game->posY - game->dirY * move_speed
 									- 0.000001))] != '1')
-			game->posY -= game->dirY * moveSpeed;
+			game->posY -= game->dirY * move_speed;
 	}
 	return (0);
 }

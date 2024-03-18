@@ -1,32 +1,36 @@
 #include "../includes/game.h"
 
-static int	importTextures(t_game *game)
+static int	import_textures(t_game *game)
 {
-	game->tex =(void **) malloc(5 * sizeof(void *));
+	game->tex = (void **)malloc(5 * sizeof(void *));
 	if (!game->tex)
 	{
 		//free this
 		ft_error("malloc");
 		exit(EXIT_FAILURE);
 	}
-	game->tex[0] = mlx_xpm_file_to_image(game->mlx_ptr,game->texFiles[0],&game->width[0], &game->height[0]);
+	game->tex[0] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[0],
+			&game->width[0], &game->height[0]);
 	if (!game->tex[0])
-		return(1);
-	game->tex[1] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[1], &game->width[1], &game->height[1]);
+		return (1);
+	game->tex[1] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[1],
+			&game->width[1], &game->height[1]);
 	if (!game->tex[1])
-		return(1);
-	game->tex[2] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[2], &game->width[2], &game->height[2]);
+		return (1);
+	game->tex[2] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[2],
+			&game->width[2], &game->height[2]);
 	if (!game->tex[2])
-		return(1);
-	game->tex[3] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[3], &game->width[3], &game->height[3]);
+		return (1);
+	game->tex[3] = mlx_xpm_file_to_image(game->mlx_ptr, game->texFiles[3],
+			&game->width[3], &game->height[3]);
 	if (!game->tex[3])
-		return(1);
+		return (1);
 	game->tex[4] = NULL;
 	return (0);
 }
 
 /*need to enhance code ( texarr[0] = mlxto img(tex[0]))*/
-static void	getTextureAddress(t_game *game)
+static void	get_texture_address(t_game *game)
 {
 	game->texAddress = (int **)malloc(5 * sizeof(int *));
 	if (!game->texAddress)
@@ -60,15 +64,15 @@ void	window_size_setting(t_game *game)
 int	ft_create_window(t_game *game)
 {
 	initGameWindow(game);
-	if (importTextures(game))
+	if (import_textures(game))
 	{
 		ft_error("problem imprting texture\n");
 		free_all(game);
 	}
-	getTextureAddress(game);
+	get_texture_address(game);
 	mlx_key_hook(game->win_ptr, &handle_move, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
-	mlx_loop_hook(game->mlx_ptr, renderNextFrame, game);
+	mlx_loop_hook(game->mlx_ptr, render_next_frame, game);
 	mlx_loop(game->mlx_ptr);
 	return (1);
 }
