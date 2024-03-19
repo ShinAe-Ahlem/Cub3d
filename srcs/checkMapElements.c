@@ -25,17 +25,12 @@ static bool	is_floor_ceilnig_line(char *line)
 static bool	is_map(t_game *game, char *line)
 {
 	char    charset[8] = "01NSEW ";
+	(void)game;
 	dprintf(1,"in is_map\n");
 	dprintf(1,"line = %s", line);
 	if (charset_finder(charset, line))
 		return (true);
-	else
-	{
-		ft_perror(ERROR_NO_MATCH_CHAR);
-		sleep(1);
-		free_all(game);
-		exit(EXIT_FAILURE);
-	}
+	return(false);
 }
 
 void	check_map_elements(t_game *game)
@@ -44,7 +39,7 @@ void	check_map_elements(t_game *game)
 	game->mapLL = NULL;
 	while (game->mapfile[game->pos])
 	{
-		if (game->mapfile[game->pos] && is_empty_line(game->mapfile[game->pos]))
+		while (game->mapfile[game->pos] && is_empty_line(game->mapfile[game->pos]))
 			game->pos++;
 		if (game->mapfile[game->pos]
 			&& is_direction_line(game->mapfile[game->pos]))

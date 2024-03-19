@@ -24,9 +24,8 @@ void	zeroSideBlank(char *line)
 	char	*temp;
 
 	temp = ft_strtrim(line, " \n");
-	dprintf(1, "temp = %s\n", temp);
 	len = ft_strlen(temp) - 1;
-	if (temp[len] == '0' || temp[0] == '0')
+	if (len > 0 && (temp[len] == '0' || temp[0] == '0'))
 	{
 		ft_perror(ERROR_MAP_UNCLOSED);
 		// freethis
