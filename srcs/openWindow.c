@@ -71,6 +71,7 @@ int	ft_create_window(t_game *game)
 	}
 	get_texture_address(game);
 	mlx_key_hook(game->win_ptr, &handle_move, game);
+	mlx_hook(game->win_ptr, DestroyNotify, 0, ft_close_window, game);
 	mlx_hook(game->win_ptr, KeyPress, KeyPressMask, handle_keypress, game);
 	mlx_loop_hook(game->mlx_ptr, render_next_frame, game);
 	mlx_loop(game->mlx_ptr);
