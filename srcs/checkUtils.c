@@ -4,7 +4,9 @@
 
 bool	is_empty_line(char *line)
 {
-	while (*line)
+	if (line == NULL)
+		return(true);
+	while (*line != '\0')
 	{
 		if (*line != ' ' || *line != '\n' || *line != '\t')
 			return (false);

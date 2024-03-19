@@ -24,6 +24,7 @@ void	zeroSideBlank(char *line)
 	char	*temp;
 
 	temp = ft_strtrim(line, " \n");
+	dprintf(1, "temp = %s\n", temp);
 	len = ft_strlen(temp) - 1;
 	if (temp[len] == '0' || temp[0] == '0')
 	{
@@ -63,9 +64,10 @@ void	zero_blank_contact(t_game *game)
 
 	i = 0;
 	zeroThisLine(game, 0);
+	print_char_table(game->map);
 	while (game->map[i])
 	{
-
+		dprintf(1, "game->map[%d] = %s", i, game->map[i]);
 		zeroSideBlank(game->map[i]);
 		zeroExposed(game->map, i);
 		i++;

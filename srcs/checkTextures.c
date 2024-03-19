@@ -87,8 +87,8 @@ void	check_textures(t_game *game, int *count)
 
 void	check_export_textures(t_game *game)
 {
-	while (game->mapfile[game->pos][0] == '\n')
-		game->pos++;
+	// while (game->mapfile[game->pos][0] == '\n')
+	// 	game->pos++;
 	game->texture = ft_calloc(1 * sizeof(t_texture *), 1);
 	if (!game->texture)
 	{
@@ -103,6 +103,6 @@ void	check_export_textures(t_game *game)
 	export_textures(game);
 	texture_files_exist(game);
 	game->pos += 3;
-	while (game->mapfile[game->pos][0] == '\n')
-		game->pos++;
+	// while (game->mapfile[game->pos][0] == '\n')
+	// 	game->pos++;
 }
