@@ -48,14 +48,6 @@ typedef struct s_color
 	int					blue;
 }						t_color;
 
-typedef struct s_texture
-{
-	char				*NO;
-	char				*SO;
-	char				*EA;
-	char				*WE;
-}						t_texture;
-
 typedef struct s_coord
 {
 	int	x;
@@ -75,7 +67,6 @@ typedef struct s_game
 	int					window_x;
 	int					window_y;
 	char				**mapfile; // whole .cub file content
-	t_texture			*texture;
 	t_color				floor;
 	t_color				ceiling;
 	t_list				*mapLL;

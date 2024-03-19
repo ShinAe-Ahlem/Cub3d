@@ -1,10 +1,5 @@
 #include "../includes/game.h"
 
-void	texture_init(t_game *game)
-{
-	game->texture = NULL;
-}
-
 void	FC_init(t_game *game)
 {
 	game->floor.red = 0;
@@ -48,8 +43,6 @@ void	initGameParam(t_game *game)
 	game->x = 0;
 	game->y = 0;
 	game->mlx_ptr = NULL;
-	game->texture = NULL;
-	// texture_init(game);
 	FC_init(game);
 	mapInfoInit(game);
 	game->direction = malloc(1 * sizeof(t_coord));
@@ -64,7 +57,6 @@ void	initGameParam(t_game *game)
 		perror("malloc\n");
 		exit(EXIT_FAILURE);
 	}
-	game->texture = NULL;
 	game->direction->x = -1; //initial direction vector
 	game->direction->y = 0;  //initial direction vector
 	game->cameraPlane->x = 0;

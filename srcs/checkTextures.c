@@ -6,7 +6,7 @@ void	export_textures(t_game *game)
 
 	i = game->pos;
 	game->texLines = malloc(5 * sizeof(char *));
-	if (!game->texture)
+	if (!game->texLines)
 	{
 		free_all(game);
 		exit(EXIT_FAILURE);
@@ -89,12 +89,7 @@ void	check_export_textures(t_game *game)
 {
 	// while (game->mapfile[game->pos][0] == '\n')
 	// 	game->pos++;
-	game->texture = ft_calloc(1 * sizeof(t_texture *), 1);
-	if (!game->texture)
-	{
-		free_all(game);
-		exit(EXIT_FAILURE);
-	}
+
 	if (!are_valid_texture_formats(game))
 	{
 		free_all(game);
