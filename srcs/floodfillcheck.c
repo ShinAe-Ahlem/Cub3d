@@ -36,9 +36,10 @@ void	find_player_position(t_game *game, t_coord *playerPos)
 			{
 				game->playerPos->x = j;
 				game->playerPos->y = i;
-				
-				game->posX = j + 0.5;
-				game->posY = i + 0.5;
+				game->posX = i + 0.5;
+				game->posY = j + 0.5;
+				dprintf(1, "playrx = %f\n", game->posX);
+				dprintf(1, "playry = %f\n", game->posY);
 			}
 			j++;
 		}
