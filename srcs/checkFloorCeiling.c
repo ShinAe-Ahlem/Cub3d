@@ -24,11 +24,11 @@ bool	is_valid_rgb(char *RGB)
 		ft_error(ERROR_NO_MATCH_CHAR);
 		return (false);
 	}
-	if (!red_gree_blue(RGB))
-	{
-		ft_error("a shade is missing");
-		return (false);
-	}
+	// if (!red_gree_blue(RGB))
+	// {
+	// 	ft_error("a shade is missing");
+	// 	return (false);
+	// }
 	return (true);
 }
 
