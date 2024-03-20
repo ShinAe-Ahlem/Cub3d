@@ -28,22 +28,17 @@ static void	free_tex(t_game *game)
 	}
 }
 
-void	free_all(t_game *game) //sauvegarde de la version de Ahlem
+void	free_all(t_game *game)
 {
-	// mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	// free(game->img);
 	free_tex(game);
 	if(game->mapfile)
 		free_table(game->mapfile);
 	if(game->map)
 		free_table(game->map);
-	// if(game->texFiles)
-	// 	free_table(game->texFiles);
+	if(game->texFiles)
+		free_table(game->texFiles);
 	free(game->playerPos);
 	free(game->playerPosDelta);
-	// mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
-	// free(game->img);
-	// game->img = NULL;
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr); // Shin-Ae: check if this is useful
 	game->win_ptr = NULL;
