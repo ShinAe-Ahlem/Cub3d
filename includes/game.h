@@ -26,7 +26,8 @@ typedef struct s_coord	t_coord;
 # define P3 3*PI/2
 #define texWidth 64
 #define texHeight 64
-
+#define WIDTH 920
+#define HEIGHT 700
 typedef struct s_img
 {
 	void			*mlx_img;
@@ -80,14 +81,14 @@ typedef struct s_game
 	void				*mlx_ptr;
 	t_grp				*grp;
 	void				**tex; // tableaux pour les xpm;
-	char 				**texAddress; // addresse des xpm pour recuperer les pixel plutard
+	int 				**texAddress; // addresse des xpm pour recuperer les pixel plutard
 	void				*win_ptr;
 	int					screen_x;
 	int					screen_y;
 	int					window_x;
 	int					window_y;
 	char				**mapfile; // whole .cub file content
-	t_texture			texture;
+	t_texture			*texture;
 	t_color				floor;
 	t_color				ceiling;
 	t_list				*mapLL;
@@ -132,6 +133,10 @@ typedef struct s_game
 	double				texPos;
 	int					texX;
 	int					texY;
+	int					dir;
+	int				bpp[4];
+	int				line_len[4];
+	int				endian[4];
 }						t_game;
 
 #endif
