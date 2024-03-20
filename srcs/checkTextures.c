@@ -35,7 +35,7 @@ void	texture_files_exist(t_game *game)
 	int			j;
 
 	j = 0;
-	game->texFiles = ft_calloc(sizeof(char *), 4);
+	game->texFiles = ft_calloc(sizeof(char *), 5);
 	while (j < 4)
 	{
 		i = 3;
