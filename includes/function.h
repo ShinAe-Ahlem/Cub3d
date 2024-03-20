@@ -19,7 +19,6 @@ void	check_env(char **env);
 
 int	ft_create_window(t_game *game);
 int	ft_close_window(t_game *game);
-
 void	window_size_setting(t_game *game);
 
 //***** EVENT MANAGEMENT *****
