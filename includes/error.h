@@ -16,7 +16,7 @@
 # define ERROR_SPACE "Unexpected space has been found"
 # define ERROR_MULT_PLA_POS "There are too many or no player position on map"
 # define ERROR_MAP_UNCLOSED "Map is not closed"
-# define ERROR_MAP_SPLITTED "Map is splitted by an empty one or not last element is file"
+# define ERROR_MAP_SPLITTED "Map is splitted by an empty line or not last element in file"
 # define ERROR_FF_FAILED "Map contains inaccessible spots for player"
 # define ERROR_MALLOC "Memory error"
 # define ERROR_MLX 1
