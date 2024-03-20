@@ -17,10 +17,9 @@ static void	epur_array(t_game *game)
 	while (game->map[i])
 	{
 		last_one_pos = ft_strlen(game->map[i]);
-		if (game->map[i][last_one_pos - 1] == '\n')
+		if ((last_one_pos - 1 > 0 ) && game->map[i][last_one_pos - 1] == '\n')
 			last_one_pos--;
-		while (game->map[i][last_one_pos] == ' '
-			|| game->map[i][last_one_pos] == '\n')
+		while (last_one_pos >= 0 && game->map[i] && (game->map[i][last_one_pos] == ' ' || game->map[i][last_one_pos] == '\n'))
 			last_one_pos--;
 		if (last_one_pos == ft_strlen(game->map[i]) - 2)
 		{

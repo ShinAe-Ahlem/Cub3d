@@ -11,6 +11,31 @@ bool	has_spaces(char *str)
 	return (false);
 }
 
+bool red_gree_blue(char *str)
+{
+	int count;
+
+	count = 0;
+	while(count <=3)
+	{
+		if (*str && *str < '0' && *str > '9')
+			return(false);
+		while (*str && *str != '\n')
+		{
+			while(*str >= '0' && *str <= '9')
+				str++;
+			count += 1;
+			if (*str == ',')
+			{
+				if (*(str + 1) >= '0' && *(str + 1) <= '9')
+					count += 1;
+			}
+			str++;
+		}
+	}
+	return (true);
+}
+
 bool	has_intruder(char *str)
 {
 	while (*str && *str != '\n')

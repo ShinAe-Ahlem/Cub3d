@@ -64,7 +64,7 @@ bool	are_valid_texture_formats(t_game *game)
 bool	has_spaces(char *str);
 bool	has_intruder(char *str);
 bool    charset_finder(const char *charset, const char *str);
-
+bool red_gree_blue(char *str);
 /*clolors*/
 int	create_rgb(int r, int g, int b);
 
@@ -82,5 +82,6 @@ void    initGameWindow(t_game *game);
 
 //***** FREE *****
 void free_all(t_game *game);
+void free_part(t_game *game);
 void free_char_array(char ***array);
 #endif

@@ -10,7 +10,7 @@ void initGameWindow(t_game *game)
 	}
     window_size_setting(game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
-			(game->window_x), (game->window_y), game->game_name);
+			(game->window_x), (game->window_y),"Alhem and Shin Ae's World <3");
 	if (game->win_ptr == NULL)
 	{
 		mlx_destroy_display(game->mlx_ptr);
@@ -27,13 +27,6 @@ void    coordInit(t_coord *coord)
 
 void initImage(t_game *game)
 {
-	// game->img = malloc(1 * sizeof(t_img));
-	// if(!game->img)
-	// {
-	// 	//free this
-	// 	ft_error("malloc");
-	// 	exit(EXIT_FAILURE);
-	// }
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
 	if(!game->img.mlx_img)
 	{
