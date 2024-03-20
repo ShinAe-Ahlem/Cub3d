@@ -10,7 +10,7 @@ void initGameWindow(t_game *game)
 	}
     window_size_setting(game);
 	game->win_ptr = mlx_new_window(game->mlx_ptr,
-			(game->window_x), (game->window_y),"Alhem and Shin Ae's World <3");
+			(game->window_x), (game->window_y), game->game_name);
 	if (game->win_ptr == NULL)
 	{
 		mlx_destroy_display(game->mlx_ptr);

@@ -38,6 +38,7 @@ void	mapInfoInit(t_game *game)
 
 void	initGameParam(t_game *game)
 {
+	game->game_name = "Alhem and Shin Ae's World <3";
 	game->fd = 0;
 	game->pos = 0;
 	game->x = 0;
