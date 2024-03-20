@@ -23,7 +23,7 @@ static void	drawCeiling(t_game *game, int *y, int x)
 			game->ceiling.blue);
 	while ((*y) < game->drawStart)
 	{
-		my_mlx_pixel_put(game->img, x, *y, color2);
+		my_mlx_pixel_put(&game->img, x, *y, color2);
 		(*y)++;
 	}
 }
@@ -35,7 +35,7 @@ static void	drawFloor(t_game *game, int *y, int x)
 	color1 = create_rgb(game->floor.red, game->floor.green, game->floor.blue);
 	while (*y < game->window_y - 1)
 	{
-		my_mlx_pixel_put(game->img, x, *y, color1);
+		my_mlx_pixel_put(&game->img, x, *y, color1);
 		(*y)++;
 	}
 }
@@ -52,7 +52,7 @@ static void	drawWall(t_game *game, int *y, int x)
 			+ game->texX];
 		if (game->side == 1)
 			color3 = (color3 >> 1) & 8355711;
-		my_mlx_pixel_put(game->img, x, *y, color3);
+		my_mlx_pixel_put(&game->img, x, *y, color3);
 		(*y)++;
 	}
 }

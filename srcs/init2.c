@@ -27,19 +27,19 @@ void    coordInit(t_coord *coord)
 
 void initImage(t_game *game)
 {
-	game->img = malloc(1 * sizeof(t_img));
-	if(!game->img)
-	{
-		//free this
-		ft_error("malloc");
-		exit(EXIT_FAILURE);
-	}
-	game->img->mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
-	if(!game->img->mlx_img)
+	// game->img = malloc(1 * sizeof(t_img));
+	// if(!game->img)
+	// {
+	// 	//free this
+	// 	ft_error("malloc");
+	// 	exit(EXIT_FAILURE);
+	// }
+	game->img.mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
+	if(!game->img.mlx_img)
 	{
 		//freethis
 		exit(EXIT_FAILURE);
 	}
-	game->img->addr = mlx_get_data_addr(game->img->mlx_img, &game->img->bpp, &game->img->line_len, &game->img->endian);
+	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, &game->img.line_len, &game->img.endian);
 
 }
