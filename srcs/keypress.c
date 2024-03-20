@@ -1,6 +1,7 @@
 #include "../includes/game.h"
 
-int	handle_keypress(int keysym, t_game *game)
+
+int 	close_window(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{
