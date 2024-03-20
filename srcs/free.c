@@ -45,11 +45,9 @@ void	free_all(t_game *game) //sauvegarde de la version de Ahlem
 	// free(game->img);
 	// game->img = NULL;
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	 mlx_destroy_display(game->mlx_ptr); // Shin-Ae: check if this is useful
+	mlx_destroy_display(game->mlx_ptr); // Shin-Ae: check if this is useful
 	game->win_ptr = NULL;
 }
-
-
 
 void free_part(t_game *game)
 {
