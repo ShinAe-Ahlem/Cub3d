@@ -116,8 +116,8 @@ int	render_next_frame(t_game *game)
 		render(game, x);
 		x++;
 	}
-	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img->mlx_img, 0,
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0,
 			0);
-	mlx_destroy_image(game->mlx_ptr, game->img->mlx_img);
+	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
 	return (1); //presonaly I prefer 0 but I guess this is a loop_hook thing
 }

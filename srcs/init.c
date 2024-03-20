@@ -44,22 +44,7 @@ void	initGameParam(t_game *game)
 	game->x = 0;
 	game->y = 0;
 	game->mlx_ptr = NULL;
+	game->tex = NULL;
 	FC_init(game);
 	mapInfoInit(game);
-	game->direction = malloc(1 * sizeof(t_coord));
-	if (!game->direction)
-	{
-		perror("malloc\n");
-		exit(EXIT_FAILURE);
-	}
-	game->cameraPlane = malloc(1 * sizeof(t_coord));
-	if (!game->cameraPlane)
-	{
-		perror("malloc\n");
-		exit(EXIT_FAILURE);
-	}
-	game->direction->x = -1; //initial direction vector
-	game->direction->y = 0;  //initial direction vector
-	game->cameraPlane->x = 0;
-	game->cameraPlane->y = 1;
 }

@@ -76,9 +76,7 @@ typedef struct s_game
 	t_coord				*playerPos;
 	t_coord				*playerPosDelta;
 	float				playerAngle;
-	t_coord				*cameraPlane;
-	t_coord				*direction;
-	t_img				*img;
+	t_img				img;
     int                 pos; /*position in the mapfile*/
 	int 				x;
 	int 				y;
