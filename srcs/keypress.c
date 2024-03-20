@@ -1,12 +1,11 @@
 #include "../includes/game.h"
 
 
-int 	close_window(int keysym, t_game *game)
+int 	esc_close_window(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{
 		free_all(game);
-	
 		exit(EXIT_SUCCESS);
 	}
 	return (0);

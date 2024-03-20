@@ -30,7 +30,8 @@ void initImage(t_game *game)
 	game->img.mlx_img = mlx_new_image(game->mlx_ptr, game->window_x, game->window_y);
 	if(!game->img.mlx_img)
 	{
-		//freethis
+		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
+    	mlx_destroy_display(game->mlx_ptr);
 		exit(EXIT_FAILURE);
 	}
 	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp, &game->img.line_len, &game->img.endian);

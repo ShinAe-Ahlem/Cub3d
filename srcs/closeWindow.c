@@ -9,6 +9,6 @@ int	ft_close_window(t_game *game)
 
 void close_event(t_game *game)
 {
-    mlx_hook(game->win_ptr, 2, 1L<<0, close_window, game);
+	mlx_hook(game->win_ptr, 2, 1L<<0, esc_close_window, game);
 	mlx_hook(game->win_ptr, DestroyNotify, 0, ft_close_window, game);
 }

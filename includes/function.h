@@ -24,7 +24,7 @@ void	window_size_setting(t_game *game);
 //***** EVENT MANAGEMENT *****
 int     move(int keysym, t_game *game);
 int     handle_move(int keysym, t_game *game);
-int 	close_window(int keysym, t_game *game);
+int 	esc_close_window(int keysym, t_game *game);
 void    close_event(t_game *game);
 
 

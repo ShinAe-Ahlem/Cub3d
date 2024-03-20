@@ -51,7 +51,6 @@ static char *copy_without_space(char *line_to_epur, int len)
 	if (!new)
 	{
 		ft_error(ERROR_MALLOC);
-		//freethis
 		exit(EXIT_FAILURE);
 	}
 	while (line_to_epur[i] && i < len )
