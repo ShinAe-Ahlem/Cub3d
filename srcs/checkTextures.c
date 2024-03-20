@@ -23,6 +23,7 @@ void	export_textures(t_game *game)
 			game->texLines[3] = ft_strdup(game->mapfile[i]);
 		i++;
 	}
+	game->texLines[4] = NULL;
 }
 
 void	texture_files_exist(t_game *game)
@@ -45,8 +46,11 @@ void	texture_files_exist(t_game *game)
 		fd = open(filename, O_RDONLY);
 		if (fd == -1)
 		{
-			ft_perror(ERROR_OPEN);
-			free_all(game);
+			perror("open");
+			if (filename)
+				free(filename);
+			free_part(game);
+			// free_all(game);
 			exit(EXIT_FAILURE);
 		}
 		if (fstat(fd, &file_stat) == -1)
@@ -92,7 +96,7 @@ void	check_export_textures(t_game *game)
 
 	if (!are_valid_texture_formats(game))
 	{
-		free_all(game);
+		free_part(game);
 		exit(EXIT_FAILURE);
 	}
 	export_textures(game);

@@ -17,10 +17,9 @@ int	main(int ac, char **av, char **env)
 		return (1);
 	}
 	check_map_elements(&game);
-	ft_error("in main");
+	printf("\n before create window\n");
 	ft_create_window(&game);
 	/* we will exit the loop if there's no window left, and execute this code */
 	// mlx_destroy_display(game.mlx_ptr);
 	free(game.mlx_ptr);
-	printf("\n<< main() correctly closed >>\n");
 }

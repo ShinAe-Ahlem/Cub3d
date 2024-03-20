@@ -47,3 +47,14 @@ void	free_all(t_game *game)
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	game->win_ptr = NULL;
 }
+
+
+void free_part(t_game *game)
+{
+	free_table(game->map);
+	free_table(game->mapfile);
+	free_table(game->texFiles);
+	free_table(game->texLines);
+	free(game->playerPos);
+	free(game->playerPosDelta);
+}

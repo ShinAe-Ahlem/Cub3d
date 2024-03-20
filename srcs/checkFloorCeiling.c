@@ -24,6 +24,11 @@ bool	is_valid_rgb(char *RGB)
 		ft_error(ERROR_NO_MATCH_CHAR);
 		return (false);
 	}
+	// if (!red_gree_blue(RGB))
+	// {
+	// 	ft_error("a shade is missing");
+	// 	return (false);
+	// }
 	return (true);
 }
 
@@ -50,7 +55,6 @@ void	affect_rgb(int *rgb, char *RGB, int *pos, char c)
 	if (*rgb > 255 || *rgb < 0)
 	{
 		ft_error("ERROR : RGB out of range!\n");
-		/*free*/
 		exit(EXIT_FAILURE);
 	}
 	free(color);
@@ -82,13 +86,12 @@ void	check_is_valid_rgb_format(t_game *game, char c)
 	if (!is_valid_rgb(rgb))
 	{
 		free(rgb);
-		free_all(game);
-		ft_error("Invalid rgb format\n");
+		free_part(game);
 		exit(EXIT_FAILURE);
 	}
 	if (c == 'F')
 		affect_rgb_togame(&game->floor, rgb);
-	else
+	else if (c == 'C')
 		affect_rgb_togame(&game->ceiling, rgb);
 	free(rgb);
 }
@@ -109,7 +112,7 @@ void	check_floor_ceiling(t_game *game)
 			if (f_flag)
 			{
 				ft_error("double floor found\n");
-				free_all(game);
+				free_part(game);
 				exit(EXIT_FAILURE);
 			}
 			f_flag = 1;
@@ -120,7 +123,7 @@ void	check_floor_ceiling(t_game *game)
 			if (c_flag)
 			{
 				ft_error("double ceilning found\n");
-				free_all(game);
+				free_part(game);
 				exit(EXIT_FAILURE);
 			}
 			c_flag = 1;

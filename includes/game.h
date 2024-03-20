@@ -56,7 +56,6 @@ typedef struct s_coord
 
 typedef struct s_game
 {
-	char				*game_name;
 	int fd; // fd of map we read with gnl
 	void				*mlx_ptr;
 	void				**tex; // tableaux pour les xpm;
