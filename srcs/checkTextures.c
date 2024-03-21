@@ -91,7 +91,7 @@ void	check_textures(t_game *game, int *count)
 
 void	check_export_textures(t_game *game)
 {
-
+	dprintf(1,"check export texture\n");
 	if (!are_valid_texture_formats(game))
 	{
 		free_part(game);
@@ -100,6 +100,5 @@ void	check_export_textures(t_game *game)
 	export_textures(game);
 	texture_files_exist(game);
 	game->pos += 3;
-	while (game->mapfile[game->pos][0] == '\n')
-		game->pos++;
+	dprintf(1,"game->texfile = %s\n", game->texFiles[0]);
 }

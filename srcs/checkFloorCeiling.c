@@ -153,7 +153,7 @@ void	check_floor_ceiling(t_game *game)
 		}
 		game->pos++;
 	}
-	if ( !(c_flag && f_flag))
+	if ( !c_flag || !f_flag)
 	{
 		ft_error("missing floor or ceiling");
 		free_part(game);
