@@ -11,14 +11,14 @@ void	zeroThisLine(t_game *game, int i)
 		if (game->map[i][j] == '0')
 		{
 			ft_perror(ERROR_MAP_UNCLOSED);
-			// freethis
+			free_part(game);
 			exit(EXIT_FAILURE);
 		}
 		j++;
 	}
 }
 
-void	zeroSideBlank(char *line)
+void	zeroSideBlank(t_game *game, char *line)
 {
 	int		len;
 	char	*temp;
@@ -28,13 +28,13 @@ void	zeroSideBlank(char *line)
 	if (len > 0 && (temp[len] == '0' || temp[0] == '0'))
 	{
 		ft_perror(ERROR_MAP_UNCLOSED);
-		// freethis
+		free_part(game);
 		exit(EXIT_FAILURE);
 	}
 	free(temp);
 }
 
-void	zeroExposed(char **map, int i)
+void	zeroExposed(t_game *game, char **map, int i)
 {
 	int	j;
 
@@ -49,7 +49,7 @@ void	zeroExposed(char **map, int i)
 					|| !(map[i][j + 1])))
 			{
 				ft_perror(ERROR_MAP_UNCLOSED);
-				// freethis
+				free_part(game);
 				exit(EXIT_FAILURE);
 			}
 		}
@@ -66,8 +66,8 @@ void	zero_blank_contact(t_game *game)
 	// print_char_table(game->map);
 	while (game->map[i])
 	{
-		zeroSideBlank(game->map[i]);
-		zeroExposed(game->map, i);
+		zeroSideBlank(game, game->map[i]);
+		zeroExposed(game, game->map, i);
 		i++;
 	}
 	i -= 1;

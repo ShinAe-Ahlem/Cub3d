@@ -33,7 +33,7 @@ bool	are_valid_texture_formats(t_game *game)
 	i = game->pos;
 	while (i < game->pos + 4)
 	{
-		if (game->mapfile[i][0] == '\n')
+		if (game->mapfile[i] && game->mapfile[i][0] == '\n')
 		{
 			ft_error("found empty line or texture format is invalid");
 			return (false);

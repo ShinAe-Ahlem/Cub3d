@@ -82,7 +82,7 @@ void	floodfill(char **map_copy, int x, int y)
 	}
 }
 
-void	post_floodfill_check(char **map_copy)
+static int	post_floodfill_check(char **map_copy)
 {
 	int	i;
 	int	j;
@@ -100,14 +100,13 @@ void	post_floodfill_check(char **map_copy)
 				j++;
 			else
 			{
-				//freethis
 				ft_perror(ERROR_FF_FAILED);
-				exit(EXIT_FAILURE);
+				return(1);
 			}
 		}
 		i++;
 	}
-	//freethis
+	return(0);
 }
 
 void	floodfill_check(t_game *game)
@@ -117,6 +116,11 @@ void	floodfill_check(t_game *game)
 	copy = copy_map(game);
 	find_player_position(game, game->playerPos);
 	floodfill(copy, game->playerPos->x, game->playerPos->y);
-	post_floodfill_check(copy);
+	if (post_floodfill_check(copy))
+	{
+		free_table(copy);
+		free_part(game);
+		exit(EXIT_FAILURE);
+	}
 	free_char_array(&copy);
 }
