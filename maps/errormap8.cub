@@ -1,7 +1,7 @@
-NO ./textures/wood.xpm
-SO ./textures/purplestone.xpm
-WE ./textures/pillar.xpm
-EA ./textures/wall_2.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+NO ./img/xpm/north.xpm
 
 F 220,100,0
 CEILING 225,30,0

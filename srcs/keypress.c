@@ -1,27 +1,19 @@
 #include "../includes/game.h"
 
-int	handle_keypress(int keysym, t_game *game)
+
+int 	esc_close_window(int keysym, t_game *game)
 {
-    if (keysym == XK_Escape)
-    {
-        mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-        game->win_ptr = NULL;
-    }
- 
-    return (0);
+	if (keysym == XK_Escape)
+	{
+		free_all(game);
+		exit(EXIT_SUCCESS);
+	}
+	return (0);
 }
 
-
- int hande_move(int keysym, t_game *game)
+int	handle_move(int keysym, t_game *game)
 {
-    dprintf(1, "player x = %d", game->playerPos->x);
-    dprintf(1, "player y = %d", game->playerPos->y);
-    ft_error("moved well\n");
-    if (!move(keysym, game))
-    {
-        printf("player x = %d", game->playerPos->x);
-        dprintf(1, "player y = %d", game->playerPos->y);
-        renderGame(game);
-    }
-    return (0);
+	if (!move(keysym, game))
+		render_next_frame(game);
+	return (0);
 }

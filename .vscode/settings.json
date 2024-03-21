@@ -4,6 +4,26 @@
         "libft.h": "c",
         "game.h": "c",
         "color.h": "c",
-        "mlx.h": "c"
+        "mlx.h": "c",
+        "array": "c",
+        "*.tcc": "c",
+        "deque": "c",
+        "string": "c",
+        "unordered_map": "c",
+        "vector": "c",
+        "functional": "c",
+        "iterator": "c",
+        "memory_resource": "c",
+        "optional": "c",
+        "memory": "c",
+        "numeric": "c",
+        "ostream": "c",
+        "ranges": "c",
+        "stop_token": "c",
+        "streambuf": "c",
+        "thread": "c",
+        "tuple": "c",
+        "utility": "c",
+        "chrono": "c"
     }
 }

@@ -1,0 +1,616 @@
+==560190== 
+==560190== HEAP SUMMARY:
+==560190==     in use at exit: 109,709 bytes in 139 blocks
+==560190==   total heap usage: 1,541 allocs, 1,402 frees, 1,329,322 bytes allocated
+==560190== 
+==560190== 3 bytes in 1 blocks are still reachable in loss record 1 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4B5858E: strdup (strdup.c:42)
+==560190==    by 0x48B8B45: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 8 bytes in 1 blocks are still reachable in loss record 2 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4B5858E: strdup (strdup.c:42)
+==560190==    by 0x48B59AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x487A820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 8 bytes in 1 blocks are still reachable in loss record 3 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4878B34: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 10 bytes in 1 blocks are still reachable in loss record 4 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4B5858E: strdup (strdup.c:42)
+==560190==    by 0x48B59AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491F213: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B96A8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 16 bytes in 1 blocks are still reachable in loss record 5 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4CEA2EE: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEAE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x48C8EE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 21 bytes in 1 blocks are still reachable in loss record 6 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B903E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 23 bytes in 1 blocks are still reachable in loss record 7 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409AB1: ft_strdup (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403A2C: export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E48: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 23 bytes in 1 blocks are still reachable in loss record 8 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409AB1: ft_strdup (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403ADE: export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E48: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 9 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409AB1: ft_strdup (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403A85: export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E48: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 10 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409AB1: ft_strdup (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4039D4: export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E48: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 11 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x487A041: XextCreateExtension (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A4CC: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 12 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4B5858E: strdup (strdup.c:42)
+==560190==    by 0x48B59AE: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x487A820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 13 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x487A9F5: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 24 bytes in 1 blocks are still reachable in loss record 14 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48C6A65: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF2C6: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491740A: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 29 bytes in 1 blocks are still reachable in loss record 15 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B20CD: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B4929: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4079A2: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 32 bytes in 1 blocks are still reachable in loss record 16 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409950: ft_calloc (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403B57: texture_files_exist (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E51: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 32 bytes in 1 blocks are still reachable in loss record 17 of 60
+==560190==    at 0x48487A9: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4CEE15E: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE237: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x48B952B: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 32 bytes in 1 blocks are still reachable in loss record 18 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4CE71B7: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CE7A08: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CE7EB0: ??? (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CE8E44: xcb_wait_for_reply (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE292: xcb_get_extension_data (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE2EE: xcb_prefetch_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEE364: xcb_get_maximum_request_length (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x48B952B: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 32 bytes in 1 blocks are still reachable in loss record 19 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x487A7FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 32 bytes in 1 blocks are still reachable in loss record 20 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x487A7FF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 33 bytes in 1 blocks are still reachable in loss record 21 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B20CD: _XUpdateAtomCache (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B4929: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x40798B: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 40 bytes in 1 blocks are still reachable in loss record 22 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x403942: export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E48: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 40 bytes in 1 blocks are still reachable in loss record 23 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48C91F1: _XPollfdCacheInit (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8E71: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 40 bytes in 1 blocks are still reachable in loss record 24 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x405FA5: get_texture_address (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D37: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 48 bytes in 1 blocks are still reachable in loss record 25 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48C8E71: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 48 bytes in 1 blocks are still reachable in loss record 26 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48C8E87: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 48 bytes in 1 blocks are still reachable in loss record 27 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x49174C0: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 72 bytes in 1 blocks are still reachable in loss record 28 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B8F20: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 72 bytes in 1 blocks are still reachable in loss record 29 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x49174A4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 78 bytes in 4 blocks are still reachable in loss record 30 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409AB1: ft_strdup (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403D00: texture_files_exist (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403E51: check_export_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403062: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 112 bytes in 1 blocks are still reachable in loss record 31 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48C8D72: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 112 bytes in 1 blocks are still reachable in loss record 32 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B9200: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 128 bytes in 1 blocks are still reachable in loss record 33 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B912E: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 128 bytes in 1 blocks are still reachable in loss record 34 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B599E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491F213: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B96A8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 128 bytes in 1 blocks are still reachable in loss record 35 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B599E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x487A820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 128 bytes in 1 blocks are still reachable in loss record 36 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B599E: XInitExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x487A820: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A50A: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9C8: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 136 bytes in 1 blocks are still reachable in loss record 37 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4078DF: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 149 bytes in 1 blocks are still reachable in loss record 38 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B9710: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 152 bytes in 1 blocks are still reachable in loss record 39 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x491F40E: XkbUseExtension (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B96A8: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 160 bytes in 1 blocks are still reachable in loss record 40 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48A79EF: XCreateGC (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B95A4: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 168 bytes in 1 blocks are still reachable in loss record 41 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B90B2: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 208 bytes in 1 blocks are still reachable in loss record 42 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4878AE9: ??? (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487A9DF: XextAddDisplay (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x487F9E2: XShmQueryVersion (in /usr/lib/x86_64-linux-gnu/libXext.so.6.4.0)
+==560190==    by 0x407733: mlx_int_deal_shm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4079B1: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 208 bytes in 1 blocks are still reachable in loss record 43 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48CAFAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CDBB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CEEC0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF205: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x407E55: mlx_int_wait_first_expose (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407B6D: mlx_new_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404AB0: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 256 bytes in 1 blocks are still reachable in loss record 44 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x491C55D: XkbAllocClientMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49170DE: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 344 bytes in 6 blocks are still reachable in loss record 45 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x49168F5: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 352 bytes in 22 blocks are still reachable in loss record 46 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x409EC5: ft_lstnew (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404165: export_map (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x403119: check_map_elements (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404EF3: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 416 bytes in 2 blocks are still reachable in loss record 47 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48CAFAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CDBB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CEEC0: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF1D0: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x407E55: mlx_int_wait_first_expose (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407B6D: mlx_new_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404AB0: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 512 bytes in 1 blocks are still reachable in loss record 48 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B446A: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B484E: XInternAtom (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x40798B: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 832 bytes in 4 blocks are still reachable in loss record 49 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48CAFAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CDBB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF40C: _XReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF77E: XSync (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4080A7: mlx_int_new_xshm_image (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x4082E2: mlx_new_image (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x408BB7: mlx_int_parse_xpm (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x408FF1: mlx_xpm_file_to_image (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405E09: import_textures (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D0D: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 1,120 bytes in 1 blocks are still reachable in loss record 50 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x491C619: XkbAllocClientMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4916EB7: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 1,872 bytes in 9 blocks are still reachable in loss record 51 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48CAFAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CDBB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CEF01: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF1D0: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x407E55: mlx_int_wait_first_expose (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407B6D: mlx_new_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404AB0: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 2,016 bytes in 27 blocks are still reachable in loss record 52 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x49167DD: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 2,048 bytes in 1 blocks are still reachable in loss record 53 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4916914: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 2,496 bytes in 12 blocks are still reachable in loss record 54 of 60
+==560190==    at 0x4848899: malloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48CAFAE: _XEnq (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CDBB6: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CEF01: _XReadEvents (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48CF205: XWindowEvent (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x407E55: mlx_int_wait_first_expose (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407B6D: mlx_new_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404AB0: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 4,096 bytes in 1 blocks are still reachable in loss record 55 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x491713E: _XkbReadGetMapReply (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x491741E: XkbGetUpdatedMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49174F4: XkbGetMap (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4917542: ??? (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x49178AF: XkbKeycodeToKeysym (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4094C7: mlx_int_param_KeyPress (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x407CF5: mlx_loop (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D83: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 4,704 bytes in 1 blocks are still reachable in loss record 56 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B8B31: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 14,612 bytes in 1 blocks are still reachable in loss record 57 of 60
+==560190==    at 0x484DCD3: realloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4CEA4FB: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEAE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x48C8EE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 16,384 bytes in 1 blocks are still reachable in loss record 58 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B8EBE: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 21,168 bytes in 1 blocks are still reachable in loss record 59 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x4CEA204: xcb_connect_to_fd (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x4CEAE6B: xcb_connect_to_display_with_auth_info (in /usr/lib/x86_64-linux-gnu/libxcb.so.1.1.0)
+==560190==    by 0x48C8EE9: _XConnectXCB (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x48B8B68: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== 33,600 bytes in 2 blocks are still reachable in loss record 60 of 60
+==560190==    at 0x484DA83: calloc (in /usr/libexec/valgrind/vgpreload_memcheck-amd64-linux.so)
+==560190==    by 0x48B9290: XOpenDisplay (in /usr/lib/x86_64-linux-gnu/libX11.so.6.4.0)
+==560190==    by 0x4078F7: mlx_init (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404A52: initGameWindow (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x405D04: ft_create_window (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190==    by 0x404F10: main (in /mnt/nfs/homes/shikwon/42cursus/Practice/cub3d_practice/cub3dOURS_current/cub3D)
+==560190== 
+==560190== LEAK SUMMARY:
+==560190==    definitely lost: 0 bytes in 0 blocks
+==560190==    indirectly lost: 0 bytes in 0 blocks
+==560190==      possibly lost: 0 bytes in 0 blocks
+==560190==    still reachable: 109,709 bytes in 139 blocks
+==560190==         suppressed: 0 bytes in 0 blocks
+==560190== 
+==560190== For lists of detected and suppressed errors, rerun with: -s
+==560190== ERROR SUMMARY: 0 errors from 0 contexts (suppressed: 7 from 1)

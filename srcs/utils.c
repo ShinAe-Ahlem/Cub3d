@@ -4,10 +4,10 @@ void    print_tlist(t_list *list)
 {
     t_list *copy = list;
     
-    printf("print tlist starts:\n");
+    dprintf(1,"****************print tlist starts:*************\n");
     while (copy != NULL)
     {
-        printf("%s", (char *)(copy->content));
+        dprintf(1, "%s", (char *)(copy->content));
         copy = copy->next;
     }
 }

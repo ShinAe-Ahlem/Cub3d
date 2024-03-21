@@ -1,6 +1,7 @@
 
 NAME= cub3D
 SRC_DIR = ./srcs
+OBJDIR = ./objs
 SRCS= $(wildcard $(SRC_DIR)/*.c)
 
 # SRCS_BONUS=
@@ -11,10 +12,11 @@ LIB_DIR		= ./libft/
 LIB_INC		= -I$(LIB_DIR)includes/
 LIB_NAME	= $(LIB_DIR)libft.a
 
-OBJS= ${SRCS:.c=.o}
+# OBJS = $(patsubst %.c,$(OBJDIR)/%.o,$(SRCS))
 
+OBJS= ${SRCS:.c=.o}
 OBJS_BONUS= ${SRCS_BONUS:.c=.o}
-CC= clang #cc
+CC= cc
 FLAGS= -Wall -Wextra -Werror -g3 #-fsanitize=address 
 
 RM=rm -f
@@ -31,8 +33,7 @@ ${NAME}: $(OBJS)
 # 	$(CC) $(FLAGS) $(OBJS_BONUS) -Lminilibx-linux -L/usr/lib -Iminilibx-linux/ -o $(NAME)_bonus -lXext -lX11 -lm -lmlx_Linux
 
 %.o: %.c
-	$(CC) -Wall -Wextra -Werror -MP -I/usr/include -Iminilibx-linux/ -c $< -o $@
-
+	$(CC) -Wall -Wextra -Werror -g3 -I/usr/include -Iminilibx-linux/ -c $< -o $@
 clean:
 	@$(MAKE) clean --silent -C $(LIB_DIR)
 	${RM} ${OBJS} ${OBJS_BONUS}

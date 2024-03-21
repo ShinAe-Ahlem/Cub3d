@@ -1,7 +1,7 @@
-NO ./textures/sprite_1.xpm
-SO ./textures/sprite_2.xpm
-WE ./textures/sprite_3.xpm
-EA ./textures/bluestone.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+NO ./img/xpm/north.xpm
 
 F 220,100,0
 F 220,100,0

@@ -1,95 +1,123 @@
 
 #include "../includes/game.h"
 
-/*square cubes!
-
-the ray distance is converted to vertical lines that will make the walls
-
-1- use triangles on the horizental grid line =>save distance
-2- use triangles on the vertical grid lines => save distance
-
-3- compare both and the one that hits closer will be used as the vertical line's strip
-
-*/
-
-/**/
-/*this function has to be called in create window*/
-/*static void CastARay(t_game *game)
+static void	ray_pos_and_dir(t_game *game, int x)
 {
-	
-	
-}
-*/
-
-void	drawPlayer(t_game *game)
-{
-	mlx_clear_window(game->mlx_ptr, game->win_ptr);
-	if (!game->win_ptr)
-	{
-		mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-		perror("window");
-		exit(1);
-	}
-	ft_putstr_fd("in draw player\n", 1);
-    drawRectangle(game, (TILE * game->playerPos->x), (TILE * game->playerPos->y), 20, 20, RED_PIXEL);
-	// mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->grp->ennemi_one,
-	// 	(TILE * game->playerPos->x), (TILE * game->playerPos->y));
-    printf("game->playerPos->x : %d\n", game->playerPos->x);
-    printf("game->playerPos->y : %d\n", game->playerPos->y);
-	drawLine(game, game->playerPos->x * TILE, game->playerPos->y  * TILE, (game->playerPos->x
-		+ game->playerPosDelta->x) * TILE, (game->playerPos->y + game->playerPosDelta->y) * TILE, SHINAECOLOR);
-    // drawRays3D(game);
-	// draw3d(game);
-	// my_mlx_pixel_put(&(game->img), (int)game->playerPos->x + TILE,
-		// (int)game->playerPos->y + TILE, create_rgb(255, 255, 255);
+	game->cameraX = 2 * x / (double)game->window_x - 1;
+	game->rayDirX = game->dirX + game->planeX * game->cameraX;
+	game->rayDirY = game->dirY + game->planeY * game->cameraX;
+	game->mapX = (int)game->posX;
+	game->mapY = (int)game->posY;
+	game->deltaDistX = fabs(1 / game->rayDirX);
+	game->deltaDistY = fabs(1 / game->rayDirY);
 }
 
-
-
-
-
-
-
-
-int	move(int keysym, t_game *game)
+static void	step_and_initial_sidedist(t_game *game)
 {
-	if (keysym == XK_a)
+	if (game->rayDirX < 0)
 	{
-		game->playerAngle -= 0.1;
-		if (game->playerAngle < 0)
+		game->stepX = -1;
+		game->sideDistX = (game->posX - game->mapX) * game->deltaDistX;
+	}
+	else
+	{
+		game->stepX = 1;
+		game->sideDistX = (game->mapX + 1.0 - game->posX) * game->deltaDistX;
+	}
+	if (game->rayDirY < 0)
+	{
+		game->stepY = -1;
+		game->sideDistY = (game->posY - game->mapY) * game->deltaDistY;
+	}
+	else
+	{
+		game->stepY = 1;
+		game->sideDistY = (game->mapY + 1.0 - game->posY) * game->deltaDistY;
+	}
+}
+
+static void	perform_dda(t_game *game)
+{
+	int	hit;
+
+	hit = 0;
+	while (hit == 0)
+	{
+		if (game->sideDistX < game->sideDistY)
 		{
-			game->playerAngle += 2 * PI;
+			game->sideDistX += game->deltaDistX;
+			game->mapX += game->stepX;
+			if (game->stepX > 0)
+				game->dir = 0; // north
+			else
+				game->dir = 2; //south
+			game->side = 0;
 		}
-		game->playerPosDelta->x = cos(game->playerAngle) * 3;
-		game->playerPosDelta->y = sin(game->playerAngle) * 3;
-		// if (game->playerPos->x > 0)
-		//     game->playerPos->x -= 1;
-	}
-	if (keysym == XK_d)
-	{
-		game->playerAngle += 0.1;
-		if (game->playerAngle > 2 * PI)
+		else
 		{
-			game->playerAngle -= 2 * PI;
+			game->sideDistY += game->deltaDistY;
+			game->mapY += game->stepY;
+			if (game->stepY > 0)
+				game->dir = 3; //west
+			else
+				game->dir = 1; // east
+			game->side = 1;
 		}
-		game->playerPosDelta->x = cos(game->playerAngle) * 3;
-		game->playerPosDelta->y = sin(game->playerAngle) * 3;
-		// if (game->playerPos->x < game->window_x)
-		//     game->playerPos->x += 1;
+		if (game->map[game->mapX][game->mapY] == '1')
+			hit = 1;
 	}
-	if (keysym == XK_w)
+	if (game->side == 0)
+		game->perpWallDist = (game->sideDistX - game->deltaDistX);
+	else
+		game->perpWallDist = (game->sideDistY - game->deltaDistY);
+}
+
+static void	calculate_wall_height(t_game *game)
+{
+	game->lineHeight = (int)(game->window_y / game->perpWallDist);
+	game->drawStart = -game->lineHeight / 2 + game->window_y / 2;
+	if (game->drawStart < 0)
+		game->drawStart = 0;
+	game->drawEnd = game->lineHeight / 2 + game->window_y / 2;
+	if (game->drawEnd >= game->window_y)
+		game->drawEnd = game->window_y - 1;
+}
+
+static void	texturing_calculation(t_game *game)
+{
+	if (game->side == 0)
+		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
+	else
+		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
+	game->wallX -= floor((game->wallX));
+	game->texX = (int)(game->wallX * texWidth);
+	if (game->side == 0 && game->rayDirX > 0)
+		game->texX = texWidth - game->texX - 1;
+	if (game->side == 1 && game->rayDirY < 0)
+		game->texX = texWidth - game->texX - 1;
+	game->step = 1.0 * texHeight / game->lineHeight;
+	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2)
+		* game->step;
+}
+
+int	render_next_frame(t_game *game)
+{
+	int x;
+
+	x = 0;
+	initImage(game);
+	while (x < game->window_x)
 	{
-		game->playerPos->x += game->playerPosDelta->x;
-		game->playerPos->y += game->playerPosDelta->y;
-		// if (game->playerPos->y > 0)
-		//     game->playerPos->y -= 1;
+		ray_pos_and_dir(game, x);
+		step_and_initial_sidedist(game);
+		perform_dda(game);
+		calculate_wall_height(game);
+		texturing_calculation(game);
+		render(game, x);
+		x++;
 	}
-	if (keysym == XK_s)
-	{
-		game->playerPos->x -= game->playerPosDelta->x;
-		game->playerPos->y -= game->playerPosDelta->y;
-		// if (game->playerPos->y < game->window_y)
-		//     game->playerPos->y += 1;
-	}
-	return (0);
+	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0,
+			0);
+	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
+	return (1); //presonaly I prefer 0 but I guess this is a loop_hook thing
 }
