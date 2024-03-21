@@ -146,6 +146,17 @@ void	check_floor_ceiling(t_game *game)
 			c_flag = 1;
 			check_is_valid_rgb_format(game, 'C');
 		}
+		if (c_flag && f_flag)
+		{
+			game->pos++;
+			return;
+		}
 		game->pos++;
+	}
+	if ( !(c_flag && f_flag))
+	{
+		ft_error("missing floor or ceiling");
+		free_part(game);
+		exit(EXIT_FAILURE);
 	}
 }

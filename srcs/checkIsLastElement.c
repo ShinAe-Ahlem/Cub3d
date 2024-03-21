@@ -14,7 +14,7 @@ void	check_is_last_element(t_game *game)
 			if (game->mapfile[i] && is_empty_line(game->mapfile[i]))
 			{
 				ft_error(ERROR_MAP_SPLITTED);
-				free_all(game);
+				free_part(game);
 				exit(EXIT_FAILURE);
 			}
 		}
