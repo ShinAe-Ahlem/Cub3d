@@ -17,7 +17,6 @@ void	ll_toarray_converter(t_game *game)
 	t_list	*temp2;
 	int		i;
 
-	print_tlist(game->mapLL);
 	temp = game->mapLL;
 	temp2 = game->mapLL;
 	game->mapCharHeight = 0;

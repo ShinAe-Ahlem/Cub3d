@@ -63,10 +63,9 @@ void	zero_blank_contact(t_game *game)
 
 	i = 0;
 	zeroThisLine(game, 0);
-	print_char_table(game->map);
+	// print_char_table(game->map);
 	while (game->map[i])
 	{
-		dprintf(1, "game->map[%d] = %s", i, game->map[i]);
 		zeroSideBlank(game->map[i]);
 		zeroExposed(game->map, i);
 		i++;

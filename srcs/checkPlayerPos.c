@@ -66,6 +66,4 @@ void	check_player_pos(t_game *game)
 		free_all(game);
 		exit(EXIT_SUCCESS);
 	}
-	dprintf(1, "pos = %f %f %f %f\n", game->dirX, game->dirY, game->planeX,
-		game->planeY);
 }
