@@ -1,9 +1,10 @@
-NO ./textures/panorama3.xpm
-SO ./textures/purplestone.xpm
-WE ./textures/pillar.xpm
-EA ./textures/wood.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+NO ./img/xpm/panorama5.xpm
 
-F 220,100, 0
+
+F 220,100,0
 C 225,30,0
 
 1111111111111111

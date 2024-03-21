@@ -83,6 +83,12 @@ void	check_map_elements(t_game *game)
 			check_is_last_element(game);
 			export_map(game);
 		}
+		else if (is_direction_line(game->mapfile[game->pos]) || is_floor_ceilnig_line(game->mapfile[game->pos]))
+		{
+			ft_perror(ERROR_NO_MATCH_CHAR);
+			free_part(game);
+			exit(EXIT_FAILURE);
+		}
 		if (game->mapfile[game->pos])
 			game->pos++;
 	}
