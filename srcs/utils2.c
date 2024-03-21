@@ -16,24 +16,21 @@ bool red_gree_blue(char *str)
 	int count;
 
 	count = 0;
-	while(count <=3)
+	while (*str != '\0' && *str != '\n')
 	{
-		if (*str && *str < '0' && *str > '9')
-			return(false);
-		while (*str && *str != '\n')
+		dprintf(1, "count = %d\n", count);
+		while(*str >= '0' && *str <= '9')
+			str++;
+		if (*str == ',')
 		{
-			while(*str >= '0' && *str <= '9')
-				str++;
-			count += 1;
-			if (*str == ',')
-			{
-				if (*(str + 1) >= '0' && *(str + 1) <= '9')
-					count += 1;
-			}
+			if (*(str + 1) >= '0' && *(str + 1) <= '9')
+				count += 1;
 			str++;
 		}
 	}
-	return (true);
+	if (count == 2)
+		return (true);
+	return (false);
 }
 
 bool	has_intruder(char *str)

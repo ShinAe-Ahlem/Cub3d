@@ -26,8 +26,6 @@ static bool	is_map(t_game *game, char *line)
 {
 	char    charset[8] = "01NSEW ";
 	(void)game;
-	dprintf(1,"in is_map\n");
-	dprintf(1,"line = %s", line);
 	if (charset_finder(charset, line))
 		return (true);
 	return(false);
