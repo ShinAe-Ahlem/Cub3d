@@ -32,7 +32,7 @@ static int	import_textures(t_game *game)
 /*need to enhance code ( texarr[0] = mlxto img(tex[0]))*/
 static void	get_texture_address(t_game *game)
 {
-	game->texAddress = (int **)malloc(5 * sizeof(int *));
+	game->texAddress = (int **)malloc(4 * sizeof(int *));
 	if (!game->texAddress)
 	{
 		//free this
@@ -51,7 +51,6 @@ static void	get_texture_address(t_game *game)
 	//west ok
 	game->texAddress[3] = (int *)mlx_get_data_addr(game->tex[3], &game->bpp[2],
 			&game->line_len[2], &game->endian[2]);
-	game->texAddress[4] = NULL;
 }
 
 void	window_size_setting(t_game *game)

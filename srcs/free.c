@@ -14,6 +14,19 @@ void	free_char_array(char ***array)
 	*array = NULL;
 }
 
+void free_lst(t_list *lst)
+{
+	t_list *temp;
+
+	while (lst)
+	{
+		temp = (lst)->next;
+		free(lst);
+		lst = temp;
+	}
+	lst = NULL;
+}
+
 static void	free_tex(t_game *game)
 {
 	int	i;
@@ -28,24 +41,27 @@ static void	free_tex(t_game *game)
 	}
 }
 
+
 void	free_all(t_game *game)
 {
 	free_tex(game);
-	if(game->mapfile)
-		free_table(game->mapfile);
-	if(game->map)
-		free_table(game->map);
-	if(game->texFiles)
-		free_table(game->texFiles);
+	free_table(game->mapfile);
+	free_table(game->map);
+	free_table(game->texFiles);
+	free_table(game->texLines);
+	free(game->texAddress);
+	free_lst(game->mapLL);
 	free(game->playerPos);
 	free(game->playerPosDelta);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr); // Shin-Ae: check if this is useful
+	free(game->mlx_ptr);
 	game->win_ptr = NULL;
 }
 
 void free_part(t_game *game)
 {
+	free_lst(game->mapLL);
 	free_table(game->map);
 	free_table(game->mapfile);
 	free_table(game->texFiles);
