@@ -17,22 +17,8 @@ void	mapInfoInit(t_game *game)
 	game->map = NULL;
 	game->mapCharHeight = 0;
 	game->maxMapWidth = 0;
-	game->playerPos = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPos == NULL)
-	{
-		ft_perror(ERROR_MALLOC);
-		exit(EXIT_FAILURE);
-	}
-	game->playerPos->x = 0;
-	game->playerPos->y = 0;
-	game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPosDelta == NULL)
-	{
-		ft_perror(ERROR_MALLOC);
-		exit(EXIT_FAILURE);
-	}
-	game->playerPosDelta->x = 0;
-	game->playerPosDelta->y = 0;
+	game->playerPos = NULL;
+	game->playerPosDelta = NULL;
 	game->playerAngle = 0;
 }
 

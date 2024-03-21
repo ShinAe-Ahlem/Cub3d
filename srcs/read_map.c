@@ -59,8 +59,8 @@ char	**ft_read_map(char *filename)
 	if (fd == -1)
 	{
 		perror("open");
-		// exit(EXIT_FAILURE);
-		return(NULL);
+		exit(EXIT_FAILURE);
+		// return(NULL);
 	}
 	while (1)
 	{

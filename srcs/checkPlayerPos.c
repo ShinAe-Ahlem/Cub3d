@@ -63,7 +63,7 @@ void	check_player_pos(t_game *game)
 	if (dir_found != 1)
 	{
 		ft_perror(ERROR_MULT_PLA_POS);
-		free_all(game);
+		free_part(game);
 		exit(EXIT_SUCCESS);
 	}
 }

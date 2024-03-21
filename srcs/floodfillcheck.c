@@ -26,6 +26,15 @@ void	find_player_position(t_game *game, t_coord *playerPos)
 	i = 0;
 	j = 0;
 	(void)playerPos;
+	game->playerPos = (t_coord *)malloc(sizeof(t_coord));
+	if (game->playerPos == NULL)
+	{
+		ft_perror(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
+	game->playerPos->x = 0;
+	game->playerPos->y = 0;
+
 	while (i < game->mapCharHeight)
 	{
 		j = 0;
@@ -45,6 +54,14 @@ void	find_player_position(t_game *game, t_coord *playerPos)
 		}
 		i++;
 	}
+	game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
+	if (game->playerPosDelta == NULL)
+	{
+		ft_perror(ERROR_MALLOC);
+		exit(EXIT_FAILURE);
+	}
+	game->playerPosDelta->x = 0;
+	game->playerPosDelta->y = 0;
 	game->playerPosDelta->x = cos(game->playerAngle) * 3;
 	game->playerPosDelta->y = sin(game->playerAngle) * 3;
 }
@@ -72,6 +89,7 @@ void	post_floodfill_check(char **map_copy)
 
 	i = 0;
 	dprintf(1, "\nhere\n");
+	print_char_table(map_copy);
 	while (map_copy[i])
 	{
 		j = 0;
