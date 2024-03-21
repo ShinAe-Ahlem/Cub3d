@@ -5,10 +5,10 @@
 
 
 
-NO ./img/xpm/north.xpm
 SO ./img/xpm/south.xpm
-WE ./img/xpm/west.xpm
 EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+NO ./img/xpm/north.xpm
 
 F 0,255, 0
 C 0,0,200

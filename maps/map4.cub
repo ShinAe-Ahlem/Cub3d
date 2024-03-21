@@ -1,7 +1,7 @@
-NO ./text_1/wood.xpm
-SO ./text_1/purplestone.xpm
-WE ./text_1/pillar.xpm
-EA ./text_1/wall_2.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+NO ./img/xpm/north.xpm
 
 F 0,0,255
 C 255,255,255
