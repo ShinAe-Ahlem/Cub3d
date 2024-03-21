@@ -32,7 +32,7 @@ bool	is_valid_rgb(char *RGB)
 	return (true);
 }
 
-void	affect_rgb(int *rgb, char *RGB, int *pos, char c)
+int	affect_rgb(int *rgb, char *RGB, int *pos, char c)
 {
 	int		j;
 	char	*color;
@@ -55,19 +55,36 @@ void	affect_rgb(int *rgb, char *RGB, int *pos, char c)
 	if (*rgb > 255 || *rgb < 0)
 	{
 		ft_error("ERROR : RGB out of range!\n");
-		exit(EXIT_FAILURE);
+		free(color);
+		return(1);
 	}
 	free(color);
+	return(0);
 }
 
-void	affect_rgb_togame(t_color *rgb, char *RGB)
+void	affect_rgb_togame(t_game *game, t_color *rgb, char *RGB)
 {
 	int	i;
 
 	i = 0;
-	affect_rgb(&rgb->red, RGB, &i, 'r');
-	affect_rgb(&rgb->green, RGB, &i, 'g');
-	affect_rgb(&rgb->blue, RGB, &i, 'b');
+	if (affect_rgb(&rgb->red, RGB, &i, 'r'))
+	{
+		free(RGB);
+		free_part(game);
+		exit(EXIT_FAILURE);
+	}
+	if (affect_rgb(&rgb->green, RGB, &i, 'g'))
+	{
+		free(RGB);
+		free_part(game);
+		exit(EXIT_FAILURE);
+	}
+	if (affect_rgb(&rgb->blue, RGB, &i, 'b'))
+	{
+		free(RGB);
+		free_part(game);
+		exit(EXIT_FAILURE);
+	}
 }
 
 void	check_is_valid_rgb_format(t_game *game, char c)
@@ -90,9 +107,9 @@ void	check_is_valid_rgb_format(t_game *game, char c)
 		exit(EXIT_FAILURE);
 	}
 	if (c == 'F')
-		affect_rgb_togame(&game->floor, rgb);
+		affect_rgb_togame(game, &game->floor, rgb);
 	else if (c == 'C')
-		affect_rgb_togame(&game->ceiling, rgb);
+		affect_rgb_togame(game, &game->ceiling, rgb);
 	free(rgb);
 }
 
