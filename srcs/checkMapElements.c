@@ -45,6 +45,7 @@ void	check_map_elements(t_game *game)
 		else if (game->mapfile[game->pos]
 			&& is_floor_ceilnig_line(game->mapfile[game->pos]))
 			check_floor_ceiling(game);
+	
 		else if (game->mapfile[game->pos] && is_map(game,
 				game->mapfile[game->pos]))
 		{
