@@ -23,12 +23,12 @@ void	zeroSideBlank(t_game *game, char *line)
 	int		len;
 	char	*temp;
 
-	dprintf(1, "\nline : [%s]\n", line);
 	temp = ft_strtrim(line, " \n");
 	len = ft_strlen(temp) - 1;
 	if (len > 0 && (temp[len] == '0' || temp[0] == '0'))
 	{
 		ft_perror(ERROR_MAP_UNCLOSED);
+		free(temp);
 		free_part(game);
 		exit(EXIT_FAILURE);
 	}

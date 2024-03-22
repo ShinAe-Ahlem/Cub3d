@@ -75,7 +75,12 @@ void	check_map_elements(t_game *game)
 		// 	free_part(game);
 		// 	exit (EXIT_FAILURE);
 		// }
-		dprintf(1,"here\n");
+		if (!is_map(game, game->mapfile[game->pos])) // This line had been added to solve pb : (see. wrong_char_map2.cub)
+		{
+			ft_perror(ERROR_NO_MATCH_CHAR);
+			free_part(game);
+			exit(EXIT_FAILURE);
+		}
 		if (game->mapfile[game->pos] && is_map(game,
 				game->mapfile[game->pos]))
 		{
