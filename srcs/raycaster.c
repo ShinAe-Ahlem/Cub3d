@@ -105,7 +105,7 @@ int	render_next_frame(t_game *game)
 	int x;
 
 	x = 0;
-	initImage(game);
+	init_image(game);
 	while (x < game->window_x)
 	{
 		ray_pos_and_dir(game, x);
