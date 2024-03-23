@@ -35,17 +35,17 @@ void	zeroSideBlank(t_game *game, char *line)
 	free(temp);
 }
 
-// static int	SpaceNextToChar(t_game *game, int y, int x)
-// {
-// 	int len;
-// 	len = ft_strlen(game->map[y]);
-// 	if (y >= game->mapCharHeight || x >= len - 1)
-// 		return (2);
-// 	if (ft_isspace(game->map[y][x]) || !game->map[y][x])
-// 		return (1);
-// 	else
-// 		return (0);
-// }
+static int	SpaceNextToChar(t_game *game, int y, int x)
+{
+	int len;
+	len = ft_strlen(game->map[y]);
+	if (y >= game->mapCharHeight || x >= len - 1)
+		return (2);
+	if (ft_isspace(game->map[y][x]) || !game->map[y][x])
+		return (1);
+	else
+		return (0);
+}
 
 
 void	zeroExposed(t_game *game, char **map, int i)
@@ -57,11 +57,7 @@ void	zeroExposed(t_game *game, char **map, int i)
 	{
 		if (map[i][j] == '0')
 		{
-			// Probably I need to mesure thesize of array to protect non accessible area's access
-			if (ft_isspace(map[i - 1][j]) || ft_isspace(map[i + 1][j])
-				|| !(map[i - 1][j]) || !(map[i + 1][j]) || ft_isspace(map[i][j
-					- 1]) || ft_isspace(map[i][j + 1]) || !(map[i][j - 1]
-					|| !(map[i][j + 1])))
+			if (SpaceNextToChar(game, i - 1, j) || SpaceNextToChar(game, i + 1, j) || SpaceNextToChar(game, i, j - 1) || SpaceNextToChar(game, i, j + 1))
 			{
 				ft_perror(ERROR_MAP_UNCLOSED);
 				free_part(game);
