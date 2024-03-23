@@ -118,8 +118,8 @@ void	check_floor_ceiling(t_game *game)
 	c_flag = 0;
 	while (game->mapfile[game->pos] != NULL)
 	{
-		if (game->mapfile[game->pos][0] == '\n')
-			break ;
+		// if (game->mapfile[game->pos][0] == '\n')
+		// 	break ;
 		if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
 		{
 			if (f_flag)

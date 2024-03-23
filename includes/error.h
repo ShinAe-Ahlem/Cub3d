@@ -20,5 +20,6 @@
 # define ERROR_FF_FAILED "Map contains inaccessible spots for player"
 # define ERROR_MALLOC "Memory error"
 # define ERROR_MLX 1
+#define INVALID_SIZE "ERROR : Invalid texture size, must be 64X64"
 
 #endif
