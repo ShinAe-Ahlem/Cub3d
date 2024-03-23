@@ -14,9 +14,9 @@ void	free_char_array(char ***array)
 	*array = NULL;
 }
 
-void free_lst(t_list *lst)
+void	free_lst(t_list *lst)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	while (lst)
 	{
@@ -41,7 +41,6 @@ static void	free_tex(t_game *game)
 	}
 }
 
-
 void	free_all(t_game *game)
 {
 	free_tex(game);
@@ -54,12 +53,12 @@ void	free_all(t_game *game)
 	free(game->playerPos);
 	free(game->playerPosDelta);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
-	mlx_destroy_display(game->mlx_ptr); // Shin-Ae: check if this is useful
+	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
 	game->win_ptr = NULL;
 }
 
-void free_part(t_game *game)
+void	free_part(t_game *game)
 {
 	free_lst(game->mapLL);
 	free_table(game->map);

@@ -1,7 +1,6 @@
 #include "../includes/game.h"
 
-
-int 	esc_close_window(int keysym, t_game *game)
+int	esc_close_window(int keysym, t_game *game)
 {
 	if (keysym == XK_Escape)
 	{

@@ -31,3 +31,4 @@ void	init_image(t_game *game)
 	game->img.addr = mlx_get_data_addr(game->img.mlx_img, &game->img.bpp,
 			&game->img.line_len, &game->img.endian);
 }
+
