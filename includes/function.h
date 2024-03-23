@@ -48,6 +48,11 @@ void    check_export_textures(t_game *game);
 
 char	**ft_read_map(char *filename);
 
+void    texlines_null_check(t_game *game, int *j);
+void    file_is_directory_check(char **filename, struct stat *file_stat, t_game *game, int fd);
+void    fd_error_check(int fd, char **filename, t_game *game);
+void    texture_files_exist_init(int *i, int *j, int *fd, char **filename);
+
 /*floor ceiling*/
 void check_floor_ceiling(t_game *game);
 
@@ -55,8 +60,6 @@ void check_floor_ceiling(t_game *game);
 void    print_tlist(t_list *list);
 void    ll_toarray_converter(t_game *game);
 
-float   angleToRadian (float angle);
-float   RadianToAngle (float radian);
 
 /******FORMAT CHECK*******/
 
@@ -78,10 +81,9 @@ void    render(t_game *game, int x);
 void	my_mlx_pixel_put(t_img *image, int x, int y, int color);
 
 /*initialisation*/
-void    initImage(t_game *game);
-void    coordInit(t_coord *coord);
+void    init_image(t_game *game);
 void    initGameParam(t_game *game);
-void    initGameWindow(t_game *game);
+void	init_game_window(t_game *game);
 
 //***** FREE *****
 void free_all(t_game *game);
