@@ -61,6 +61,8 @@ typedef struct s_game
 	void				*mlx_ptr;
 	void				**tex; // tableaux pour les xpm;
 	int 				**texAddress; // addresse des xpm pour recuperer les pixel plutard
+	int					tex_num;
+	
 	void				*win_ptr;
 	int					screen_x;
 	int					screen_y;

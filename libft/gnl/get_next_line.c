@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:06:33 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/31 11:37:01 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 12:15:50 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,11 +107,18 @@ static char	*ft_update_stock(char *str, char *line)
 	return (new_str);
 }
 
-char	*get_next_line(int fd)
+char	*get_next_line(int fd, int error)
 {
 	static char	*stock;
 	char		*line;
 
+
+	if (error)
+	{
+		free(stock);
+		stock = NULL;
+		return (NULL);	
+	}
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);
 	stock = ft_read(stock, fd);
