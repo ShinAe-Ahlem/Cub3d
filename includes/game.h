@@ -3,18 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   game.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:01:08 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 16:11:06 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GAME_H
 # define GAME_H
-
-typedef struct s_game	t_game;
-typedef struct s_coord	t_coord;
 
 # include "../includes/color.h"
 # include "../includes/error.h"
@@ -32,17 +29,14 @@ typedef struct s_coord	t_coord;
 # include <stdlib.h>
 # include <sys/stat.h>
 
+typedef struct s_game	t_game;
+typedef struct s_coord	t_coord;
+
 # define TILE 32
-# define PI 3.1415926535
-# define P2 PI / 2
-# define P3 3 * PI / 2
-# define texWidth 64
-# define texHeight 64
+# define TEXWIDTH 64
+# define TEXHEIGHT 64
 # define WIDTH 920
 # define HEIGHT 700
-
-// #define WINDOW_WIDTH 600
-// #define WINDOW_HEIGHT 300
 
 typedef struct s_img
 {
@@ -69,10 +63,10 @@ typedef struct s_coord
 typedef struct s_game
 {
 	char				*game_name;
-	int fd; // fd of map we read with gnl
+	int					fd;
 	void				*mlx_ptr;
-	void **tex;       // tableaux pour les xpm;
-	int **texAddress; // addresse des xpm pour recuperer les pixel plutard
+	void				**tex;
+	int					**tex_address;
 	int					tex_num;
 
 	void				*win_ptr;
@@ -80,55 +74,54 @@ typedef struct s_game
 	int					screen_y;
 	int					window_x;
 	int					window_y;
-	char **mapfile; // whole .cub file content
+	char				**mapfile;
 	t_color				floor;
 	t_color				ceiling;
-	t_list				*mapLL;
+	t_list				*map_ll;
 	char				**map;
-	int					mapCharHeight;
+	int					map_char_height;
 	int					max_map_width;
-	t_coord				*playerPos;
-	t_coord				*playerPosDelta;
-	float				playerAngle;
+	t_coord				*player_pos;
+	t_coord				*player_pos_delta;
+	float				player_angle;
 	t_img				img;
-	int pos; /*position in the mapfile*/
+	int					pos;
 	int					x;
 	int					y;
-	double				dirX;
-	double				dirY;
-	double				planeX;
-	double				planeY;
-	double				cameraX;
-	double				cameraY;
-	double				rayDirX;
-	double				rayDirY;
-	int mapX; // which box in the map we're in
-	int					mapY;
-	double sideDistX; // length of ray from current position to next x or y side
-	double				sideDistY;
-	double deltaDistX;
-		// length of ray from one x or y side to the next x or y side
-	double				deltaDistY;
-	double				perpWallDist;
-	double stepX; // what direction to step in x or y direction (either +1 or -1)
-	double				stepY;
-	double posX; // player position
-	double				posY;
-	int side; // was a NS or a EW wall hit?
-	int					lineHeight;
-	int					drawStart;
-	int					drawEnd;
-	double wallX; // where exactly the wall was hit
+	double				dir_x;
+	double				dir_y;
+	double				plane_x;
+	double				plane_y;
+	double				camera_x;
+	double				camera_y;
+	double				ray_dir_x;
+	double				ray_dir_y;
+	int					map_x;
+	int					map_y;
+	double				side_dist_x;
+	double				side_dist_y;
+	double				delta_dist_x;
+	double				delta_dist_y;
+	double				perp_wall_dist;
+	double				step_x;
+	double				step_y;
+	double				pos_x;
+	double				pos_y;
+	int					side;
+	int					line_height;
+	int					draw_start;
+	int					draw_end;
+	double				wall_x;
 	double				step;
-	double				texPos;
-	int					texX;
-	int					texY;
-	char				**texFiles;
+	double				tex_pos;
+	int					tex_x;
+	int					tex_y;
+	char				**tex_files;
 	int					dir;
 	int					bpp[4];
 	int					line_len[4];
 	int					endian[4];
-	char				**texLines;
+	char				**tex_lines;
 	int					width[4];
 	int					height[4];
 	int					**texg;

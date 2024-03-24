@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfillcheck2.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:32:58 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 15:33:15 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:42:43 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	set_player_pos(t_game *game, int *i, int *j)
 {
-	while (*i < game->mapCharHeight)
+	while (*i < game->map_char_height)
 	{
 		*j = 0;
 		while (game->map[*i][*j])
@@ -22,10 +22,10 @@ static void	set_player_pos(t_game *game, int *i, int *j)
 			if (game->map[*i][*j] == 'N' || game->map[*i][*j] == 'S'
 				|| game->map[*i][*j] == 'E' || game->map[*i][*j] == 'W')
 			{
-				game->playerPos->x = *j;
-				game->playerPos->y = *i;
-				game->posX = *i + 0.5;
-				game->posY = *j + 0.5;
+				game->player_pos->x = *j;
+				game->player_pos->y = *i;
+				game->pos_x = *i + 0.5;
+				game->pos_y = *j + 0.5;
 			}
 			(*j)++;
 		}
@@ -33,31 +33,31 @@ static void	set_player_pos(t_game *game, int *i, int *j)
 	}
 }
 
-void	find_player_position(t_game *game, t_coord *playerPos)
+void	find_player_position(t_game *game, t_coord *player_pos)
 {
 	int	i;
 	int	j;
 
 	i = 0;
 	j = 0;
-	(void)playerPos;
-	game->playerPos = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPos == NULL)
+	(void)player_pos;
+	game->player_pos = (t_coord *)malloc(sizeof(t_coord));
+	if (game->player_pos == NULL)
 	{
 		ft_perror(ERROR_MALLOC);
 		exit(EXIT_FAILURE);
 	}
-	game->playerPos->x = 0;
-	game->playerPos->y = 0;
+	game->player_pos->x = 0;
+	game->player_pos->y = 0;
 	set_player_pos(game, &i, &j);
-	game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPosDelta == NULL)
+	game->player_pos_delta = (t_coord *)malloc(sizeof(t_coord));
+	if (game->player_pos_delta == NULL)
 	{
 		ft_perror(ERROR_MALLOC);
 		exit(EXIT_FAILURE);
 	}
-	game->playerPosDelta->x = 0;
-	game->playerPosDelta->y = 0;
-	game->playerPosDelta->x = cos(game->playerAngle) * 3;
-	game->playerPosDelta->y = sin(game->playerAngle) * 3;
+	game->player_pos_delta->x = 0;
+	game->player_pos_delta->y = 0;
+	game->player_pos_delta->x = cos(game->player_angle) * 3;
+	game->player_pos_delta->y = sin(game->player_angle) * 3;
 }

@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:01:05 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 16:35:35 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 17:31:44 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@
 typedef struct s_img	t_img;
 typedef struct s_player	t_player;
 typedef struct s_list	t_list;
-
+typedef struct s_game	t_game;
+typedef struct s_coord	t_coord;
 //***** CHECK ARGUMENTS *****
 
 void					check_nb_arg(int ac);
@@ -55,7 +56,7 @@ size_t					last_digit_position(char *line);
 
 void					export_map(t_game *game);
 void					floodfill_check(t_game *game);
-void					find_player_position(t_game *game, t_coord *playerPos);
+void					find_player_position(t_game *game, t_coord *player_pos);
 void					check_player_pos(t_game *game);
 void					check_map_elements(t_game *game);
 void					zero_blank_contact(t_game *game);
@@ -66,7 +67,8 @@ char					**ft_read_map(char *filename);
 
 void					texlines_null_check(t_game *game, int *j);
 void					file_is_directory_check(char **filename,
-							struct stat *file_stat, t_game *game, int fd);
+							struct stat *file_stat,
+							t_game *game, int fd);
 void					fd_error_check(int fd, char **filename, t_game *game);
 void					texture_files_exist_init(int *i, int *j, int *fd,
 							char **filename);
@@ -105,22 +107,31 @@ void					init_game_param(t_game *game);
 void					init_game_window(t_game *game);
 
 //***** FREE *****
-void free_all(t_game *game);
-void free_part(t_game *game);
-void free_char_array(char ***array);
-
+void					free_all(t_game *game);
+void					free_part(t_game *game);
+void					free_char_array(char ***array);
 
 /******texture check*/
-void	check_textures_dimensions(t_game *game);
-
-
+void					check_textures_dimensions(t_game *game);
 
 /***************key press**************/
 
-void	up_down(int keysym, t_game *game);
-void	rot_right(int keysym, t_game *game, double olddir_x,double oldplane_x);
-void	rot_left(int keysym, t_game *game, double olddir_x, double oldplane_x);
-void	lef_right(int keysym, t_game *game, double move_speed);
-void	forward_backward(int keysym, t_game *game, double move_speed);
+void					up_down(int keysym, t_game *game);
+void					rot_right(int keysym, t_game *game, double olddir_x,
+							double oldplane_x);
+void					rot_left(int keysym, t_game *game, double olddir_x,
+							double oldplane_x);
+void					lef_right(int keysym, t_game *game, double move_speed);
+void					forward_backward(int keysym, t_game *game,
+							double move_speed);
 
+/*****parsing*****/
+bool					is_direction_line(char *line);
+bool					is_map(t_game *game, char *line);
+bool					is_floor_ceilnig_line(char *line);
+
+void					handle_map(t_game *game);
+void					handle_fc_dir(t_game *game);
+void					handle_fc(t_game *game, int *f, int *c_flag,
+							int *f_flag);
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:44:00 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 15:44:01 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:49:00 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,65 +14,67 @@
 
 static void	ray_pos_and_dir(t_game *game, int x)
 {
-	game->cameraX = 2 * x / (double)game->window_x - 1;
-	game->rayDirX = game->dirX + game->planeX * game->cameraX;
-	game->rayDirY = game->dirY + game->planeY * game->cameraX;
-	game->mapX = (int)game->posX;
-	game->mapY = (int)game->posY;
-	game->deltaDistX = fabs(1 / game->rayDirX);
-	game->deltaDistY = fabs(1 / game->rayDirY);
+	game->camera_x = 2 * x / (double)game->window_x - 1;
+	game->ray_dir_x = game->dir_x + game->plane_x * game->camera_x;
+	game->ray_dir_y = game->dir_y + game->plane_y * game->camera_x;
+	game->map_x = (int)game->pos_x;
+	game->map_y = (int)game->pos_y;
+	game->delta_dist_x = fabs(1 / game->ray_dir_x);
+	game->delta_dist_y = fabs(1 / game->ray_dir_y);
 }
 
 static void	step_and_initial_sidedist(t_game *game)
 {
-	if (game->rayDirX < 0)
+	if (game->ray_dir_x < 0)
 	{
-		game->stepX = -1;
-		game->sideDistX = (game->posX - game->mapX) * game->deltaDistX;
+		game->step_x = -1;
+		game->side_dist_x = (game->pos_x - game->map_x) * game->delta_dist_x;
 	}
 	else
 	{
-		game->stepX = 1;
-		game->sideDistX = (game->mapX + 1.0 - game->posX) * game->deltaDistX;
+		game->step_x = 1;
+		game->side_dist_x = (game->map_x + 1.0 - game->pos_x)
+			* game->delta_dist_x;
 	}
-	if (game->rayDirY < 0)
+	if (game->ray_dir_y < 0)
 	{
-		game->stepY = -1;
-		game->sideDistY = (game->posY - game->mapY) * game->deltaDistY;
+		game->step_y = -1;
+		game->side_dist_y = (game->pos_y - game->map_y) * game->delta_dist_y;
 	}
 	else
 	{
-		game->stepY = 1;
-		game->sideDistY = (game->mapY + 1.0 - game->posY) * game->deltaDistY;
+		game->step_y = 1;
+		game->side_dist_y = (game->map_y + 1.0 - game->pos_y)
+			* game->delta_dist_y;
 	}
 }
 
 static void	calculate_wall_height(t_game *game)
 {
-	game->lineHeight = (int)(game->window_y / game->perpWallDist);
-	game->drawStart = -game->lineHeight / 2 + game->window_y / 2;
-	if (game->drawStart < 0)
-		game->drawStart = 0;
-	game->drawEnd = game->lineHeight / 2 + game->window_y / 2;
-	if (game->drawEnd >= game->window_y)
-		game->drawEnd = game->window_y - 1;
+	game->line_height = (int)(game->window_y / game->perp_wall_dist);
+	game->draw_start = -game->line_height / 2 + game->window_y / 2;
+	if (game->draw_start < 0)
+		game->draw_start = 0;
+	game->draw_end = game->line_height / 2 + game->window_y / 2;
+	if (game->draw_end >= game->window_y)
+		game->draw_end = game->window_y - 1;
 }
 
 static void	texturing_calculation(t_game *game)
 {
 	if (game->side == 0)
-		game->wallX = game->posY + game->perpWallDist * game->rayDirY;
+		game->wall_x = game->pos_y + game->perp_wall_dist * game->ray_dir_y;
 	else
-		game->wallX = game->posX + game->perpWallDist * game->rayDirX;
-	game->wallX -= floor((game->wallX));
-	game->texX = (int)(game->wallX * texWidth);
-	if (game->side == 0 && game->rayDirX > 0)
-		game->texX = texWidth - game->texX - 1;
-	if (game->side == 1 && game->rayDirY < 0)
-		game->texX = texWidth - game->texX - 1;
-	game->step = 1.0 * texHeight / game->lineHeight;
-	game->texPos = (game->drawStart - game->window_y / 2 + game->lineHeight / 2)
-		* game->step;
+		game->wall_x = game->pos_x + game->perp_wall_dist * game->ray_dir_x;
+	game->wall_x -= floor((game->wall_x));
+	game->tex_x = (int)(game->wall_x * TEXWIDTH);
+	if (game->side == 0 && game->ray_dir_x > 0)
+		game->tex_x = TEXWIDTH - game->tex_x - 1;
+	if (game->side == 1 && game->ray_dir_y < 0)
+		game->tex_x = TEXWIDTH - game->tex_x - 1;
+	game->step = 1.0 * TEXHEIGHT / game->line_height;
+	game->tex_pos = (game->draw_start - game->window_y / 2 + game->line_height
+			/ 2) * game->step;
 }
 
 int	render_next_frame(t_game *game)

@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:24:38 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 15:24:39 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 17:34:47 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ static void	east_or_west(t_game *game, char dir)
 {
 	if (dir == 'E')
 	{
-		game->dirX = 0;
-		game->dirY = -1;
-		game->planeX = -0.7;
-		game->planeY = 0;
+		game->dir_x = 0;
+		game->dir_y = -1;
+		game->plane_x = -0.7;
+		game->plane_y = 0;
 	}
 	else if (dir == 'W')
 	{
-		game->dirX = 0;
-		game->dirY = 1;
-		game->planeX = 0.7;
-		game->planeY = 0;
+		game->dir_x = 0;
+		game->dir_y = 1;
+		game->plane_x = 0.7;
+		game->plane_y = 0;
 	}
 }
 
@@ -34,17 +34,17 @@ static void	north_or_south(t_game *game, char dir)
 {
 	if (dir == 'N')
 	{
-		game->dirX = 1;
-		game->dirY = 0;
-		game->planeX = 0;
-		game->planeY = -0.7;
+		game->dir_x = 1;
+		game->dir_y = 0;
+		game->plane_x = 0;
+		game->plane_y = -0.7;
 	}
 	else if (dir == 'S')
 	{
-		game->dirX = -1;
-		game->dirY = 0;
-		game->planeX = 0;
-		game->planeY = 0.7;
+		game->dir_x = -1;
+		game->dir_y = 0;
+		game->plane_x = 0;
+		game->plane_y = 0.7;
 	}
 }
 

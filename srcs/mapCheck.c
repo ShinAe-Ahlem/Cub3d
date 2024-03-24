@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mapCheck.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:38:21 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 15:57:36 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:29:12 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char	*copy_without_space(char *line_to_epur, int len)
 
 static void	epur_array_malloc(t_game *game, char ***new)
 {
-	*new = malloc((game->mapCharHeight + 1) * sizeof(char *));
+	*new = malloc((game->map_char_height + 1) * sizeof(char *));
 	if (!(*new))
 	{
 		ft_error(ERROR_MALLOC);
