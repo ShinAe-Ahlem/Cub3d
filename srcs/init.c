@@ -28,7 +28,7 @@ void	map_info_init(t_game *game)
 	game->mapLL = NULL;
 	game->map = NULL;
 	game->mapCharHeight = 0;
-	game->maxMapWidth = 0;
+	game->max_map_width = 0;
 	game->playerPos = NULL;
 	game->playerPosDelta = NULL;
 	game->playerAngle = 0;

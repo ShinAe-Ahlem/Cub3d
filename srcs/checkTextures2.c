@@ -1,14 +1,16 @@
-#include "../includes/game.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkTextures2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:43:38 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:44:03 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-// void	texlines_null_check(t_game *game)
-// {
-// 	if (game->texLines[game->tex_num] == NULL)
-// 	{
-// 		ft_perror(ERROR_LOAD_DIR);
-// 		free_part(game);
-// 		exit(EXIT_FAILURE);
-// 	}
-// }
+#include "../includes/game.h"
 
 void	file_is_directory_check(char **filename, struct stat *file_stat,
 		t_game *game, int fd)
@@ -38,9 +40,9 @@ void	fd_error_check(int fd, char **filename, t_game *game)
 	}
 }
 
-void    texture_files_exist_init(int *i, int *j, int *fd, char **filename)
+void	texture_files_exist_init(int *i, int *j, int *fd, char **filename)
 {
-    *j = 0;
+	*j = 0;
 	*fd = 0;
 	*filename = NULL;
 	*i = 0;

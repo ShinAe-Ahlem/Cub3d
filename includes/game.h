@@ -86,7 +86,7 @@ typedef struct s_game
 	t_list				*mapLL;
 	char				**map;
 	int					mapCharHeight;
-	int					maxMapWidth;
+	int					max_map_width;
 	t_coord				*playerPos;
 	t_coord				*playerPosDelta;
 	float				playerAngle;
