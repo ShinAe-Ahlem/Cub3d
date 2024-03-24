@@ -109,39 +109,35 @@ void	check_is_valid_rgb_format(t_game *game, char c)
 	free(rgb);
 }
 
-void	check_floor_ceiling(t_game *game)
+void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag)
 {
-	int	f_flag;
-	int	c_flag;
-
-	f_flag = 0;
-	c_flag = 0;
-	while (game->mapfile[game->pos] != NULL)
-	{
+	// while (game->mapfile[game->pos] != NULL)
+	// {
 		// if (game->mapfile[game->pos][0] == '\n')
 		// 	break ;
 		if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
 		{
-			if (f_flag)
+			if (*f_flag)
 			{
 				ft_error("Double floor found\n");
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}
-			f_flag = 1;
+			*f_flag = 1;
 			check_is_valid_rgb_format(game, 'F');
 		}
 		else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
 		{
-			if (c_flag)
+			if (*c_flag)
 			{
 				ft_error("Double ceilning found\n");
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}
-			c_flag = 1;
+			*c_flag = 1;
 			check_is_valid_rgb_format(game, 'C');
 		}
+<<<<<<< HEAD
 		if (c_flag && f_flag)
 		{
 			game->pos++;
@@ -155,4 +151,6 @@ void	check_floor_ceiling(t_game *game)
 		free_part(game);
 		exit(EXIT_FAILURE);
 	}
+=======
+>>>>>>> 75d7e7325ac00060fe7590f07b587413097a516c
 }

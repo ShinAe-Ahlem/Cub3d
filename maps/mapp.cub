@@ -1,10 +1,15 @@
-F 205,100,12
+SO ./img/xpm/south.xpm
+
+NO ./img/xpm/north.xpm
+
+
+WE ./img/xpm/west.xpm
+
+
 C 20,30,14
 
-SO ./img/xpm/south.xpm
 EA ./img/xpm/east.xpm
-NO ./img/xpm/north.xpm
-WE ./img/xpm/west.xpm
+
 
 
  111111
@@ -28,3 +33,9 @@ WE ./img/xpm/west.xpm
 110000011
 110000011
   11111
+<<<<<<< HEAD
+=======
+
+
+F 205,100,12
+>>>>>>> 75d7e7325ac00060fe7590f07b587413097a516c

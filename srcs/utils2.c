@@ -18,7 +18,7 @@ bool red_gree_blue(char *str)
 	count = 0;
 	while (*str != '\0' && *str != '\n')
 	{
-		dprintf(1, "count = %d\n", count);
+		// dprintf(1, "count = %d\n", count);
 		while(*str >= '0' && *str <= '9')
 			str++;
 		if (*str == ',')
