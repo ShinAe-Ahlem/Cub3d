@@ -21,6 +21,7 @@ bool	is_valid_rgb(char *RGB)
 	}
 	if (has_intruder(RGB))
 	{
+		dprintf(1, "ERROR POSITION 3333\n");
 		ft_error(ERROR_NO_MATCH_CHAR);
 		return (false);
 	}
@@ -113,12 +114,9 @@ void	check_is_valid_rgb_format(t_game *game, char c)
 	free(rgb);
 }
 
-void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag)
+void	check_floor_ceiling(t_game *game, int *c_flag, int	*f_flag)
 {
-	// while (game->mapfile[game->pos] != NULL)
-	// {
-		// if (game->mapfile[game->pos][0] == '\n')
-		// 	break ;
+	
 		if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
 		{
 			if (*f_flag)
@@ -127,7 +125,7 @@ void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag)
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}
-			*f_flag = 1;
+			*f_flag = 1;//
 			check_is_valid_rgb_format(game, 'F');
 		}
 		else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
@@ -138,7 +136,7 @@ void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag)
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}
-			*c_flag = 1;
+			*c_flag = 1;//
 			check_is_valid_rgb_format(game, 'C');
 		}
 }

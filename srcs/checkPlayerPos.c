@@ -62,6 +62,7 @@ void	check_player_pos(t_game *game)
 	}
 	if (dir_found != 1)
 	{
+		dprintf(1, "ERROR POSITION 9999\n");
 		ft_perror(ERROR_MULT_PLA_POS);
 		free_part(game);
 		exit(EXIT_SUCCESS);

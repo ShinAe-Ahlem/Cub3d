@@ -64,7 +64,7 @@ char	**ft_read_map(char *filename)
 	}
 	while (1)
 	{
-		line = get_next_line(fd);
+		line = get_next_line(fd, 0);
 		if (line != NULL)
 		{
 			if (!map_lines)

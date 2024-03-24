@@ -35,6 +35,7 @@ void export_texture_strdup(t_game *game)
 	else
 	{
 		ft_error("texture already exists");
+		free_part(game);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -153,13 +154,14 @@ static char *get_size_line(char *file_name)
 		perror("open");
 		exit(EXIT_FAILURE);
 	}
-	while((line = get_next_line(fd)))
+	while((line = get_next_line(fd, 0)))
 	{
 		if (!is_size_line(line))
 			free(line);
 		else
 			break;
 	}
+	get_next_line(fd, 1);
 	close(fd);
 	fd = -1;
 	return(line);

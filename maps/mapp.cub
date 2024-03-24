@@ -1,14 +1,21 @@
 SO ./img/xpm/south.xpm
 
-NO ./img/xpm/north.xpm
 
 
-WE ./img/xpm/west.xpm
+EA ./img/xpm/east.xpm
+
+
 
 
 C 20,30,14
 
-EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
+
+NO ./img/xpm/north.xpm
+
+
+
+F 205,100,12
 
 
 
@@ -34,5 +41,3 @@ EA ./img/xpm/east.xpm
 110000011
   11111
 
-
-F 205,100,12
