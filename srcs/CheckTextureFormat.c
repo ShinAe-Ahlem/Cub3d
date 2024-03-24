@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   CheckTextureFormat.c                               :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:24:56 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:39:27 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 bool	has_valid_extension(char *line)
@@ -40,11 +52,6 @@ static bool	has_valid_prefix(char *texture, int *tex_num)
 
 bool	are_valid_texture_formats(t_game *game)
 {
-	// if (game->mapfile[game->pos] && game->mapfile[game->pos][0] == '\n')
-	// {
-	// 	ft_error("found empty line or texture format is invalid");
-	// 	return (false);
-	// }
 	if (!has_valid_prefix(game->mapfile[game->pos], &game->tex_num))
 		return (false);
 	if (!has_valid_extension(game->mapfile[game->pos]))

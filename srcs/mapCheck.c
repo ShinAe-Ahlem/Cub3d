@@ -69,11 +69,11 @@ void	get_max_width(t_game *game)
 	int	i;
 
 	i = 0;
-	game->maxMapWidth = 0;
+	game->max_map_width = 0;
 	while (game->map[i])
 	{
-		if (ft_strlen(game->map[i]) > (size_t)game->maxMapWidth)
-			game->maxMapWidth = ft_strlen(game->map[i]);
+		if (ft_strlen(game->map[i]) > (size_t)game->max_map_width)
+			game->max_map_width = ft_strlen(game->map[i]);
 		i++;
 	}
 }

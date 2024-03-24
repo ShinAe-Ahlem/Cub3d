@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exportMapElements.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:52:58 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:53:46 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 void	export_map(t_game *game)
@@ -33,7 +45,7 @@ void	ll_toarray_converter(t_game *game)
 	while (temp2 != NULL)
 	{
 		game->map[i] = ft_strdup(temp2->content);
-		game->maxMapWidth = game->maxMapWidth > (int)ft_strlen(game->map[i]) ? game->maxMapWidth : (int)ft_strlen(game->map[i]);
+		game->max_map_width = game->max_map_width > (int)ft_strlen(game->map[i]) ? game->max_map_width : (int)ft_strlen(game->map[i]);
 		i++;
 		temp2 = temp2->next;
 	}

@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:51:32 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:52:02 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
-
-
-void    ft_error(char *code_error)
+void	ft_error(char *code_error)
 {
-    write (2, code_error,ft_strlen(code_error));
-    write(2, "\n", 1);
+	write(2, code_error, ft_strlen(code_error));
+	write(2, "\n", 1);
 }

@@ -1,16 +1,16 @@
-#include "../includes/game.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkFloorCeiling.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:22:22 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:23:12 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-/*
-    couleurs R,G,B range [0,255] : 0, 255, 255
-            F 200,100,0
-            C 225,30,0
-*/
-/*checks if the clors Format is valid
-    a valid color format;
-        has no spaces
-        values are separated by a ,
-        the are integers between
-*/
+#include "../includes/game.h"
 
 bool	is_valid_rgb(char *RGB)
 {
@@ -110,29 +110,28 @@ void	check_is_valid_rgb_format(t_game *game, char c)
 	free(rgb);
 }
 
-void	check_floor_ceiling(t_game *game, int *c_flag, int	*f_flag)
+void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag)
 {
-	
-		if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
+	if (!ft_strncmp("F ", game->mapfile[game->pos], 2))
+	{
+		if (*f_flag)
 		{
-			if (*f_flag)
-			{
-				ft_error("Double floor found\n");
-				free_part(game);
-				exit(EXIT_FAILURE);
-			}
-			*f_flag = 1;//
-			check_is_valid_rgb_format(game, 'F');
+			ft_error("Double floor found\n");
+			free_part(game);
+			exit(EXIT_FAILURE);
 		}
-		else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
+		*f_flag = 1;
+		check_is_valid_rgb_format(game, 'F');
+	}
+	else if (!ft_strncmp("C ", game->mapfile[game->pos], 2))
+	{
+		if (*c_flag)
 		{
-			if (*c_flag)
-			{
-				ft_error("Double ceilning found\n");
-				free_part(game);
-				exit(EXIT_FAILURE);
-			}
-			*c_flag = 1;//
-			check_is_valid_rgb_format(game, 'C');
+			ft_error("Double ceilning found\n");
+			free_part(game);
+			exit(EXIT_FAILURE);
 		}
+		*c_flag = 1;
+		check_is_valid_rgb_format(game, 'C');
+	}
 }

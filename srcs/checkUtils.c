@@ -1,11 +1,29 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checkUtils.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:44:36 by anouri            #+#    #+#             */
+/*   Updated: 2024/03/24 15:50:37 by anouri           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 /*check ft_isspace in libft => tried and it didn't work! try again!*/
 
+static void	error_msg(char *str, int exit_status)
+{
+	ft_error(str);
+	exit(exit_status);
+}
+
 bool	is_empty_line(char *line)
 {
 	if (line == NULL)
-		return(true);
+		return (true);
 	while (*line != '\0')
 	{
 		if (*line != ' ' || *line != '\n' || *line != '\t')
@@ -33,10 +51,7 @@ void	check_has_spaces(t_game *game)
 				while (ft_isspace(game->map[i][j]))
 					j++;
 				if (game->map[i][j] != '\n')
-				{
-					ft_error("found empty line\n");
-					exit(EXIT_FAILURE);
-				}
+					error_msg("found empty line\n", EXIT_FAILURE);
 			}
 			else
 				j++;

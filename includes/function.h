@@ -90,4 +90,19 @@ void	init_game_window(t_game *game);
 void free_all(t_game *game);
 void free_part(t_game *game);
 void free_char_array(char ***array);
+
+
+/******texture check*/
+void	check_textures_dimensions(t_game *game);
+
+
+
+/***************key press**************/
+
+void	up_down(int keysym, t_game *game);
+void	rot_right(int keysym, t_game *game, double olddir_x,double oldplane_x);
+void	rot_left(int keysym, t_game *game, double olddir_x, double oldplane_x);
+void	lef_right(int keysym, t_game *game, double move_speed);
+void	forward_backward(int keysym, t_game *game, double move_speed);
+
 #endif
