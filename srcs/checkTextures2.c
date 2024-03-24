@@ -1,14 +1,14 @@
 #include "../includes/game.h"
 
-void	texlines_null_check(t_game *game, int *j)
-{
-	if (game->texLines[*j] == NULL)
-	{
-		ft_perror(ERROR_LOAD_DIR);
-		free_part(game);
-		exit(EXIT_FAILURE);
-	}
-}
+// void	texlines_null_check(t_game *game)
+// {
+// 	if (game->texLines[game->tex_num] == NULL)
+// 	{
+// 		ft_perror(ERROR_LOAD_DIR);
+// 		free_part(game);
+// 		exit(EXIT_FAILURE);
+// 	}
+// }
 
 void	file_is_directory_check(char **filename, struct stat *file_stat,
 		t_game *game, int fd)

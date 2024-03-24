@@ -54,7 +54,8 @@ void    fd_error_check(int fd, char **filename, t_game *game);
 void    texture_files_exist_init(int *i, int *j, int *fd, char **filename);
 
 /*floor ceiling*/
-void check_floor_ceiling(t_game *game);
+// void check_floor_ceiling(t_game *game);
+void	check_floor_ceiling(t_game *game, int *c_flag, int *f_flag);
 
 //***** UTILITY *****
 void    print_tlist(t_list *list);
