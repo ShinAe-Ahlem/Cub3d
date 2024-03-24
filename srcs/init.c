@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   init.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 14:34:37 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 14:36:25 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
-void	FC_init(t_game *game)
+void	fc_init(t_game *game)
 {
 	game->floor.red = 0;
 	game->floor.green = 0;
@@ -10,7 +22,7 @@ void	FC_init(t_game *game)
 	game->ceiling.blue = 0;
 }
 
-void	mapInfoInit(t_game *game)
+void	map_info_init(t_game *game)
 {
 	game->mapfile = NULL;
 	game->mapLL = NULL;
@@ -22,7 +34,7 @@ void	mapInfoInit(t_game *game)
 	game->playerAngle = 0;
 }
 
-void	initGameParam(t_game *game)
+void	init_game_param(t_game *game)
 {
 	game->game_name = "Alhem and Shin Ae's World <3";
 	game->fd = 0;
@@ -35,6 +47,6 @@ void	initGameParam(t_game *game)
 	game->mapfile = NULL;
 	game->texFiles = NULL;
 	game->texLines = NULL;
-	FC_init(game);
-	mapInfoInit(game);
+	fc_init(game);
+	map_info_init(game);
 }

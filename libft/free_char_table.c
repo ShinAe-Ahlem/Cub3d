@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_char_table.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 10:08:02 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/31 10:11:40 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 16:07:03 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	free_table(char **tab)
 {
-	int i;
+	int	i;
 
 	if (tab)
 	{

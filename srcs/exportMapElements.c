@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   exportMapElements.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 14:19:39 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 14:28:00 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 void	export_map(t_game *game)
@@ -9,6 +21,14 @@ void	export_map(t_game *game)
 		new = ft_lstnew((char *)(game->mapfile[game->pos]));
 		ft_lstadd_back(&(game->mapLL), new);
 	}
+}
+
+void	define_maxmapwidth(t_game *game, int *i)
+{
+	if (game->maxMapWidth > (int)ft_strlen(game->map[*i]))
+		game->maxMapWidth = game->maxMapWidth;
+	else
+		game->maxMapWidth = (int)ft_strlen(game->map[*i]);
 }
 
 void	ll_toarray_converter(t_game *game)
@@ -33,7 +53,7 @@ void	ll_toarray_converter(t_game *game)
 	while (temp2 != NULL)
 	{
 		game->map[i] = ft_strdup(temp2->content);
-		game->maxMapWidth = game->maxMapWidth > (int)ft_strlen(game->map[i]) ? game->maxMapWidth : (int)ft_strlen(game->map[i]);
+		define_maxmapwidth(game, &i);
 		i++;
 		temp2 = temp2->next;
 	}

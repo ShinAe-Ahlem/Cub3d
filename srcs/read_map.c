@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   read_map.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:47:41 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:56:49 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 static char	**save_first_line(char *line, int *nb_lines)
@@ -8,7 +20,7 @@ static char	**save_first_line(char *line, int *nb_lines)
 	map_lines = malloc(2 * sizeof(char *));
 	if (!map_lines)
 	{
-		ft_error("malloc");
+		ft_error(ERROR_MALLOC);
 		return (NULL);
 	}
 	map_lines[0] = ft_strdup(line);
@@ -26,7 +38,7 @@ static char	**save_other_lines(char **map_lines, int *nb_lines, char *line)
 	(*nb_lines)++;
 	new = malloc((*nb_lines + 1) * sizeof(char *));
 	if (!new)
-		ft_error("malloc");
+		ft_error(ERROR_MALLOC);
 	j = 0;
 	while (j < *nb_lines - 1)
 	{
@@ -47,6 +59,15 @@ static char	**save_other_lines(char **map_lines, int *nb_lines, char *line)
 	return (map_lines);
 }
 
+void	ft_read_map_fd_error(int fd)
+{
+	if (fd == -1)
+	{
+		ft_error(ERROR_OPEN);
+		exit(EXIT_FAILURE);
+	}
+}
+
 char	**ft_read_map(char *filename)
 {
 	int		fd;
@@ -56,12 +77,7 @@ char	**ft_read_map(char *filename)
 
 	map_lines = NULL;
 	fd = open(filename, O_RDONLY);
-	if (fd == -1)
-	{
-		perror("open");
-		exit(EXIT_FAILURE);
-		// return(NULL);
-	}
+	ft_read_map_fd_error(fd);
 	while (1)
 	{
 		line = get_next_line(fd, 0);
@@ -78,4 +94,3 @@ char	**ft_read_map(char *filename)
 	close(fd);
 	return (map_lines);
 }
-

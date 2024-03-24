@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 16:44:26 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/31 10:27:53 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 16:16:02 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdlib.h>
 # include <sys/types.h>
 # include <unistd.h>
-#include "gnl/get_next_line.h"
+# include "gnl/get_next_line.h"
 
 typedef struct s_list
 {
@@ -36,8 +36,7 @@ void				ft_lstadd_back(t_list **lst, t_list *new);
 void				ft_lstdelone(t_list *lst, void (*del)(void *));
 void				ft_lstclear(t_list **lst, void (*del)(void *));
 void				ft_lstiter(t_list *lst, void (*f)(void *));
-t_list				*ft_lstmap(t_list *lst, void *(*f)(void *),
-						void (*del)(void *));
+t_list				*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int					ft_atoi(const char *nptr);
 void				ft_bzero(void *s, size_t n);
 void				*ft_calloc(size_t nmemb, size_t size);
@@ -66,8 +65,8 @@ size_t				ft_strlen(const char *s);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 char				*ft_strncpy(char *dest, char *src, unsigned int n);
-char				*ft_strnstr(const char *big, const char *little,
-						size_t len);
+char				*ft_strnstr(const char *big, const char *little, size_t len);
+int					ft_strnstr_tf(const char *big, const char *little, size_t len);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strrchr(const char *s, int c);
 char				*ft_substr(char const *s, unsigned int start, size_t len);
@@ -80,12 +79,10 @@ int					ft_isspace(char c);
 char				*ft_strdup_quote(char *s);
 int					save_str_as_file(char *s, char *file);
 char				*get_first_line(char *file);
-int					ft_strnstr_tf(const char *big, const char *little, size_t len);
 
 /*GNL*/
 
-
-void	free_table(char **tab);
-void	print_char_table(char **tab);
+void				free_table(char **tab);
+void				print_char_table(char **tab);
 
 #endif
