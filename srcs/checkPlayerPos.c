@@ -36,6 +36,13 @@ static void	north_or_south(t_game *game, char dir)
 	}
 }
 
+static void	check_player_pos_quit(t_game *game)
+{
+	ft_perror(ERROR_MULT_PLA_POS);
+	free_part(game);
+	exit(EXIT_SUCCESS);
+}
+
 void	check_player_pos(t_game *game)
 {
 	int	dir_found;
@@ -61,10 +68,5 @@ void	check_player_pos(t_game *game)
 		i++;
 	}
 	if (dir_found != 1)
-	{
-		dprintf(1, "ERROR POSITION 9999\n");
-		ft_perror(ERROR_MULT_PLA_POS);
-		free_part(game);
-		exit(EXIT_SUCCESS);
-	}
+		check_player_pos_quit(game);
 }

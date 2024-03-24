@@ -42,25 +42,21 @@ int	affect_rgb(int *rgb, char *RGB, int *pos, char c)
 		((*pos)++);
 	j = *pos;
 	if (c == 'r' || c == 'g')
-	{
 		while (RGB[*pos] != ',')
 			(*pos)++;
-	}
 	else
-	{
 		while (RGB[*pos])
 			(*pos)++;
-	}
 	color = ft_substr(RGB, j, *pos - j + 1);
 	*rgb = ft_atoi(color);
 	if (*rgb > 255 || *rgb < 0)
 	{
 		ft_error("ERROR : RGB out of range!\n");
 		free(color);
-		return(1);
+		return (1);
 	}
 	free(color);
-	return(0);
+	return (0);
 }
 
 void	affect_rgb_togame(t_game *game, t_color *rgb, char *RGB)
@@ -121,7 +117,7 @@ void	check_floor_ceiling(t_game *game, int *c_flag, int	*f_flag)
 		{
 			if (*f_flag)
 			{
-				ft_error("double floor found\n");
+				ft_error("Double floor found\n");
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}
@@ -132,7 +128,7 @@ void	check_floor_ceiling(t_game *game, int *c_flag, int	*f_flag)
 		{
 			if (*c_flag)
 			{
-				ft_error("double ceilning found\n");
+				ft_error("Double ceilning found\n");
 				free_part(game);
 				exit(EXIT_FAILURE);
 			}

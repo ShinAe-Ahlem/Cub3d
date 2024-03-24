@@ -1,7 +1,6 @@
-
 #include "../includes/game.h"
 
-void	zeroThisLine(t_game *game, int i)
+void	zero_this_line(t_game *game, int i)
 {
 	int	j;
 
@@ -18,7 +17,7 @@ void	zeroThisLine(t_game *game, int i)
 	}
 }
 
-void	zeroSideBlank(t_game *game, char *line)
+void	zero_side_blank(t_game *game, char *line)
 {
 	int		len;
 	char	*temp;
@@ -35,9 +34,10 @@ void	zeroSideBlank(t_game *game, char *line)
 	free(temp);
 }
 
-static int	SpaceNextToChar(t_game *game, int y, int x)
+static int	space_next_to_char(t_game *game, int y, int x)
 {
-	int len;
+	int	len;
+
 	len = ft_strlen(game->map[y]);
 	if (y >= game->mapCharHeight || x >= len - 1)
 		return (2);
@@ -47,8 +47,7 @@ static int	SpaceNextToChar(t_game *game, int y, int x)
 		return (0);
 }
 
-
-void	zeroExposed(t_game *game, char **map, int i)
+void	zero_exposed(t_game *game, char **map, int i)
 {
 	int	j;
 
@@ -57,7 +56,9 @@ void	zeroExposed(t_game *game, char **map, int i)
 	{
 		if (map[i][j] == '0')
 		{
-			if (SpaceNextToChar(game, i - 1, j) || SpaceNextToChar(game, i + 1, j) || SpaceNextToChar(game, i, j - 1) || SpaceNextToChar(game, i, j + 1))
+			if (space_next_to_char(game, i - 1, j) || space_next_to_char(game, i
+					+ 1, j) || space_next_to_char(game, i, j - 1)
+				|| space_next_to_char(game, i, j + 1))
 			{
 				ft_perror(ERROR_MAP_UNCLOSED);
 				free_part(game);
@@ -73,13 +74,13 @@ void	zero_blank_contact(t_game *game)
 	int	i;
 
 	i = 0;
-	zeroThisLine(game, 0);
+	zero_this_line(game, 0);
 	while (game->map[i])
 	{
-		zeroSideBlank(game, game->map[i]);
-		zeroExposed(game, game->map, i);
+		zero_side_blank(game, game->map[i]);
+		zero_exposed(game, game->map, i);
 		i++;
 	}
 	i -= 1;
-	zeroThisLine(game, i);
+	zero_this_line(game, i);
 }
