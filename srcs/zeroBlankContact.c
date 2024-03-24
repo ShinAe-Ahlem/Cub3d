@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   zeroBlankContact.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:54:42 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 15:54:43 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:29:12 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static int	space_next_to_char(t_game *game, int y, int x)
 	int	len;
 
 	len = ft_strlen(game->map[y]);
-	if (y >= game->mapCharHeight || x >= len - 1)
+	if (y >= game->map_char_height || x >= len - 1)
 		return (2);
 	if (ft_isspace(game->map[y][x]) || !game->map[y][x])
 		return (1);

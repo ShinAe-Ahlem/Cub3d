@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:37 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 14:36:25 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,13 @@ void	fc_init(t_game *game)
 void	map_info_init(t_game *game)
 {
 	game->mapfile = NULL;
-	game->mapLL = NULL;
+	game->map_ll = NULL;
 	game->map = NULL;
-	game->mapCharHeight = 0;
+	game->map_char_height = 0;
 	game->max_map_width = 0;
-	game->playerPos = NULL;
-	game->playerPosDelta = NULL;
-	game->playerAngle = 0;
+	game->player_pos = NULL;
+	game->player_pos_delta = NULL;
+	game->player_angle = 0;
 }
 
 void	init_game_param(t_game *game)
@@ -45,8 +45,8 @@ void	init_game_param(t_game *game)
 	game->tex = NULL;
 	game->map = NULL;
 	game->mapfile = NULL;
-	game->texFiles = NULL;
-	game->texLines = NULL;
+	game->tex_files = NULL;
+	game->tex_lines = NULL;
 	fc_init(game);
 	map_info_init(game);
 }

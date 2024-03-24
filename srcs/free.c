@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 14:34:25 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void	free_all(t_game *game)
 	free_tex(game);
 	free_table(game->mapfile);
 	free_table(game->map);
-	free_table(game->texFiles);
-	free_table(game->texLines);
-	free(game->texAddress);
-	free_lst(game->mapLL);
-	free(game->playerPos);
-	free(game->playerPosDelta);
+	free_table(game->tex_files);
+	free_table(game->tex_lines);
+	free(game->tex_address);
+	free_lst(game->map_ll);
+	free(game->player_pos);
+	free(game->player_pos_delta);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
 	mlx_destroy_display(game->mlx_ptr);
 	free(game->mlx_ptr);
@@ -72,11 +72,11 @@ void	free_all(t_game *game)
 
 void	free_part(t_game *game)
 {
-	free_lst(game->mapLL);
+	free_lst(game->map_ll);
 	free_table(game->map);
 	free_table(game->mapfile);
-	free_table(game->texFiles);
-	free_table(game->texLines);
-	free(game->playerPos);
-	free(game->playerPosDelta);
+	free_table(game->tex_files);
+	free_table(game->tex_lines);
+	free(game->player_pos);
+	free(game->player_pos_delta);
 }

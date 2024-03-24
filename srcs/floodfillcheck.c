@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfillcheck.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:28:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 15:37:53 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:31:44 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ char	**copy_map(t_game *game)
 	int		i;
 
 	i = 0;
-	copy = (char **)malloc((game->mapCharHeight + 1) * sizeof(char *));
+	copy = (char **)malloc((game->map_char_height + 1) * sizeof(char *));
 	if (copy == NULL)
 		return (NULL);
-	while (i < game->mapCharHeight)
+	while (i < game->map_char_height)
 	{
 		copy[i] = ft_strdup(game->map[i]);
 		i++;
 	}
-	copy[game->mapCharHeight] = NULL;
+	copy[game->map_char_height] = NULL;
 	return (copy);
 }
 
@@ -77,8 +77,8 @@ void	floodfill_check(t_game *game)
 	char	**copy;
 
 	copy = copy_map(game);
-	find_player_position(game, game->playerPos);
-	floodfill(copy, game->playerPos->x, game->playerPos->y);
+	find_player_position(game, game->player_pos);
+	floodfill(copy, game->player_pos->x, game->player_pos->y);
 	if (post_floodfill_check(copy))
 	{
 		free_table(copy);
