@@ -95,6 +95,7 @@ void	check_map_elements(t_game *game)
 	while (game->mapfile[game->pos])
 	{
 		dprintf(1,"pos = %d\n", game->pos);	
+		dprintf(1,"line = [%s]\n", game->mapfile[game->pos]);	
 
 		// if (game->mapfile[game->pos][0] == '\n')
 		// {
@@ -131,7 +132,7 @@ void	check_map_elements(t_game *game)
 		if (game->mapfile[game->pos])
 			game->pos++;
 	}
-
+	dprintf(1, "ERROR POSITION 4545\n");
 	map_check_division(game);
 }
 

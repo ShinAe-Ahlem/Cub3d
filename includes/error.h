@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   error.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 16:01:03 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 16:02:08 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef ERROR_H
 # define ERROR_H
 
@@ -16,11 +28,11 @@
 # define ERROR_SPACE "Unexpected space has been found"
 # define ERROR_MULT_PLA_POS "There are too many or no player position on map"
 # define ERROR_MAP_UNCLOSED "Map is not closed"
-# define ERROR_MAP_SPLITTED "Map is splitted by an empty line or not last element in file"
+# define ERROR_MAP_SPLITTED "Map is splitted by empty line or not last element"
 # define ERROR_FF_FAILED "Map contains inaccessible spots for player"
 # define ERROR_MALLOC "Memory error"
 # define ERROR_MLX 1
-#define NOT_IN_ORDER "Map Elements Not in order or missing element"
-#define INVALID_SIZE "ERROR : Invalid texture size, must be 64X64"
+# define NOT_IN_ORDER "Map Elements Not in order or missing element"
+# define INVALID_SIZE "ERROR : Invalid texture size, must be 64X64"
 
 #endif

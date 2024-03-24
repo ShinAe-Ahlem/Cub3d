@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/23 11:10:57 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 12:12:37 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 16:08:00 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # endif
 
 char	*get_next_line(int fd, int error);
-char	*ft_strjoinGNL(char *str1, char *str2);
-size_t	ft_strlenGNL(char *s);
+char	*ft_strjoingnl(char *str1, char *str2);
+size_t	ft_strlengnl(char *s);
 
 #endif

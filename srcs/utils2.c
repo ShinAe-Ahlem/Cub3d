@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:54:11 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:54:33 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 bool	has_spaces(char *str)
@@ -11,15 +23,14 @@ bool	has_spaces(char *str)
 	return (false);
 }
 
-bool red_gree_blue(char *str)
+bool	red_gree_blue(char *str)
 {
-	int count;
+	int	count;
 
 	count = 0;
 	while (*str != '\0' && *str != '\n')
 	{
-		// dprintf(1, "count = %d\n", count);
-		while(*str >= '0' && *str <= '9')
+		while (*str >= '0' && *str <= '9')
 			str++;
 		if (*str == ',')
 		{

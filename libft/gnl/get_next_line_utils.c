@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:11:28 by anouri            #+#    #+#             */
-/*   Updated: 2024/01/31 11:36:40 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 16:07:50 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlenGNL(char *s)
+size_t	ft_strlengnl(char *s)
 {
 	size_t	len;
 
@@ -24,13 +24,13 @@ size_t	ft_strlenGNL(char *s)
 	return (len);
 }
 
-char	*ft_strjoinGNL(char *s1, char *s2)
+char	*ft_strjoingnl(char *s1, char *s2)
 {
 	size_t	i;
 	size_t	size;
 	char	*res;
 
-	size = ft_strlenGNL(s1) + ft_strlenGNL(s2);
+	size = ft_strlengnl(s1) + ft_strlengnl(s2);
 	i = 0;
 	res = (char *)malloc(sizeof(char) * (size + 1));
 	if (!res)
@@ -38,12 +38,12 @@ char	*ft_strjoinGNL(char *s1, char *s2)
 		free(s1);
 		return (NULL);
 	}
-	while (i < ft_strlenGNL(s1) || i < ft_strlenGNL(s2))
+	while (i < ft_strlengnl(s1) || i < ft_strlengnl(s2))
 	{
-		if (i < ft_strlenGNL(s1))
+		if (i < ft_strlengnl(s1))
 			res[i] = s1[i];
-		if (i < ft_strlenGNL(s2))
-			res[i + ft_strlenGNL(s1)] = s2[i];
+		if (i < ft_strlengnl(s2))
+			res[i + ft_strlengnl(s1)] = s2[i];
 		i++;
 	}
 	res[size] = '\0';

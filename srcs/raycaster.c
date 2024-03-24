@@ -1,3 +1,14 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   raycaster.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:44:00 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:44:01 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/game.h"
 
@@ -36,42 +47,6 @@ static void	step_and_initial_sidedist(t_game *game)
 	}
 }
 
-static void	perform_dda(t_game *game)
-{
-	int	hit;
-
-	hit = 0;
-	while (hit == 0)
-	{
-		if (game->sideDistX < game->sideDistY)
-		{
-			game->sideDistX += game->deltaDistX;
-			game->mapX += game->stepX;
-			if (game->stepX > 0)
-				game->dir = 0; // north
-			else
-				game->dir = 2; //south
-			game->side = 0;
-		}
-		else
-		{
-			game->sideDistY += game->deltaDistY;
-			game->mapY += game->stepY;
-			if (game->stepY > 0)
-				game->dir = 3; //west
-			else
-				game->dir = 1; // east
-			game->side = 1;
-		}
-		if (game->map[game->mapX][game->mapY] == '1')
-			hit = 1;
-	}
-	if (game->side == 0)
-		game->perpWallDist = (game->sideDistX - game->deltaDistX);
-	else
-		game->perpWallDist = (game->sideDistY - game->deltaDistY);
-}
-
 static void	calculate_wall_height(t_game *game)
 {
 	game->lineHeight = (int)(game->window_y / game->perpWallDist);
@@ -102,7 +77,7 @@ static void	texturing_calculation(t_game *game)
 
 int	render_next_frame(t_game *game)
 {
-	int x;
+	int	x;
 
 	x = 0;
 	init_image(game);
@@ -117,7 +92,7 @@ int	render_next_frame(t_game *game)
 		x++;
 	}
 	mlx_put_image_to_window(game->mlx_ptr, game->win_ptr, game->img.mlx_img, 0,
-			0);
+		0);
 	mlx_destroy_image(game->mlx_ptr, game->img.mlx_img);
-	return (1); //presonaly I prefer 0 but I guess this is a loop_hook thing
+	return (1);
 }
