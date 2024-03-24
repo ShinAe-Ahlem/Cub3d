@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:25:32 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 18:50:01 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,13 @@ void	export_textures(t_game *game)
 	j = 0;
 	if (!game->tex_lines)
 	{
-		game->tex_lines = malloc(5 * sizeof(char *));
+		game->tex_lines = ft_calloc(sizeof(char *), 5);
 		if (!game->tex_lines)
 		{
 			ft_perror(ERROR_MALLOC);
 			free_all(game);
 			exit(EXIT_FAILURE);
 		}
-		while (j < 4)
-			game->tex_lines[j++] = NULL;
 	}
 	export_texture_strdup(game);
 	game->tex_lines[4] = NULL;
@@ -62,6 +60,7 @@ void	texture_files_exist(t_game *game)
 	filename = ft_substr(game->tex_lines[game->tex_num], i,
 			ft_strlen(game->tex_lines[game->tex_num]) - (i + 1));
 	fd = open(filename, O_RDONLY);
+	dprintf(1, "filename = %s\n", filename);
 	fd_error_check(fd, &filename, game);
 	file_is_directory_check(&filename, &file_stat, game, fd);
 	game->tex_files[game->tex_num] = ft_strdup(filename);
