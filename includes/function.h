@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   function.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:01:05 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 16:13:21 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/24 16:35:35 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ void					init_game_param(t_game *game);
 void					init_game_window(t_game *game);
 
 //***** FREE *****
-<<<<<<< HEAD
 void free_all(t_game *game);
 void free_part(t_game *game);
 void free_char_array(char ***array);
@@ -124,9 +123,4 @@ void	rot_left(int keysym, t_game *game, double olddir_x, double oldplane_x);
 void	lef_right(int keysym, t_game *game, double move_speed);
 void	forward_backward(int keysym, t_game *game, double move_speed);
 
-=======
-void					free_all(t_game *game);
-void					free_part(t_game *game);
-void					free_char_array(char ***array);
->>>>>>> a33d4c21fee50b7683d539362fd5ba146f759530
 #endif
