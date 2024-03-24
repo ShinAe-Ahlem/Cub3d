@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   openWindow.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:39:21 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:56:17 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 static int	import_textures(t_game *game)
@@ -58,7 +70,7 @@ int	ft_create_window(t_game *game)
 	init_game_window(game);
 	if (import_textures(game))
 	{
-		ft_error("problem imprting texture\n");
+		ft_error("Problem has occured while importing texture\n");
 		free_all(game);
 	}
 	get_texture_address(game);

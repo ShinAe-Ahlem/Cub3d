@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/22 13:06:33 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 12:15:50 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/24 16:08:35 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static char	*ft_read(char *stock, int fd)
 		}
 		buff[status] = '\0';
 		temp = stock;
-		stock = ft_strjoinGNL(temp, buff);
+		stock = ft_strjoingnl(temp, buff);
 		free(temp);
 	}
 	free(buff);
@@ -91,8 +91,8 @@ static char	*ft_update_stock(char *str, char *line)
 
 	if (!str)
 		return (NULL);
-	line_len = ft_strlenGNL(line);
-	size = ft_strlenGNL(str) - ft_strlenGNL(line);
+	line_len = ft_strlengnl(line);
+	size = ft_strlengnl(str) - ft_strlengnl(line);
 	new_str = malloc((size + 1) * sizeof(char));
 	if (!new_str)
 		return (NULL);
@@ -112,12 +112,11 @@ char	*get_next_line(int fd, int error)
 	static char	*stock;
 	char		*line;
 
-
 	if (error)
 	{
 		free(stock);
 		stock = NULL;
-		return (NULL);	
+		return (NULL);
 	}
 	if (fd < 0 || BUFFER_SIZE < 0)
 		return (NULL);

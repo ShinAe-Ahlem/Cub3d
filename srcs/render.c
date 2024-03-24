@@ -1,21 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   render.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 15:50:49 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:53:14 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "../includes/game.h"
 
-
-void	my_mlx_pixel_put(t_img *image, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = image->addr + (y * image->line_len + x * (image->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
-int	create_rgb(int r, int g, int b)
-{
-	return (r << 16 | g << 8 | b);
-}
-
-static void	drawCeiling(t_game *game, int *y, int x)
+static void	draw_ceiling(t_game *game, int *y, int x)
 {
 	int	color2;
 
@@ -28,7 +25,7 @@ static void	drawCeiling(t_game *game, int *y, int x)
 	}
 }
 
-static void	drawFloor(t_game *game, int *y, int x)
+static void	draw_floor(t_game *game, int *y, int x)
 {
 	int	color1;
 
@@ -40,7 +37,7 @@ static void	drawFloor(t_game *game, int *y, int x)
 	}
 }
 
-static void	drawWall(t_game *game, int *y, int x)
+static void	draw_wall(t_game *game, int *y, int x)
 {
 	int	color3;
 
@@ -62,8 +59,8 @@ void	render(t_game *game, int x)
 	int	y;
 
 	y = 0;
-	drawCeiling(game, &y, x);
-	drawWall(game, &y, x);
+	draw_ceiling(game, &y, x);
+	draw_wall(game, &y, x);
 	y = game->drawEnd;
-	drawFloor(game, &y, x);
+	draw_floor(game, &y, x);
 }

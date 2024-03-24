@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   floodfillcheck.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/24 14:28:24 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:37:53 by shikwon          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/game.h"
 
 char	**copy_map(t_game *game)
@@ -18,59 +30,10 @@ char	**copy_map(t_game *game)
 	return (copy);
 }
 
-void	find_player_position(t_game *game, t_coord *playerPos)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	(void)playerPos;
-	game->playerPos = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPos == NULL)
-	{
-		ft_perror(ERROR_MALLOC);
-		exit(EXIT_FAILURE);
-	}
-	game->playerPos->x = 0;
-	game->playerPos->y = 0;
-
-	while (i < game->mapCharHeight)
-	{
-		j = 0;
-		while (game->map[i][j])
-		{
-			if (game->map[i][j] == 'N' || game->map[i][j] == 'S'
-				|| game->map[i][j] == 'E' || game->map[i][j] == 'A')
-			{
-				game->playerPos->x = j;
-				game->playerPos->y = i;
-				game->posX = i + 0.5;
-				game->posY = j + 0.5;
-				dprintf(1, "playrx = %f\n", game->posX);
-				dprintf(1, "playry = %f\n", game->posY);
-			}
-			j++;
-		}
-		i++;
-	}
-	game->playerPosDelta = (t_coord *)malloc(sizeof(t_coord));
-	if (game->playerPosDelta == NULL)
-	{
-		ft_perror(ERROR_MALLOC);
-		exit(EXIT_FAILURE);
-	}
-	game->playerPosDelta->x = 0;
-	game->playerPosDelta->y = 0;
-	game->playerPosDelta->x = cos(game->playerAngle) * 3;
-	game->playerPosDelta->y = sin(game->playerAngle) * 3;
-}
-
 void	floodfill(char **map_copy, int x, int y)
 {
 	if (map_copy[y] && (map_copy[y][x] == '1' || map_copy[y][x] == 'X'
 			|| map_copy[y][x] == ' '))
-	// add if other elements to avoid floodfilling
 		return ;
 	if (map_copy[y])
 	{
@@ -101,12 +64,12 @@ static int	post_floodfill_check(char **map_copy)
 			else
 			{
 				ft_perror(ERROR_FF_FAILED);
-				return(1);
+				return (1);
 			}
 		}
 		i++;
 	}
-	return(0);
+	return (0);
 }
 
 void	floodfill_check(t_game *game)

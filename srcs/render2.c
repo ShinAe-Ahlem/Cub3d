@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   render2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/24 14:37:48 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 14:49:30 by shikwon          ###   ########.fr       */
+/*   Created: 2024/03/24 15:53:01 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/24 15:53:12 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/game.h"
 
-int	main(int ac, char **av, char **env)
+void	my_mlx_pixel_put(t_img *image, int x, int y, int color)
 {
-	t_game	game;
+	char	*dst;
 
-	check_arg(ac, av);
-	check_env(env);
-	init_game_param(&game);
-	game.mapfile = ft_read_map(av[1]);
-	if (!game.mapfile)
-	{
-		ft_error("ERROR : file is empty");
-		return (1);
-	}
-	check_map_elements(&game);
-	printf("\n before create window\n");
-	ft_create_window(&game);
-	return (0);
+	dst = image->addr + (y * image->line_len + x * (image->bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	create_rgb(int r, int g, int b)
+{
+	return (r << 16 | g << 8 | b);
 }
