@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkTextures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:25:32 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:46:23 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 15:53:10 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,5 +80,4 @@ void	check_export_textures(t_game *game)
 	}
 	export_textures(game);
 	texture_files_exist(game);
-	check_textures_dimensions(game);
 }
