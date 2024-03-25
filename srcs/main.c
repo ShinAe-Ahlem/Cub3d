@@ -6,7 +6,7 @@
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:37:48 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 14:49:30 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/25 15:51:45 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	main(int ac, char **av, char **env)
 		return (1);
 	}
 	check_map_elements(&game);
-	printf("\n before create window\n");
 	ft_create_window(&game);
 	return (0);
 }
