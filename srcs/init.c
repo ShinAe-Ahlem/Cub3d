@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:37 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:02:09 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void	init_game_param(t_game *game)
 	game->mapfile = NULL;
 	game->tex_files = NULL;
 	game->tex_lines = NULL;
+	game->tex_address = NULL;
 	fc_init(game);
 	map_info_init(game);
 }

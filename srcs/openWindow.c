@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:39:21 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/25 11:08:28 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:03:38 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static int	import_textures(t_game *game)
 {
-	game->tex = (void **)malloc(5 * sizeof(void *));
+	game->tex = (void **)ft_calloc(sizeof(void *), 5);
 	if (!game->tex)
 	{
 		ft_error("malloc");
@@ -72,6 +72,7 @@ int	ft_create_window(t_game *game)
 	{
 		ft_error("Problem has occured while importing texture\n");
 		free_all(game);
+		exit(EXIT_FAILURE);
 	}
 	get_texture_address(game);
 	mlx_key_hook(game->win_ptr, &handle_move, game);

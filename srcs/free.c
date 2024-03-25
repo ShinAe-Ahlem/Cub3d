@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/25 11:59:28 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:03:55 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ static void	free_tex(t_game *game)
 	if (game->tex)
 	{
 		while (++i < 4)
-			mlx_destroy_image(game->mlx_ptr, game->tex[i]);
+		{
+			if (game->tex[i])
+				mlx_destroy_image(game->mlx_ptr, game->tex[i]);
+		}
 		free(game->tex[4]);
 		free(game->tex);
 	}
@@ -58,10 +61,11 @@ void	free_all(t_game *game)
 	free_tex(game);
 	free_table(game->mapfile);
 	free_table(game->map);
-	free_table(game->tex_files);
-	free_table(game->tex_lines);
+	free_tex_files(game);
+	free_tex_lines(game);
 	free_lst(game->map_ll);
-	free(game->tex_address);
+	if (game->tex_address)
+		free(game->tex_address);
 	free(game->player_pos);
 	free(game->player_pos_delta);
 	mlx_destroy_window(game->mlx_ptr, game->win_ptr);
