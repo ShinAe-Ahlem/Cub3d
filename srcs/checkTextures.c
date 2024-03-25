@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:25:32 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:21:29 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:46:23 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@ void	texture_files_exist(t_game *game)
 	filename = ft_substr(game->tex_lines[game->tex_num], i,
 			ft_strlen(game->tex_lines[game->tex_num]) - (i + 1));
 	fd = open(filename, O_RDONLY);
-	dprintf(1, "filename = %s\n", filename);
 	fd_error_check(fd, &filename, game);
 	file_is_directory_check(&filename, &file_stat, game, fd);
 	game->tex_files[game->tex_num] = ft_strdup(filename);

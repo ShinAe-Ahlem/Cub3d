@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/25 11:20:39 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:59:28 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,11 @@ void	free_all(t_game *game)
 
 void	free_part(t_game *game)
 {
-	print_char_table(game->tex_files);
 	free_lst(game->map_ll);
 	free_table(game->map);
 	free_table(game->mapfile);
 	free_tex_files(game);
-	free_table(game->tex_lines);
+	free_tex_lines(game);
 	free(game->player_pos);
 	free(game->player_pos_delta);
 }

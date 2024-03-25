@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:43:38 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:23:03 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 12:02:43 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ void	fd_error_check(int fd, char **filename, t_game *game)
 			*filename = NULL;
 		}
 		free_part(game);
-		dprintf(1, "filename = %p\n", game->tex_files);
 		exit(EXIT_FAILURE);
 	}
 }
