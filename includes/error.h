@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:01:03 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 16:02:08 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/25 14:58:32 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,5 +34,6 @@
 # define ERROR_MLX 1
 # define NOT_IN_ORDER "Map Elements Not in order or missing element"
 # define INVALID_SIZE "ERROR : Invalid texture size, must be 64X64"
+# define BAD_XPM "ERROR : XPM file is broken"
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:40:15 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:09:04 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 14:59:27 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,12 @@ void	check_textures_dimensions(t_game *game)
 	while (game->tex_files[i])
 	{
 		line = get_size_line(game->tex_files[i]);
+		if (!line)
+		{
+			ft_error(BAD_XPM);
+			free_part(game);
+			exit(EXIT_FAILURE);
+		}
 		if (!is_valid_size(line))
 		{
 			free(line);
