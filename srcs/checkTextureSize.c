@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:40:15 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 17:47:01 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:09:04 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,6 +101,7 @@ void	check_textures_dimensions(t_game *game)
 		{
 			free(line);
 			ft_error(INVALID_SIZE);
+			free_part(game);
 			exit(EXIT_FAILURE);
 		}
 		free(line);

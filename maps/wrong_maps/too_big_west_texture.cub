@@ -1,6 +1,6 @@
 NO ./textures/purplestone.xpm
-SO ./textures/panorama3.xpm
-WE ./textures/pillar.xpm
+WE ./textures/panorama3.xpm
+SO ./textures/pillar.xpm
 EA ./textures/wood.xpm
 
 F 220,100,0

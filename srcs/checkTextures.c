@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkTextures.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:25:32 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:02:06 by shikwon          ###   ########.fr       */
+/*   Updated: 2024/03/25 11:21:29 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	export_texture_strdup(t_game *game)
 {
-	if (!game->tex_lines[game->tex_num]) // if only it's first time it encounters the concerned texture
+	if (!game->tex_lines[game->tex_num])
 	{
 		game->tex_lines[game->tex_num] = ft_strdup(game->mapfile[game->pos]);
 	}
@@ -33,7 +33,7 @@ void	export_textures(t_game *game)
 	j = 0;
 	if (!game->tex_lines)
 	{
-		game->tex_lines = malloc(5 * sizeof(char *));
+		game->tex_lines = ft_calloc(sizeof(char *), 5);
 		if (!game->tex_lines)
 		{
 			ft_perror(ERROR_MALLOC);
@@ -44,7 +44,6 @@ void	export_textures(t_game *game)
 			game->tex_lines[j++] = NULL;
 	}
 	export_texture_strdup(game);
-	// game->tex_lines[4] = NULL;
 }
 
 void	texture_files_exist(t_game *game)
@@ -64,6 +63,7 @@ void	texture_files_exist(t_game *game)
 	filename = ft_substr(game->tex_lines[game->tex_num], i,
 			ft_strlen(game->tex_lines[game->tex_num]) - (i + 1));
 	fd = open(filename, O_RDONLY);
+	dprintf(1, "filename = %s\n", filename);
 	fd_error_check(fd, &filename, game);
 	file_is_directory_check(&filename, &file_stat, game, fd);
 	game->tex_files[game->tex_num] = ft_strdup(filename);
