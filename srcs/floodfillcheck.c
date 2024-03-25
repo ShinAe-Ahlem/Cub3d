@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   floodfillcheck.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:28:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 17:31:44 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:02:10 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ static int	post_floodfill_check(char **map_copy)
 	int	j;
 
 	i = 0;
-	dprintf(1, "\nhere\n");
 	print_char_table(map_copy);
 	while (map_copy[i])
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   LineCheck.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 17:01:40 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 17:17:17 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:02:17 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ bool	is_map(t_game *game, char *line)
 	(void)game;
 	charset = NULL;
 	charset = ft_strdup("01NSEW ");
-	dprintf(1, "CHARSET: [%s]\n\n\n\n", charset);
 	if (charset_finder(charset, line))
 	{
 		free (charset);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   function.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 16:01:05 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 17:31:44 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 10:58:55 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ void					init_game_param(t_game *game);
 void					init_game_window(t_game *game);
 
 //***** FREE *****
+void					free_tex_files(t_game *game);
 void					free_all(t_game *game);
 void					free_part(t_game *game);
 void					free_char_array(char ***array);
