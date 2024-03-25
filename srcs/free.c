@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 14:34:24 by shikwon           #+#    #+#             */
-/*   Updated: 2024/03/24 17:47:41 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:00:53 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,10 +72,11 @@ void	free_all(t_game *game)
 
 void	free_part(t_game *game)
 {
+	print_char_table(game->tex_files);
 	free_lst(game->map_ll);
 	free_table(game->map);
 	free_table(game->mapfile);
-	free_table(game->tex_files);
+	free_tex_files(game);
 	free_table(game->tex_lines);
 	free(game->player_pos);
 	free(game->player_pos_delta);

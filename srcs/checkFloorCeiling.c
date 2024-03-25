@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checkFloorCeiling.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
+/*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:22:22 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 16:32:51 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:01:45 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,12 @@ bool	is_valid_rgb(char *RGB)
 	}
 	if (has_intruder(RGB))
 	{
-		dprintf(1, "ERROR POSITION 3333\n");
 		ft_error(ERROR_NO_MATCH_CHAR);
 		return (false);
 	}
 	if (!red_gree_blue(RGB))
 	{
-		ft_error("a shade is missing");
+		ft_error("A shade is missing");
 		return (false);
 	}
 	return (true);
