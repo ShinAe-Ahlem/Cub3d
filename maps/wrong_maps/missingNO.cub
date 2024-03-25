@@ -1,6 +1,6 @@
-SO ./textures/purplestone.xpm
-WE ./textures/pillar.xpm
-EA ./textures/wall_2.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+WE ./img/xpm/west.xpm
 
 F 220,100,0
 C 225,30,0

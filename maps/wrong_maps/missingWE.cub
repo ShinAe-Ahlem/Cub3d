@@ -1,6 +1,7 @@
-NO ./textures/wood.xpm
-SO ./textures/purplestone.xpm
-WE ./textures/pillar.xpm
+SO ./img/xpm/south.xpm
+EA ./img/xpm/east.xpm
+
+NO ./img/xpm/north.xpm
 
 F 220,100,0
 C 225,30,0
