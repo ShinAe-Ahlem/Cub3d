@@ -1,7 +1,7 @@
-EA ./img/xpm/east.xpm
-SO ./img/xpm/south.xpm
-WE ./img/xpm/west.xpm
-NO ./img/xpm/north.xpm
+EA ./img/temp/east.xpm
+SO ./img/temp/south.xpm
+WE ./img/temp/west.xpm
+NO ./img/temp/north.xpm
 
 F 220,100,0
 C 225,30,0

@@ -1,33 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   free2.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shikwon <shikwon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/16 13:39:24 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/25 11:01:21 by shikwon          ###   ########.fr       */
+/*   Created: 2024/03/25 10:54:24 by shikwon           #+#    #+#             */
+/*   Updated: 2024/03/25 11:00:22 by shikwon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/game.h"
 
-char	*ft_strdup(const char *s)
+void	free_tex_files(t_game *game)
 {
-	size_t	i;
-	size_t	len;
-	char	*new;
-
-	i = 0;
-	len = ft_strlen(s);
-	new = (char *)malloc(sizeof(char) * (len + 1));
-	if (!new)
-		return (NULL);
-	while (s[i] != '\0')
-	{
-		new[i] = s[i];
-		i++;
-	}
-	new[i] = '\0';
-	return (new);
+	if (game->tex_files[0])
+		free(game->tex_files[0]);
+	if (game->tex_files[1])
+		free(game->tex_files[1]);
+	if (game->tex_files[2])
+		free(game->tex_files[2]);
+	if (game->tex_files[3])
+		free(game->tex_files[3]);
+	if (game->tex_files[4])
+		free(game->tex_files[4]);
+	free(game->tex_files);
+	game->tex_files = NULL;
 }

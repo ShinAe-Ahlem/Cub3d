@@ -6,7 +6,7 @@
 /*   By: anouri <anouri@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/24 15:25:32 by anouri            #+#    #+#             */
-/*   Updated: 2024/03/24 18:50:01 by anouri           ###   ########.fr       */
+/*   Updated: 2024/03/25 11:17:45 by anouri           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	export_texture_strdup(t_game *game)
 {
-	if (!game->tex_lines[game->tex_num])
+	if (!game->tex_lines[game->tex_num]) // if only it's first time it encounters the concerned texture
+	{
 		game->tex_lines[game->tex_num] = ft_strdup(game->mapfile[game->pos]);
+	}
 	else
 	{
-		ft_error("texture already exists");
+		ft_error("Texture already exists");
 		free_part(game);
 		exit(EXIT_FAILURE);
 	}
@@ -38,9 +40,11 @@ void	export_textures(t_game *game)
 			free_all(game);
 			exit(EXIT_FAILURE);
 		}
+		while (j < 5)
+			game->tex_lines[j++] = NULL;
 	}
 	export_texture_strdup(game);
-	game->tex_lines[4] = NULL;
+	// game->tex_lines[4] = NULL;
 }
 
 void	texture_files_exist(t_game *game)

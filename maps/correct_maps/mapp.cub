@@ -11,9 +11,7 @@ C 20,30,14
 
 WE ./img/xpm/west.xpm
 
-NO ./img/xpm/9north.xpm
-
-NO ./img/xpm/9north.xpm
+NO ./img/xpm/north.xpm
 
 
 
